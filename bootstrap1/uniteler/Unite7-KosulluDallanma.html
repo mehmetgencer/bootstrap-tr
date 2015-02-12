@@ -1,0 +1,985 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Ünite 7 : Koşullu Dallanma</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Ünite 7: <span class="mywbr">&nbsp;</span>
+              Koşullu Dallanma</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href=
+          "#%28part._.Unit_7__.Conditional_.Branching%29" class=
+          "tocsubseclink" data-pltdoc="x">Ünite 7 : <span class=
+          "mywbr">&nbsp;</span> Koşullu Dallanma </a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name="(part._.Unit_7__.Conditional_.Branching)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Ünite 7: </span>Koşullu Dallanma</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Üniteye Genel Bakış</span>
+
+        <p>Öğrenciler, tuş direktiflerine yanıt olarak oyuncularını hareket ettirmek için parçalı fonksiyonları kullanırlar.</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Gündem</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                dakika</span><a href=
+                "#lesson_Luigi'sPizza2103"><span class=
+                "BSLessonName">Luigi’s Pizza</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">25
+                dakika</span><a href=
+                "#lesson_PlayerMovement2104"><span class=
+                "BSLessonName">Oyuncu Hareketi</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                dakika</span><a href=
+                "#lesson_Closing2105"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Sonuçları:</span>
+
+            <ul>
+              <li>
+                <p> Öğrenciler, tuş direktiflerine yanıt olarak oyuncuları harekete geçirmek için <tt>update-player</tt>, yazacaktır.
+                </p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlar ve İspat Durumları:</span>
+
+            <p>Prefix BS standartları Bootstrapa özgüdür; diğerleri ise Common Core dan gelir. Mouse Over, her standart üzerindeki ilgili ispat ifadeleri görmek içindir.
+            Bizim <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standards Belgelerimiz</a> hangi ünitenin hangi standartları kapsadığını göstermektedir.</p>
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: Öğrenci, içerikteki problemi çözebilmek için ifadenin yapısını yorumlar.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>İfadenin yorumlanması içeriğin sadece bir kısmını temsil eder.</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>İfadenin terimlerinin, faktörlerinin ve katsayılarının yorumlanması.
+                      </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.1</span>: Öğrencinin bir Anlaşma ve Amaç Beyanına bir kelime problemi çözümlemesi yapması mümkündür.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Verilen kelime problemi, fonksiyonun tanım ve değer kümesini ifade eder.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.2</span>: Öğrenci verilen Anlaşma ve Amaç Beyanına test durumları türetebilir.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Verilen bir Anlaşma ve bir Amaç Beyanı, çoklu örnekler veya test durumları yazar.</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>Verilen çoklu örnekler, değişkenleri isimlendirmek ve sınıflandırmak adına bir yol belirler.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.3</span>: Verilen çoklu test durumları, öğrenci fonksiyon tanımlayabilir,</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Verilen örnekler ve sınıflandırılmış değişken veya değişkenler, fonksiyonu tanımlar.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.4</span>: Öğrenci koşulluluğun söz dizimlerine aşinadır.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Koşulluluğu içeren fonksiyonların tanımlanması ve kullanılması.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div><span class="BootstrapHeader">Süre: 50
+          dakika</span>
+
+          <div class="" id="Glossary">
+            <span class="BootstrapHeader">Sözlükçe:</span>
+
+            <ul>
+              <li>
+                <p><span class="vocab">Cümlecik</span>: Bir soru ve bu sorunun koşullu bir ifadedeki uygun cevabıdır.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Koşullu</span>: Sorular ve cevaplardan oluşan bir kod ifadesidir.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Parçalı fonksiyon</span>: Farklı ifadeleri girdilerine dayalı olarak hesaplayan fonksiyondur.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Materials">
+            <span class="BootstrapHeader">Materyaller:</span>
+
+            <ul>
+              <li>
+                <p>Bilgisayar w/ DrRacket or WeScheme</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">Çalışma kitabı</a></p>
+              </li>
+
+              <li>
+                <p>Öğrenciler için kalem, öğretmenler için yeni tahta kalemleri</p>
+              </li>
+
+              <li>
+                <p>Sınıf posterleri(Kuralların listeleri, temel yetenekler, kurs takvimi)</p>
+              </li>
+
+              <li>
+                <p>Dil tablosu(aşağıda bakınız)</p>
+              </li>
+
+              <li>
+                <p>Bütün öğrencilerin bilgisayarlarının önceden yüklenmiş oyun şablonları link edilmiş resim dosyalarıyla birlikte olmalıdır.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık:</span>
+
+            <ul>
+              <li>
+                <p>"Luigi’s Pizza" [LuigisPizza.rkt from <a href=
+                "../../resources/source-files.zip">source-files.zip</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=Qzjz5xbQ8h">
+                WeScheme</a>] öğrencilerin bilgisayarına ve projektöre yükleme.
+  
+                </p>
+              </li>
+
+              <li>
+                <p>GEREKLİ: Dağıtıma <a href=
+                "https://docs.google.com/document/d/1k67XlYWkHefd4APynvwSnPKRaSTeOvGD7_lRbI8hHrg/edit?usp=sharing">
+                Luigi’s Pizza Çalışma kağıdı</a>.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Types</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Functions</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Number</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr sqrt expt</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>String</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>string-append string-length</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Image</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>rectangle circle triangle ellipse
+                  radial-star scale rotate put-image</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Boolean</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>= &gt; &lt; string=? and or</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Öğretmenin Notlarını Göster"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Tartışma Grubu" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Luigi’s Pizza</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler parçalı fonksiyonun davranışlarını analiz eder.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Amaçların
+              Öğrenilmesi</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler parçalı fonksiyonların konseptini öğrenir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler koşulluluk hakkında bilgiler öğrenir(parçalı fonksiyon kodu nasıl yazılır)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">İspat
+              Durumları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, fonksiyonların girdilerin karekterlerine göre farklı hesaplamalarda farklı performans göstereceğini anlayacaktır. </p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, örneklerin nasıl parçalı fonksiyonların gerekenlerini belirttiğini görmeye başlayacaklardır.</p>
+                </li>
+
+                <li>
+                  <p> 
+                 Öğrenciler, parçalı fonksiyon yazarken <tt>cond</tt> ifadelerinin soru ve cevap çiftlerini gösterdiğini anlayacaktır.
+                </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materyaller</span></p>
+
+              <ul>
+                <li>
+                  <p> w/ DrRacket or WeScheme programları yüklü bilgisayarlar.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Çalışma kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler için kalem, öğretmenler için yeni tahta kalemleri</p>
+                </li>
+
+                <li>
+                  <p>Sınıf posterleri(Kuralların listeleri, temel yetenekler,kurs takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil tablosu(aşağıda bakınız)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>"Luigi’s Pizza" [LuigisPizza.rkt from <a href=
+                  "../../resources/source-files.zip">source-files.zip</a>
+                  | <a href=
+                  "http://www.wescheme.org/openEditor?publicId=Qzjz5xbQ8h">
+                  WeScheme</a>] öğrencilerin bilgisayarına ve projektöre yükleme.</p>
+                </li>
+
+                <li>
+                  <p>GEREKLİ: Dağıtma <a href=
+                  "https://docs.google.com/document/d/1k67XlYWkHefd4APynvwSnPKRaSTeOvGD7_lRbI8hHrg/edit?usp=sharing">
+                  Luigi’s Pizza Çalışma kağıdı</a>.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name=
+            "lesson_Luigi'sPizza2103"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Luigi’s Pizza <span class="time">(Süre
+            20 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Bu derse başlamak için, Luigi's Pizza Çalışma Kağıdını bitirin.
+                    <a href=
+                    "https://docs.google.com/document/d/1k67XlYWkHefd4APynvwSnPKRaSTeOvGD7_lRbI8hHrg/edit">
+                    Luigi’s Pizza Çalışma kağıdı</a>.</p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Tekrar, öğrencilerin alıştırmalara cevapları. Şu linklerde(1,2) bu girişin bir video gösterisini bulabilirsiniz.: <span class=
+                  "BootstrapVideo"><a href="http://www.youtube.com/watch?v=2ckWSjWum-8">
+                  1</a></span>, <span class=
+                  "BootstrapVideo"><a href=
+                  "http://www.youtube.com/watch?v=iTrY-N3MLRY#t=3m8s">
+                  2</a></span></p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><tt>cost</tt> fonksiyonun kodu aşağıda yazmaktadır
+                  : &nbsp;
+                  <textarea>
+; cost : String -&gt; Number
+; given a Topping, produce the cost of a pizza with that topping
+(EXAMPLE (cost "cheese")     9.00)
+(EXAMPLE (cost "pepperoni") 10.50)
+(EXAMPLE (cost "chicken")   11.25)
+(EXAMPLE (cost "broccoli")  10.25)
+
+(define (cost topping)
+  (cond
+    [(string=? topping "cheese")     9.00]
+    [(string=? topping "pepperoni") 10.50]
+    [(string=? topping "chicken")   11.25]
+    [(string=? topping "broccoli")  10.25]
+    [else 00.00]))
+</textarea></p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Şimdiye kadar, gördüğünüz bütün fonksiyonların girdilerine <span style=
+                  "font-style: italic">aynı şeyi</span> yaptınız :</p>
+
+                  <ul>
+                    <li>
+                      <p><tt>green-triangle</tt> her zaman yeşil üçgenler yaptı, boyutu ne olursa olsun.</p>
+                    </li>
+
+                    <li>
+                      <p><tt>safe-left?</tt> herzaman girdinin koordinantını -50 ile karşılaştırdı, girdi ne olursa olsun.</p>
+                    </li>
+
+                    <li>
+                      <p><tt>update-danger</tt>  her zaman aynı miktarı ekledi ve çıkardı.</p>
+                    </li>
+
+                    <li>
+                      <p>ve bunun gibi...</p>
+                    </li>
+                  </ul>
+
+                  <div class="SIntrapara">
+                    Bu öneklerden fonksiyon tanımına gidişte bir ispattı: Esasen değişenler uzak bir tanım verir. Ayrıca değişenlerin sayı daima tanım kümesinin eleman sayısına eşit olmalıdır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      Sayfa 25</a> e gidiniz, bu fonksiyon için olan örnekleri ve contractları doldurunuz, sonra döngü ve değişikliklerin niteliklerini.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin takip edebilmesi açısından tahtada bazı örneklerin ve tanımların olması çok değerli olabilir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><tt>cost</tt> fonksiyonu özel bir fonksiyondur, çünkü farklı girdiler tamamen farklı ifadelere neden olabilirler. Eğer bir örnekte değişen herşeyi bir döngü haline getirirseniz, iki toppingimiz olur döngü
+                  <span style="font-style: italic"> ve fiyat
+                  </span>. Bunlar ikiside değişebilen şeylerdir.Ancak fonksiyon tanımının içinde sadece tek şey vardır, bu yüzden 2 değişkenimizin olması gibi bir durum olamaz.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Tabikide, <tt>fiyat</tt> tam anlamıyla bağımsız bir değişken değildir. Taki fiyat tamamen<tt>topping</tt> lere bağlı olana dek. Örneğin: Eğer toppingimiz
+                  <tt>"peynir"</tt> ise fonksiyon basit bir şekilde
+                  <tt>9.00</tt>, sonucu çıkaracaktır. Eğer toppingimiz
+                  <tt>"sucuk"</tt> fonksiyon <tt>10.50</tt> sonucunu çıkaracaktır, ve bunun gibi. Fiyat hala toppingler cinsinden tanımlanır, ve 4 muhtemel topping vardır- 4 muhtemel şart- fonksiyonun dikkate alması gereken şartlar.<tt>cost</tt> fonksiyonu <span class=
+                  "vocab">koşullu</span>adında özel bir dil özelliği kullanır. Bu özellik kodlamada, <tt>cond</tt> diye kullanılır.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Her koşullunun en az bir  <span class=
+                    "vocab">koşul</span>u vardır. Her koşulun da bir doğru-yanlış sorusu ve sonucu vardır. Luigi fonksiyonunda peynir içinde, sucuk içinde birer koşul vardır ve bunun gibi. Eğer soru <tt>true</tt>cevabını döndürürse ifade değerlendirilir ve sonuç verir. Eğer soru <tt>false</tt> cevabını döndürürse bilgisayar diğer koşula geçer.
+                    
+                    </div>
+
+                    <div class="SIntrapara">
+                    <div class="activity">
+                      <p><tt>cost</tt> fonksiyonuna bakalım :</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>cost</tt> fonksiyonu için kaç tane koşul vardır ?</p>
+                        </li>
+
+                        <li>
+                          <p>Birinci şarttaki soruyu belirleyelim.</p>
+                        </li>
+
+                        <li>
+                          <p>İkinci şarttaki soruyu belirleyelim.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Köşeli parantezler, her koşul için soru ve cevapları çevreler. Öğrenci soruları belirlediği zaman, köşeli parentez içindeki ilk ifadeyi bulmalıdırlar Her cevap için sadece bir ifade olabilir.
+                      </p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Koşulludaki son koşul <tt>else</tt> koşulu olabilir, bu koşul bütün sorular <tt>false</tt> cevabını döndürdüğünde devreye girer.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><tt>cost</tt>  fondsiyonunda, bütün sorular yanlış cevabı döndürdüğünde ne tür sonuç alınır ? Eğer ortada bir <tt>else</tt> fonksiyonu yoksa ne olur ? Bu koşulu kodlamadan çıkarıp, bilinmeyen bir toppingi değerlendirmeyi deneyin, ve neler olduğuna bakın.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p><tt>Else</tt> koşulu, başka yollarla birer birer sayamayacağımız durumlar için en iyi hepsini yakalama koşuludur. Eğer koşul için parçalı bir soru derleyebiliyorsanız, <tt>Else</tt> kullanmak yerine bu parçalı soruyu yazın ve kullanın. Örneğin, eğer <tt>x</tt>’in <tt>5</tt> den büyük olduğu durumlarda farklı sonuçlar veren bir fonksiyonunuz varsa, yeni başlayanlar için ikinci durum için <tt>Else</tt> kullanmak yerine, şu şekilde 2 soru yazmak <tt>(&gt; x 5)</tt> ve <tt>(&lt;= x 5)</tt> daha iyi bir yoldur. Açık ve net sorular, programları okumayı ve tamir etmeyi çok kolaylaştırır. </p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Koşulları kullanan fonksiyonlara <span class="vocab">parçalı fonksiyonlar</span> denir. Her koşul fonksiyonun ayrı bir  <span style="font-style: italic">parçasını</span> tanımlar. Parçalı fonksiyonlar neden kullanışlıdır ? Oyununuzdaki oyuncunuzu düşünün : Oyunda yukarı yön tuşuna bastığınızda oyuncunun yukarı gitmesini istersiniz ya da aşağı yön tuşuna bastığınızda aşağı gitmesini ancak <tt>cond</tt> olmadan, oyunucuyu sadece yukarı ya da sadece aşağı yönlendirecek fonksiyonu yazabilirsiniz. İkisini birlikte yazamazsınız.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Oyuncu Hareketi</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler, ok tuşlarını kullanarak oyuncularını aşağı ve yukarı götürecek bir parçalı fonksiyon yazacaklardır.
+            </p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Amaçların Öğrenilmesi</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, kullanıcı girdilerini halledebilmek için parçalı fonksiyon gerektiğini öğrenir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, tuş kontrollerini belirlemek için hangi soruları sormaları gerektiğini öğrenir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, kendilerine özgü bir koşullu ifadenin nasıl yazıldığını öğrenir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, matematik kullanarak nesneleri göreceli konumlandırmayı öğrenir.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">İspat Durumları </span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, farklı yönlerde yeni koordinantlar hesaplayan farklı ifadelerin nasıl yazılabileceğini anlayacaklardır.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, hangi tuşa basıldığını kontrol edebilecek ifadeler yazma yetisi kazanacaklardır</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, hareketi farklı yönlerde yapabilecek bir koşullu tuş kontrol kodlaması yapabileceklerdir</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, parçalı fonksiyondaki her koşulu örneklendirecek örnekler yazmayı öğreneceklerdir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, oyundaki hareketin hızını veya doğal karakterini değiştirecek fonksiyonlar denemeyi öğreneceklerdir.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonucu</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, tuş direkdiflerine yanıt olarak oyuncuyu hareket ettiren <tt>update-player</tt> yazacaklardır.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materyaller</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Çalışma kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Bütün öğrencilerin bilgisayarlarının önceden yüklenmiş oyun şablonları link edilmiş resim dosyalarıyla birlikte olmalıdır.
+                  </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_PlayerMovement2104" id=
+            "lesson_PlayerMovement2104"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Oyuncu Hareketi <span class="time">(Süre:
+            25 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Şuan <tt>cond</tt> ifadesini biliyoruz, <tt>update-player</tt> yazabiliriz.
+
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><img src="pict_2.png" alt="image" width=
+                      "321" height="241"> Aşağıdaki resme bakınız, yukarı yön tuşuna basıldığında ne olacağını tarif eder.</p>
+
+                      <ul>
+                        <li>
+                          <p>Oyuncunun başlangıç x koordinantı nedir ?</p>
+                        </li>
+
+                        <li>
+                          <p>Oyuncunun başlangıç y koordinantı nedir ?</p>
+                        </li>
+
+                        <li>
+                          <div class="SIntrapara">
+                            Oyuncu hareketlerinden sonra ?
+                          </div>
+
+                          <div class="SIntrapara">
+                            <ul>
+                              <li>
+                                <p>Yeni x ve y koordinantları nelerdir?</p>
+                              </li>
+
+                              <li>
+                                <p>Neler değişti ve ne kadar değişti ?</p>
+                              </li>
+
+                              <li>
+                                <p>Aşağı yön tuşuna basıldığında ne olur ?</p>
+                              </li>
+
+                              <li>
+                                <p>Yeni koordinantlar basıldıktan sonra ne olmalıdır ?</p>
+                              </li>
+
+                              <li>
+                                <p>Kullanıcı yukarı ve aşağı yön tuşları dışında <span style= "font-style: italic">başka</span> bir tuşa bastığında ne olmalıdır ?</p>
+                              </li>
+                            </ul>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Tahtaya bir ekran çiziniz, oyuncu, hedef ve tehlike için koordinantları sınıflandırınız, oyuncu ile ilgili bütün verileri bir daire içine alınız.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Aşağıdaki tablo her tuş için oyuncuya ne olacağını özetler:
+                  </div>
+
+                  <div class="SIntrapara">
+                    <table cellspacing="0">
+                      <tr>
+                        <td align="left">
+                          <p><span style=
+                          "font-weight: bold">Tuş...</span></p>
+                        </td>
+
+                        <td align="left">
+                          <p><span style=
+                          "font-weight: bold">Hareket...</span></p>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="left">
+                          <p>"yukarı" yön tuşu</p>
+                        </td>
+
+                        <td align="left">
+                          <p>oyuncunun y koordinantına 20 eklenir.</p>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="left">
+                          <p>"Aşağı" yön tuşu </p>
+                        </td>
+
+                        <td align="left">
+                          <p>oyuncunun y koordinantından 20 çıkarılır.</p>
+                        </td>
+                      </tr>
+
+                      <tr>
+                        <td align="left">
+                          <p>Herhangi başka bir tuş</p>
+                        </td>
+
+                        <td align="left">
+                          <p>y değişmeden sabit kalır.</p>
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitabınızın <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      26. sayfasında </a> <tt>update-player</tt> için kelime problemini bulacaksınız..</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    (Eğer oyuncuyu yönlendirmek için ok tuşlarını kullanmayı sevmiyorsanız, tuşları kolay bir şekilde w, x şeklinde değiştirebilirsiniz!)
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin alıştırmalar boyunca contract ve ÖRNEKLERİNİ kontrol ettiğinizden emin olunuz, özellikle örnekler arasında nelerin değiştiğini çerçevelemek ve sınıflandırmak aşamasında. Bu dizayn düzeni açısından çok önemli bir adımdır, <tt>cond</tt> için gerekenleri nerede keşfetmeleri açısından.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bunların dışında bazı gelişmiş hareketlerde ekleyebilirsiniz, bunun için öğrendiğiniz boolean fonksiyonları yeterli olacaktır.  Sizin için bazı fikirler :</p>
+
+                  <ul>
+                    <li>
+                      <p><span style=
+                      "font-weight: bold">Eğilme:</span> Oyuncunun y koordinantını ekleme çıkarma yoluyla değiştirmek yerine, bunu bir sayı ile değiştirin. Bu tuşa basıldığında oyuncu direk olarak o pozisyonda belirsin. (Örneğin: “c” tuşuna basıldığında oyuncu ekranın merkezine geri gitsin, y=240)</p>
+                    </li>
+
+                    <li>
+                      <p><span style=
+                      "font-weight: bold">Sınır Tespiti:</span>
+                      Yukarı hareketlenme için koşulu değiştirin, <tt>player-y</tt>  ancak ve ancak yukarı yön tuşuna basıldığında ve y koordinantı 480 den küçükse yukarı hareketlenebilsin. Bunun gibi aşağı hareketlenme koşulunu da değiştirin, <tt>player-y</tt> ancak ve ancak aşağı yön tuşuna basıldığında ve y koordinantı 0 dan büyük olduğunda aşağı hareketlenebilsin.</p>
+                    </li>
+
+                    <li>
+                      <p><span style=
+                      "font-weight: bold">Işınlama:</span> Bir koşul ekleyin(herhangi bir tuştan önce) bu koşul oyuncunun y koordinantını kontrol edecek (y koordinantı ekranın üzerinde mi (y &gt; 480)). Eğer öyleyse, oyuncuyu ekranın en aşağısına gönder(y=0). Başka bir koşul daha ekleyin, eğer ekranın en altındaysa, oyuncuyu en üste yollayabilmesi için.</p>
+                    </li>
+
+                    <li>
+                      <p><span style=
+                      "font-weight: bold">Saklanma:</span> “h” tuşunu basıldığında oyuncunun saklanmasını sağla, sadece “h” tuşuna geri basıldığında oyuncu geri gelsin.</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="teacher">
+                  <p>Saklanma için ipucu: -1 ile çarpma işlemi yapın..</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Kapanış</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Amaçların Öğrenilmesi</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materyaller</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing2105" id=
+            "lesson_Closing2105"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kapanış <span class="time">(Süre : 5 dakika)
+            </span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Tebrikler, çalışan bir oyunun başlangıcı elinizde! Eksin olan nedir? Oyuncu, nesne ya da hedef ile çarpıştığında hiçbirşey olmuyor! Bu problemi önümüzdeki derslerde çözeceğiz. Ayrıca oyunumuzun tasarımı ve hikayesi hakkında da çalışacağız. Bizimle kalın! </p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_3.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>
+
+

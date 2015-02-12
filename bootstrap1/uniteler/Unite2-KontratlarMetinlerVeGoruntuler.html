@@ -1,0 +1,1700 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Ünite 2: Sözleşmeler, Metinler ve Görüntüler</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Ünite 2: <span class="mywbr">&nbsp;</span>
+              Sözleşmeler, Metinler ve Görüntüler</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href=
+          "#%28part._.Unit_2__.Contracts__.Strings_and_.Images%29"
+          class="tocsubseclink" data-pltdoc="x">Ünite 2:
+          <span class="mywbr">&nbsp;</span> Sözleşmeler, Metinler ve
+          Görüntüler</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name=
+      "(part._.Unit_2__.Contracts__.Strings_and_.Images)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Ünite 2</span>Sözleşmeler, Metinler ve
+        Görüntüler</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Üniteye Genel Bakış</span>
+
+        <p>Öğrencilere, içindeki nesnenin çevrilme yoluyla bir Girdi'den
+           bir Çıktı'ya var olduğu fonksiyonlar için bir küme eşleme
+           gösterimi tanıtılır. Yürütme Çemberi'nin bilgisi ile birleştiğinde,
+           öğrenciler, Metinler ve Görüntüler gibi diğer veri türlerini
+           içerecek şekilde fonksiyon anlayışlarını genelleştirirler.</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Gündem</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">30
+                dk</span><a href=
+                "#lesson_CirclesofEvaluationReview1797"><span class="BSLessonName">Yürütme
+                Çemberi Tekrarı</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                dk</span><a href=
+                "#lesson_StringsandImages1798"><span class=
+                "BSLessonName">Metinler ve Görüntüler</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">35
+                dk</span><a href=
+                "#lesson_Contracts1799"><span class=
+                "BSLessonName">Sözleşmeler</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                dk</span><a href=
+                "#lesson_Closing1800"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Çıktıları:</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler Metin ve Görüntü oluşturmak için
+                   ifadeler girerler (hesaplarlar)</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler, görüntü üreten çeşitli ifadeler de
+                   dahil olmak üzere aritmetik ifadeler için Sözleşmeler
+                   yazarlar</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlara
+            Uygunluk:</span>
+
+            <p>Standards with prefix BS are specific to Bootstrap;
+            others are from the Common Core. Mouse over each
+            standard to see its corresponding evidence statements.
+            Our <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standards Document</a> shows which units cover each
+            standard.</p>
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: Öğrenci
+                  içerikteki sorunları çözmek için ifadelerin
+                  yapılarını yorumlar</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir veya daha fazla parçasına tekil eleman
+                      gibi bakarak karmaşık ifadeleri yorumlama</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.1-3</span>: Öğrenci
+                  girdi ve çıktı açısından fonksiyonları tanımlamak,
+                  hesaplamak ve yorumlamak için
+                  fonksiyon gösterimini kullanır</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>girdi ve çıktı terimleri kullanılarak
+                      bir fonksiyon tanımlaması</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">N-Q</span>:
+                  Öğrenci, üniteleri kullanarak sorunları
+                  çözmek için sayısal mantık yürütür</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>ünitelerin formüllerle tutarlı
+                      doğru yorumlanması</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-CE</span>:
+                  Öğrenci, aritmetik, kod ve Yürütme Çemberi gibi
+                  yapısal ifadeler arasında çeviri yapar</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>iç içe (çoklu işlem) bir denklemi
+                      Yürütme Çemberi'ne dönüştürme</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir Yürütme Çemberi'ni, yine ona eşdeğer
+                      programlama söz dizimine dönüştürme</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-IDE</span>:
+                  Öğrenci, REPL kullanmayı, ifadeleri doğru girmeyi
+                  ve hata mesajlarını yorumlamayı iyi bilir</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>hata mesajlarına, söz dizimi hatalarını
+                      tanılama yöntemi olarak bakmak</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.1</span>: Öğrenci,
+                  programlama dilini kullanarak değer belirtmeyi
+                  ve gömülü fonksiyonları uygulamayı iyi bilir</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>programlama dilinde değerleri (sayı, metin,
+                      boolean veya görüntü) gösterme</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir fonksiyon uygulamasını yorumlama
+                      ve argümanlarını belirleme</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.2</span>: Öğrenci,
+                  gömülü fonksiyonlar için Sözleşmeler kullanmak
+                  ve yazmakta rahattır</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir sözleşme kullanarak fonksiyonun
+                      girdi ve çıktısını gösterme</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir fonksiyonun, sözleşmesine dayanarak
+                      doğru ve yanlış kullanımını belirleme</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>sözleşmesine işaret ederek bir fonksiyonu
+                      kullanma</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div><span class="BootstrapHeader">Süre: 90
+          dakika</span>
+
+          <div class="" id="Glossary">
+            <span class="BootstrapHeader">Sözlükçe:</span>
+
+            <ul>
+              <li>
+                <p><span class="vocab">sözleşme</span>:bir fonksiyonun
+                ismi, girdisi ve çıktısının açıklamaları</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">girdi</span>: bir
+                fonksiyonun beklediği veri türü</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">hata mesajı</span>:
+                koddaki hatalara ilişkin bilgisayarın verdiği
+                bilgi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">fonksiyon</span>: bazı
+                girdileri alıp bir çıktı üreten matematiksel
+                nesne</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">görüntü</span>: çizimler için
+                veri türü</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">isim</span>: (bununla,)
+                bir dilde tanımlı bir fonksiyon veya değeri kastederiz
+                (örnek: +, *, yıldız, daire)</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">üretmek</span>: bir ifadeden
+                bir değer hesaplamak</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">çıktı</span>: bir fonksiyonun
+                 ürettiği veri türü</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">metin</span>: tırnak işaretleri
+                 içinde yer alan her türlü karakter dizisi (örnek:
+                "merhaba", "42", "bu bir metin!")</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">tür</span>: Sayı, Metin,
+                Görüntü veya Boolean gibi genel bir veri türünü
+                kasteder</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">değer</span>: belirli bir veri parçası,
+                örneğin 5 veya "merhaba" gibi</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Materials">
+            <span class="BootstrapHeader">Malzemeler:</span>
+
+            <ul>
+              <li>
+                <p>Düzenleme ortamı (üzerine bootstrap-teachpack
+                 kurulu WeScheme veya DrRacket)</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık:</span>
+
+            <ul>
+              <li>
+                <p>İSTEĞE BAĞLI:  <a href=
+                "https://docs.google.com/document/d/1Qn59Fol2tspqOx6XQV88xm-IYsRGY769cb7MQeknSMA/edit?usp=sharing">
+                Isınma aktivitesini</a> dağıtın.</p>
+              </li>
+
+              <li>
+                <p>Öğrenci Çalışma Kitabı ve bir kalem</p>
+              </li>
+
+              <li>
+                <p>Her öğrenci (veya ikili) için
+                WeScheme veya DrRacket çalıştıran bilgisayar</p>
+              </li>
+
+              <!--<li>
+                <p>Öğrenci Çalışma Kitabı ve bir kalem</p>
+              </li>-->
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Türler</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Sayı</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr sqrt expt</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Öğretmen Notlarını Göster"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Tartışma Grubu" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Yürütme Çemberi
+        Tekrarı</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler aritmetik ifadeleri Yürütme Çemberi'ne
+            ve sonra onları Kod'a dönüştürür.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata
+              Uygunluk</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>İSTEĞE BAĞLI:  <a href=
+                  "https://docs.google.com/document/d/1Qn59Fol2tspqOx6XQV88xm-IYsRGY769cb7MQeknSMA/edit?usp=sharing">
+                  Isınma aktivitesini</a> dağıtın.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci Çalışma Kitabı ve bir kalem</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_CirclesofEvaluationReview1797" id=
+            "lesson_CirclesofEvaluationReview1797"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Yürütme
+            Çemberi Tekrarı <span class="time">(Zaman 30
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitabınızda <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">Sayfa
+                    7</a>'de yer alan çalışma kağıdını kullanarak
+                    Yürütme Çemberi alıştırması yapın.</p>
+
+                    <ul class="compact">
+                      <li>
+                        <p>Her bir satırın sol sütununda
+                        birer matematiksel ifade bulunuyor.</p>
+                      </li>
+
+                      <li>
+                        <p>Bu ifadelerin her birini inceleyin
+                        ve her biri için ikinci sütuna
+                        Yürütme Çemberi'ni çizin.</p>
+                      </li>
+
+                      <li>
+                        <p>Her birini dönüştürdükten sonra,
+                        üçüncü sütuna geçin ve her birini, bilgisayara
+                        girilebilecek bir programa dönüştürün.
+                        Parantezlerinizi kontrol etmeyi unutmayın
+                        ve her bir girdi için boşluk bırakmaya
+                        özen gösterin.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin dıştan içe (büyük bir Çember
+                  ile başlayıp içini doldurarak) ve içten dışa
+                  (en içteki ifadeden başlayıp oluşturarak)
+                  Çember çizme alıştırması yaptığından
+                  emin olun.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Metinler ve Görüntüler</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler, Yürütme Çemberi benzetmesini yeni fonksiyonlar
+            ve veri türleri eklemek için genişletirler.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, Görüntü üreten fonksiyonlar
+                  kullanabilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler veri türü kavramını
+                  bilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler her bir değerin bir veri türüne
+                  sahip olduğunu bilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler veri türlerinin bir fonksiyona ait
+                  girdileri ve çıktıları tanımladığını anlarlar</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata
+              Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Yeni ifade, fonksiyon ve veri türleri için bir
+                  Yürütme Çemberi verildiğinde, öğrenciler, Yürütme
+                  Çemberi'ni koda dönüştürmek için gereken kuralları
+                  uygulayabilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler görüntü üreten bir fonksiyonun her bir
+                  argümanının ne anlama geldiğini saptayabilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler basit görüntüler (üçgen, çember,
+                  yıldız vb.) oluşturan ifadeler yazabilirler</p>
+                </li>
+
+                <li>
+                  <p>Bir değer verildiğinde, öğrenciler onun
+                  veri türünü saptayabilirler</p>
+                </li>
+
+                <li>
+                  <p>Bir ifade verildiğinde, öğrenciler
+                  sonucunun veri türünü saptayabilirler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler tür ve değer arasındaki
+                  ayrımı yapabilirler</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler Metin ve Görüntü oluşturmak için
+                   ifadeler girerler (hesaplarlar)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Düzenleme ortamı (üzerine bootstrap-teachpack
+                 kurulu WeScheme veya DrRacket)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenci Çalışma Kitabı ve bir kalem</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_StringsandImages1798" id=
+            "lesson_StringsandImages1798"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Metinler ve Görüntüler <span class=
+            "time">(Zaman 20 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Yürütme Çemberleri güçlü birer araçtır
+                    ve sayılardan çok daha fazlası için kullanılabilirler.
+                    Burada gösterilen Yürütme Çemberi'ni ele alalım.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="circleevalsexp">
+                      <span class="expression"><span class=
+                      "lParen">(</span><span class=
+                      "operator">star</span> <span class=
+                      "value wescheme-number">50</span><span class=
+                      "value wescheme-string">"solid"</span><span class="value wescheme-string">"red"</span><span class="rParen">)</span></span>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Kullanılan fonksiyonun
+                          ismi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyona kaç argüman
+                          verilmiştir?</p>
+                        </li>
+
+                        <li>
+                          <p>Sizce bu fonksiyon ne
+                          yapar?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Bir Yürütme Çemberi'ni koda dönüştürmek için
+                    kullandığınız kurallar hâlâ geçerli. Bu Çember'in
+                    kodu şu şekilde:
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="codesexp">
+                      <span class="expression"><span class=
+                      "lParen">(</span><span class=
+                      "operator">star</span> <span class=
+                      "value wescheme-number">50</span><span class=
+                      "value wescheme-string">"solid"</span><span class="value wescheme-string">"red"</span><span class="rParen">)</span></span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerden buradaki bütün yanıtları bilmeleri
+                  beklenmez; onlar için amaç, Çemberler için bildiklerini
+                  yeni bir ifadeye uygulamak ve kendilerine ne anlam
+                  ifade edebileceğini tartışmaktır. Onlardan yanıtlarını
+                  gerekçelendirmelerini ve neden doğru olduğunu düşündüklerini
+                  açıklamalarını isteyin. Daha önceki Yürütme Çemberi örnekleriyle
+                  bağlantı kurmak yararlı olabilir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Bu kodu Etkileşim Penceresi'ne yazın ve
+                    "Return"e basın. Ne gördünüz?</p>
+
+                    <ul>
+                      <li>
+                        <p><tt>star</tt> fonksiyonu
+                        ne yapıyor?</p>
+                      </li>
+
+                      <li>
+                        <p>İfadeyi tekrar yazın; ama bu sefer
+                        <tt>50</tt> yerine çok daha büyük bir
+                        sayı kullanın. İlk argüman bilgisayara
+                        ne söylüyor?</p>
+                      </li>
+
+                      <li>
+                        <p>İfadeyi tekrar yazın ve bu sefer de,
+                        <tt>"solid"</tt> yerine <tt>"outline"</tt>
+                        kullanın, tırnak işaretlerini koruyarak tabii!
+                        İkinci argüman bilgisayara ne söylüyor?</p>
+                      </li>
+
+                      <li>
+                        <p>Şimdi de <tt>"red"</tt> argümanını
+                        başka bir şeyle değiştirin (tırnak işaretlerini
+                        yine koruyun!). Üçüncü argüman bilgisayara
+                        ne söylüyor?</p>
+                      </li>
+                    </ul>
+
+                    <p><a href=
+                    "http://www.wescheme.org/openEditor?interactionsText=(star%2050%20&quot;solid&quot;%20&quot;red&quot;)&amp;"
+                    target="embedded">Denemek için burayı
+                    tıklayın!</a></p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu aktivite, öğrencilerin yeni terimler ve
+                  kavramlarla <span style="font-style: italic">oynaması</span>
+                  için tasarlandı, böylece olup bitene göre
+                  kendi modellerini geliştiriyorlar. Bu noktada,
+                  öğrencilerin kodun her bir parçasını anlamaları
+                  gerekli DEĞİL. Eğer birçok kod parçası vermek
+                  zorunda kaldıysanız, sorun yok, sadece oynamalarını sağlayın!</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Şu ifadelerde kullanılan tamamıyla yeni bir
+                    değer <span class="vocab">türü</span>
+                    var: <tt>"solid"</tt> ve
+                    <tt>"red"</tt>, <span class="vocab">Metin</span>
+                    denilen tamamıyla yeni bir veri türünün örnekleri.
+
+                    <div class="banner">
+                      Metin, tırnak işaretleri içindeki her şeydir.
+                    </div>Değerleri ilk öğrendiğinizde, bir programın
+                    yalnızca bir değer olabileceğini görmüştünüz,
+                    örneğin bir sayı. Etkileşim Penceresi'ne bir sayı
+                    yazarsanız, o sayı yine kendisini dönecektir. Bunu
+                    hatırlamak için Etkileşim Penceresi'nde <tt>716</tt>'yı
+                    hesaplamayı deneyin. <a href=
+                    "http://www.wescheme.org/openEditor?interactionsText=716&amp;"
+                    target="embedded">Ne elde etmeyi
+                    umdunuz?</a> Metinler de birer değer olduğundan
+                    <tt>"red"</tt> değeri de yine eksiksiz geçerli
+                    bir programdır! Tıpkı sayı değerleri gibi metinler
+                    de kendilerini dönerler.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Etkileşim Penceresi'ne farklı metinler girmeyi
+                      deneyin. Birden çok kelimeyi tırnak işaretleri
+                      içinde yazarsanız ne olur? Veya
+                      Sayıları?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrenciler, Metinleri, Sayıların bir benzeri
+                  olarak görmeliler: farklı bir değer türü; ama bu
+                  kendisini dönen ve bir fonksiyona argüman olarak
+                  girebilen basit bir program.
+                  42 Sayısının ve "42" Metninin farklı değerler
+                  olduğunu unutmayın! 42 Sayısını bir sayıyla
+                  toplayabilirsiniz; fakat "42" Metnini
+                  başka bir sayıya ekleyemezsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bu ifade, ayrıca, <tt>star</tt> denilen yeni bir
+                    <span class="vocab">fonksiyon</span> içeriyor.
+                    Nasıl ki toplama fonksiyonu <tt>+</tt> iki Sayı
+                    alıyorsa, <tt>star</tt> da <span style="font-style: italic">bir
+                    Sayı and iki Metin</span> alıyor ve <span class="vocab">Görüntü</span>
+                    denilen yeni bir tür veri üretiyor.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki her bir değerin veri türü
+                      nedir? (Sayı, Metin veya Görüntü)</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>42</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>"Merhaba, anne!"</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>9273482.42</tt></p>
+                        </li>
+
+                        <li>
+                          <p><img src="pict_2.png" alt="image"
+                          width="113" height="96"></p>
+                        </li>
+
+                        <li>
+                          <p><tt>"84729"</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>"Metinler ve Sayılar iki farklı
+                          veri türüdür"</tt></p>
+                        </li>
+
+                        <li>
+                          <p><img src="pict_3.png" alt="image"
+                          width="125" height="125"></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrenciler şu an üç veri türü görmüş oldular:
+                  Sayı, Metin ve Görüntü. Öğrencilerin bunların her birine ait
+                  örnekleri doğru tespit ettiğinden emin olmak
+                  isteyebilirsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Değer <span class="vocab">üreten</span> ifadeler
+                    de gördünüz, örneğin bir Sayı üreten <tt>(* 16 4)</tt>.
+                    Ancak, öbür ifadeler Metin veya Görüntü üretebilirler.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki ifadeler hesaplandığında her biri
+                      hangi veri türünü dönecek?</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>(/ (+ 7 2) 3)</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star 500 "solid"
+                          "purple")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star (+ 1 3) "outline"
+                          "blue")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(- (* 4 2) (+ 1 0))</tt></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki ögelerin bazıları
+                      <span class="vocab">tür</span> iken, bazıları
+                      da <span class="vocab">değer</span>dir.
+                      Farkı söyleyebilir misiniz?</p>
+
+                      <ul>
+                        <li>
+                          <p>792.24</p>
+                        </li>
+
+                        <li>
+                          <p>Metin</p>
+                        </li>
+
+                        <li>
+                          <p>"merhaba, anne!"</p>
+                        </li>
+
+                        <li>
+                          <p>"91"</p>
+                        </li>
+
+                        <li>
+                          <p>Sayı</p>
+                        </li>
+
+                        <li>
+                          <p>Görüntü</p>
+                        </li>
+
+                        <li>
+                          <p>102</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>For added practice, have students identify the
+                  type of each argument in each of those
+                  expressions. Going Further - If time allows, you
+                  can go further into <a href=
+                  "../Supplemental/the-unit.html#lesson_Manipulating-Images">
+                  Manipulating Images</a> or <a href=
+                  "../Supplemental/the-unit.html#lesson_Making-Flags">
+                  Making Flags</a>.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Sözleşmeler</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler, Sözleşmeleri (Girdi ve Çıktı) ve
+            Veri Türlerini kullanarak fonksiyon tanımlamayı
+            ve davranışlarını öğrenirler.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, bir fonksiyonun isim, girdi  
+                  ve çıktı özetini sunan Sözleşmeleri yazmaya
+                  ve kullanmaya başlarlar</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler bir fonksiyonu, Sözleşmesindeki
+                  bilgilere göre nasıl kullanacaklarını öğrenirler</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata
+              Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, bir ifade verildiğinde, kullanılan
+                  fonksiyonun ismini saptayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, bir ifade verildiğinde, kaç
+                  argüman kullanıldığını saptayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, bir değer verildiğinde,
+                  türünü saptayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler bir sözleşmenin bölümlerini
+                  saptayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler sözleşme ve fonksiyon çağrısı
+                  arasında ayrım yapabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Uygulanmış bir fonksiyon örneği verildiğinde,
+                  öğrenciler bu fonksiyon için bir sözleşme
+                  yazabilecekler</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, görüntü üreten çeşitli ifadeler de
+                   dahil olmak üzere aritmetik ifadeler için Sözleşmeler
+                   yazarlar</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Düzenleme ortamı (üzerine bootstrap-teachpack
+                  kurulu WeScheme veya DrRacket)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>Her öğrenci (veya ikili) için
+                  WeScheme veya DrRacket çalıştıran bilgisayar</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci Çalışma Kitabı ve bir kalem</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Contracts1799" id=
+            "lesson_Contracts1799"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Sözleşmeler <span class="time">(Zaman 35
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Daha önce, iki Sayı alan birçok fonksiyon gördünüz,
+                    örneğin <tt>+</tt> ve <tt>-</tt>. Bu arada, <tt>star</tt>,
+                    bir sayı ve iki Metin alıyor. Farklı fonksiyonlar
+                    farklı girdiler alır ve her bir fonksiyonun gereksinimlerini
+                    takip etmek için bir yol gerekir.
+
+                    <div class="banner">
+                      Bir fonksiyonun Girdisi, o fonksiyonun beklediği veridir.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Bir fonksiyonun <span class="vocab">Girdisini</span>
+                      bilmenin nasıl bir yardımı olur?</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Programcılar, bir dildeki bütün fonksiyonların ve
+                    Girdilerinin listesini tutarak her bir fonksiyonun
+                    nasıl kullanıldığını rahatlıkla görebilirler. Bununla
+                    birlikte, her bir fonksiyonun ne ürettiğini tutmak da
+                    önemlidir! Söz gelimi, bir Sayı üretilmeye çalışılıyorsa,
+                    programda <tt>star</tt> kullanılmayacaktır; çünkü
+                    <tt>star</tt> sadece Görüntü üretir.
+
+                    <div class="banner">
+                      Bir fonksiyonun Çıktısı, o fonksiyonun
+                      ürettiği veridir.
+                    </div>Girdiler ve Çıktılar, programcılara,
+                    saçma sapan hataların önüne geçerek ve bundan
+                    sonra ne yapacakları hakkında ipuçları vererek
+                    daha iyi kod yazmalarında yardımcı olur. <tt>star</tt>
+                    fonksiyonunu kullanmak isteyen bir programcı
+                    Girdiye bakıp ilk girdi türünün -<tt>100</tt> gibi bir-
+                    Sayı olması gerektiğini, her zaman hatırlamasına gerek
+                    kalmadan, hemen bilebilir. Programcı, oraya tekil, sade
+                    bir değer yazmak yerine, <tt>(* 25 4)</tt> şeklinde bütün
+                    bir ifadeyi de yazabilir. Buradaki <tt>*</tt> fonksiyonunun
+                    Çıktısına bakarak bu kodun uygun bir değer (Sayı)
+                    döneceğini biliyoruz; dolayısıyla, <tt>*</tt>'ın
+                    sonucu herhangi bir Sayı değeri yerine kullanılabilir.
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Girdi ve Çıktı önemli kavramlardır. Basit bir
+                  ifade (örneğin <tt>(+ 1 2)</tt>) üzerinde değişiklik
+                  yapılarak ve her adımda sorular sorularak güçlendirilebilirler.
+                  Örneğin, <tt>+</tt>'nın iki Sayı aldığını biliyoruz,
+                  örnekte de işte bu yüzden 1 ve 2 kullanıldı. Ancak,
+                  o değerlerin her biri <span style="font-style: italic">bir başka ifade</span>
+                  ile, o ifade Sayı döndüğü sürece, yer değiştirilebilirdi.
+                  Öğrencilerin her bir değerin bir ifade ile düzenli olarak
+                  yer değiştirmelerini sağlayın ve onlardan, Girdi ve Çıktıları
+                  kullanarak her bir fonksiyondaki yer değiştirmeyi
+                  gerekçelendirmelerini isteyin.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Programcılar, her bir fonksiyonun gereklerini takip
+                  edebilmek adına Girdi ve Çıktı bilgilerini içeren
+                  <span class="vocab">sözleşmeler</span> yazarlar.
+
+                  <div class="banner">
+                    Bir Sözleşme üç parçadan oluşur: bir fonksiyonun
+                    İsmi, Girdisi ve Çıktısı.
+                  </div><tt>star</tt>'ın Sözleşmesi: &nbsp;
+                  <textarea>
+; star: Sayı Metin Metin -&gt; Görüntü
+</textarea> Bu demek oluyor ki, <span class="vocab">
+                  İsmi</span> <tt>star</tt> olan fonksiyon
+                  Girdi olarak bir Sayı ve iki Metin alıyor
+                  ve Çıktı olarak Görüntü üretiyor. Sözleşme
+                  yazarken, daha genel olmasını istediğimizden,
+                  değerler yerine türleri kullanırız: bir yıldız
+                  herhangi bir boyutta olabilir; onun için,
+                  <tt>star</tt>'ın Girdisi, ilk argümanın
+                  <span style="font-style: italic">herhangi bir Sayı</span>
+                  olabileceğini açıkça belirtir. Dili, bir Lego derlemi
+                  gibi düşünürsek, Sözleşmeler de, her bir parçanın
+                  anahtar-kilit ilişkisine uygun olarak nasıl birleşeceğini
+                  anlatır.
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Sözleşmeler, bir yerlerde kaydını tutmamızı
+                  gerektirecek kadar önemli ve faydalıdır. Çalışma
+                  kitabınızın arka sayfalarında "Sözleşmeler" sayfası
+                  yer alıyor. Sözleşmeler tablosunun ilk satırına
+                  <tt>star</tt> için sözleşme yazın.</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin ilk kez sözleşme yazarken yaptıkları
+                  yaygın hatalar: tür yerine değer yazma (örneğin <tt>"Metin"</tt>
+                  yerine <tt>"red"</tt>) ve argümanları unutma.
+                  Sözleşmeler, genellikle (varsa) kavram yanlışlıklarının
+                  göstergesi olduğundan öğrencilerinizin yazdıklarını
+                  dikkatlice okuyun, ki ilerleyen zamanlarda sürdürmesinler.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Yeni bir fonksiyonun sözleşmesi: &nbsp;
+                    <textarea>
+; rectangle: Sayı Sayı Metin Metin -&gt; Görüntü
+</textarea>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Bu fonksiyonun <span class=
+                          "vocab">İsmi</span> nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyonun kaç <span class=
+                          "vocab">Girdisi</span>
+                          vardır?</p>
+                        </li>
+
+                        <li>
+                          <p>Girdidekilerin her birinin türü
+                          nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyonun <span class=
+                          "vocab">Çıktısı</span> nedir?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Sözleşme, bir fonksiyonun İsmini yazarak
+                    ve <span class="vocab">Girdideki</span>
+                    her bir argümana <span class="vocab">değer</span>
+                    vererek size fonksiyonun tam olarak nasıl
+                    kullanılacağını söyler. İşte <tt>rectangle</tt>
+                    ifadesi için bir örnek:
+                    &nbsp;
+                    <textarea>
+(rectangle 100 50 "solid" "blue")
+</textarea> <a href=
+"http://www.wescheme.org/openEditor?interactionsText=(rectangle%20100%2050%20&quot;solid&quot;%20&quot;blue&quot;)&amp;"
+                    target="embedded">Sizce bu kod
+                    ne üretir?</a>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin, dikkatlerini her zaman
+                  Girdiye yönelterek, argüman değerlerini
+                  değiştirip denemeler yapmalarını sağlayın.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Fonksiyonlarımız için Sözleşmeler yazarak
+                    nasıl kullanıldıklarını kolaylıkla görebiliriz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıda <tt>+</tt> için
+                      sözleşme bulunuyor. &nbsp;
+                      <textarea>
+; +: Sayı Sayı -&gt; Sayı
+</textarea> Siz de <tt>*</tt>, <tt>-</tt>, <tt>/</tt> ve
+                      <tt>sqrt</tt> için sözleşmeler yazabilir misiniz?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bir ifade yazmak için Sözleşmeyi nasıl
+                    kullanacağınızı artık biliyorsunuz. Görüntü
+                    üreten birkaç yeni fonksiyonun Sözleşmeleri
+                    şu şekilde:
+                    &nbsp;
+                    <textarea>
+; ellipse:  Sayı Sayı Metin Metin -&gt; Görüntü
+; triangle: Sayı Metin Metin        -&gt; Görüntü
+; circle:   Sayı Metin Metin        -&gt; Görüntü
+</textarea>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Başka şekiller çizmek için bu yeni
+                      fonksiyonların nasıl kullanıldığını
+                      anlayabiliyor musunuz bir bakın! <a href= "http://www.wescheme.org/openEditor?interactionsText=(ellipse%20150%2040%20&quot;outline&quot;%20&quot;black&quot;)&amp;"
+                      target="embedded">İşte sizi isteklendirebilecek
+                      bir örnek</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencileri, Sayı değerleri ile bütün bir 
+                  ifadeyi (<tt>(star (* 10 5) "solid" "purple")</tt> gibi)
+                  yer değiştirerek, daha karmaşık ifadeler yazmaları
+                  için zorlamaya başlamalısınız. Öğrenciler, bütün bir
+                  alt-ifadeyi, onu çevreleyen fonksiyona tekil bir argüman
+                  olarak görme konusunda rahat olmalılar.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Çok ilginç bir fonksiyon kullanan
+                    bir ifade: <tt>(bitmap/url
+                    "http://bootstrapworld.org/images/icon.gif")</tt>.
+                    Bu fonksiyon, İnternette bulabileceğiniz herhangi
+                    bir görüntünün URL bilgisini alır ve programınızda
+                    kullanabilmeniz için o görüntüyü üretir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Sözleşmeyi oluşturan üç parça
+                          nelerdir?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu yeni fonksiyonun
+                          İsmi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Girdisi kaç elemanlıdır?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyonun Girdisi
+                          nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu ifade ne
+                          döndürür?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin <tt>bitmap/url</tt> kullanarak
+                  alıştırma yapmalarını istiyorsanız, <a href=
+                  "https://images.google.com">Google Images</a> veya
+                  <a href="http://www.bing.com/images">Bing
+                  Images</a> gibi bir görüntü arama motoru kullanmanız
+                  önerilir. Öğrencilerin görüntünün kendisinin URL'sine
+                  ulaşmayı bildiklerinden emin olun, <span style=
+                  "font-style: italic">görüntünün yer aldığı Web
+                  sayfasının URL'sine değil.</span></p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Sözleşmeler programcılara kod yazarken yardımcı
+                    olur; dolayısıyla gördüğünüz her fonksiyon için
+                    sözleşme yazmak her zaman için iyi bir fikirdir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Sadece bazı örnek kodlara bakarak bir
+                      fonksiyonun sözleşmesini bilebilir misiniz? <a href=
+                      "http://www.wescheme.org/openEditor?interactionsText=(text%20&quot;Bootstrap&quot;%2030%20&quot;purple&quot;)&amp;"
+                      target="embedded">Burada kullanılan fonksiyona
+                      bir bakın</a> ve o fonksiyon için
+                      <span class="vocab">İsim</span>, <span class=
+                      "vocab">Girdi</span> ve <span class=
+                      "vocab">Çıktı</span> yazmaya çalışın.</p>
+
+                      <p>Bir fonksiyonun <span class="vocab">Sözleşmesini</span>
+                      kod ile karıştırmadığınızdan emin olun!
+                      Aşağıdakilerden bazıları sözleşmeler; fakat bazıları
+                      sadece o fonksiyonların kullanılış örnekleri.
+                      Hangisinin hangisi olduğunu ayırt edebilir misin?</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>; triangle : Sayı Metin Metin
+                          -&gt; Görüntü</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(triangle 100 "outline"
+                          "blue")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(square (+ 200 5) "solid"
+                          "red")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>; square : Sayı Metin Metin
+                          -&gt; Görüntü</tt></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bazen kod yazarken hata yaparız ve sözleşmeye
+                    uymayan bir değer kullanırız. Neyse ki, bilgisayar,
+                    bu gibi durumları tespit eder ve sorunu bulmamızda
+                    ve düzeltmemizde bize yardım etmek için 
+                    <span class="vocab">hata mesajları</span> verir.
+                    Hata mesajları, kodun hata içeren kısımlarını
+                    belirtir ve bilgisayarın sorunu bulduğu yeri
+                    açıklar.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki doğru olmayan her bir ifade için
+                      koda bakın ve hatayı görmeye çalışın. Ondan
+                      sonra, kodu Etkileşim Penceresine yazın ve
+                      hangi hata mesajını alacağınızı görün. Hata,
+                      sizin tespit ettiğinizle aynı mı?</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>(+ 4 "merhaba")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>("merhaba" + "anne")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(* (+ 4 5) "pizza")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star "solid" "red" 40)</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star "40" "solid" "red")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star 40 "red" "solid")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star 40 "solid" "yelow")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(star (* 4 10) "blue")</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(cirle 25 "outline"
+                          "blue")</tt></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Controlled practice with error messages helps
+                  students gain confidence in dealing with them
+                  later on. It is fine if students don’t spot the
+                  errors for themselves at first, though having
+                  students explain the problems in their own words
+                  should reinforce correct use of these functions
+                  later in the course.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><span style="font-style: italic">Girdi</span>
+                  olarak Görüntü alan birkaç fonksiyon daha var. 
+                  Örneğin, bir görüntüyü soldan sağa döndürmek
+                  istediğinizi varsayalım; ki böylece zıt yönü
+                  gösteriyor olacak. Hem Girdi hem de Çıktı olarak
+                  Görüntü kullanan <tt>flip-horizontal</tt>
+                  fonksiyonunu kullanabilirsiniz. Sözleşme (ve
+                  fonksiyonun bir örneği) için aşağıya
+                  bakınız: &nbsp;
+                  <textarea>
+; flip-horizontal : Görüntü -&gt; Görüntü
+(flip-horizontal (text "backwards" 50 "red"))
+</textarea></p>
+                </div>
+
+                <div class="teacher">
+                  <p>Girdi olarak Görüntü alan fonksiyonlar
+                  başlangıçta öğrenciler için genellikle çok
+                  zordur; çünkü öğrencilerin bu tür fonksiyonların
+                  birleşimini gerçekten çok iyi anlamaları gerekir.
+                  Eğer öğrenci bu kavram sorunuyla boğuşuyorsa,
+                  onlara, buradaki örneğin Yürütme Çemberi'ni çizdirin
+                  ve koda <span style="font-style: italic">daha sonra</span>
+                  çevirtin.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitabınıza aşağıdaki her fonksiyon
+                    için Sözleşme yazın ve örnek kod ile denemeler
+                    yapın. Fonksiyonların Görüntüye nasıl etki
+                    ettiğini hesaplayabilir misiniz? &nbsp;
+                    <textarea>
+; flip-vertical : Görüntü -&gt; Görüntü
+(flip-vertical (text "upside-down" 50 "red"))
+
+; scale : Sayı Görüntü -&gt; Görüntü
+(scale 2 (text "resize" 10 "purple"))
+
+; rotate : Sayı Görüntü -&gt; Görüntü
+(rotate 45 (text "spin" 30 "green"))
+</textarea></p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Daha öncekiler gibi, zorlanan öğrencileri
+                  bunların her biri için Yürütme Çemberi
+                  çizmelerine teşvik edin.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Kapanış</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata
+              Uygunluk</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing1800" id=
+            "lesson_Closing1800"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kapanış <span class="time">(Zaman 5
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bu ders, Metinleri ve Görüntüleri (Sayılar ile birlikte) 
+                  kapsayacak şekilde Yürütme Çemberlerini, ifadeleri ve kodu
+                  genişletti. Sayılarda kullanılan fonksiyonlarla ilgili
+                  bildiğiniz her şeyin, Metinler ve Görüntülerde de
+                  çalıştığını öğrendiniz, ki bu programlarınızı daha
+                  ilginç kılar. Kendi görüntülerinizi oluşturmak için
+                  Görüntü fonksiyonlarının ve programlarınızda var olan
+                  Görüntülerin nasıl kullanıldığını öğrendiniz (<tt>bitmap/url</tt>
+                  aracılığıyla).</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bir sonraki ünitede, ifade yazma süresini
+                  kısmak için kendi fonksiyonlarınızı nasıl
+                  oluşturacağınızı öğreneceksiniz (oyun yazmanın
+                  önemli bir bölümünü oluşturacak). Ayrıca, oyun
+                  tasarımınızdaki unsurlar için oyununuzu görüntülerle
+                  ihtiyaca uygun düzenlemeye başlayacaksınız.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div class="ExtraExercises">
+        <span class="BootstrapLessonTitle">Ek
+        Alıştırmalar:</span>
+
+        <ul>
+          <li>
+            <p><a href=
+            "exercises/Strings-and-Images/many-types-coe-to-code1.html">
+            Yürütme Çemberlerini Koda Dönüştürme</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Contracts/id-expr-pieces1.html">İfadelerin
+            Bölümlerini Tanımlama</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Contracts/match-contracts-exprs1.html">İfadeleri
+            ve Sözleşmeleri Eşleştirme</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_4.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>

@@ -1,0 +1,669 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content="Bluefish 2.2.4" >
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Ünite 9: Açılışa Hazırlık</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Ünite 9: <span class="mywbr">&nbsp;</span>
+              Açılışa Hazırlık</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href="#%28part._.Unit_9__.Prepping_for_.Launch%29"
+          class="tocsubseclink" data-pltdoc="x">Ünite 9:
+          <span class="mywbr">&nbsp;</span> Açılışa
+          Hazırlık</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name="(part._.Unit_9__.Prepping_for_.Launch)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Ünite 9</span>Açılışa Hazırlık</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Ünite Genel Bakış</span>
+
+        <p>Öğrenciler oyun ayrıntılarını düzenler, kodları hakkında
+        konuşur ve Açılış Partisi'ne hazırlanırlar!</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Gündem</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">60
+                dk</span><a href=
+                "#lesson_PresentationPreparation2220"><span class=
+                "BSLessonName">Sunum
+                Hazırlığı</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">15
+                dk</span><a href=
+                "#lesson_Celebration2221"><span class=
+                "BSLessonName">Kutlama</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Çıktıları:</span>
+
+            <ul>
+              <li>
+                <p>Bir oyun programının ana ögesini
+                resimleyen bir afiş</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlara
+            Uygunluk:</span>
+
+            <p>Standards with prefix BS are specific to Bootstrap;
+            others are from the Common Core. Mouse over each
+            standard to see its corresponding evidence statements.
+            Our <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standards Document</a> shows which units cover each
+            standard.</p>
+
+            <ul class="LearningObjectivesList"></ul>
+          </div><span class="BootstrapHeader">Süre: 75
+          dakika</span>
+
+          <div class="" id="Materials">
+            <span class="BootstrapHeader">Malzemeler:</span>
+
+            <ul>
+              <li>
+                <p>DrRacket veya WeScheme bulunan bilgisayarlar</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı</a></p>
+              </li>
+
+              <li>
+                <p>Öğrenciler için kurşun veya dolma kalem,
+                öğretmenler için tahta kalemi</p>
+              </li>
+
+              <li>
+                <p>Sınıf afişleri (Kurallar listesi, temel beceriler,
+                ders takvimi)</p>
+              </li>
+
+              <li>
+                <p>Dil Tablosu (aşağıya bakınız)</p>
+              </li>
+
+              <li>
+                <p>Her bir takım için oyun kodlarının çıktıları.</p>
+              </li>
+
+              <li>
+                <p>Fotoğraf makinası - bu anı ölümsüzleştirin!</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık:</span>
+
+            <ul>
+              <li>
+                <p>Öğrencilere model olarak göstermek üzere kurgusal bir oyuna dair poster veya broşür.</p>
+              </li>
+
+              <li>
+                <div class="SIntrapara">
+                  (İsteğe Bağlı) Oyun Tasarımı Sertifikaları:
+                </div>
+
+                <div class="SIntrapara">
+                  <ul>
+                    <li>
+                      <p>En yaratıcı hikaye</p>
+                    </li>
+
+                    <li>
+                      <p>En yaratıcı görseller</p>
+                    </li>
+
+                    <li>
+                      <p>En İyi Not Tutanlar</p>
+                    </li>
+
+                    <li>
+                      <p>En İyi Odak</p>
+                    </li>
+
+                    <li>
+                      <p>En Pozitif Enerji</p>
+                    </li>
+
+                    <li>
+                      <p>Tasarım Reçetesi Uzmanları</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Türler</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Sayı</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr sqrt expt</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Metin</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>string-append string-length</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Görüntü</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>rectangle circle triangle ellipse star
+                  text scale rotate put-image</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Boolean</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>= &gt; &lt; string=? and or</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Öğretmen Notlarını Göster"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Tartışma Grubu" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Sunum
+        Hazırlığı</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler kendi video oyunları için afiş
+            ve taslak sunumlar oluştururlar.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler biribirleri üzerinde programlama nesnelerini ve kavramlarını başkalarına açıklama pratiği yaparlar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata
+              Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, Yürütme Çemberini başkalarına
+                  açıklayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, Sözleşmenin amacını
+                  açıklayabilecekler</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler bir dinleyici grubuna tasarım reçetesinin basit bir kullanımını adım adım anlatabileceklerdir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler oyunlarında uzaklık formülünü nasıl kullandıklarını açıklayabileceklerdir.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, Parçalı Fonksiyonların oyunlarında
+                  nasıl kullanıldığını açıklayabilecekler</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Bir oyun programının ana ögesini
+                  resimleyen bir afiş</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>DrRacket veya WeScheme bulunan bilgisayarlar</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler için kurşun veya dolma kalem,
+                  öğretmenler için tahta kalemi</p>
+                </li>
+
+                <li>
+                  <p>Sınıf afişleri (Kurallar listesi, temel beceriler,
+                  ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu (aşağıya bakınız)</p>
+                </li>
+
+                <li>
+                  <p>Her bir takım için oyun kodlarının çıktıları.</p>
+                </li>
+
+                <li>
+                  <p>Fotoğraf makinası - bu anı ölümsüzleştirin!</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrencilere model olarak göstermek üzere kurgusal bir oyuna dair poster veya broşür.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_PresentationPreparation2220" id=
+            "lesson_PresentationPreparation2220"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Sunum
+            Hazırlığı <span class="time">(Zaman 60
+            dk)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Artık çalışan bir oyununuz varsa (içinde bütün
+                  Sözleşmeler ve ÖRNEKLER olan tabii ki!), çalışmanızı
+                  arkadaşlarınıza nasıl sunacağınızı düşünmenin zamanı
+                  gelmiş demektir. Programcılar kodlarını tasarlarken ve
+                  yazarken çok zaman geçirirler ve aynı zamanda çalışmalarını
+                  başkalarına anlatırken. Bunlar, takımdaki diğer These
+                  programcılar, şirketteki diğer mühendisler veya başka
+                  alandan insanlar da olabilir. Kodunuzu bir başkasına
+                  anlatabileceğinizi düşünüyor musunuz?</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Got time for a challenge? Try introducing them
+                  to <a href=
+                  "../Supplemental/the-unit.html#lesson_Structs">Data
+                  Structures</a>, to allow for 2-dimensional motion
+                  and more player control.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Oyununuz için örnek bir afiş oluşturun! Her afiş
+                    aşağıda belirtilenleri içermeli:</p>
+
+                    <ul>
+                      <li>
+                        <p>Sizin ve oyununuzun ismi</p>
+                      </li>
+
+                      <li>
+                        <p>İnsanların dikkatini çekecek bir resim</p>
+                      </li>
+
+                      <li>
+                        <p>Oyununuzun hikayesi</p>
+                      </li>
+
+                      <li>
+                        <p>Kodunuzdan BİR fonksiyonun yazılı açıklaması.
+                        Bu açıklama fonksiyonun İsmini, Girdi ve Çıktılarını
+                        içermeli; ayrıca ne yaptığını ve oyununuzda ne şekilde
+                        kullanıldığını belirtmeli. Fonksiyonu tanımlamaktansa,
+                        öğrendiğiniz bazı kavramların (Yürütme Çemberi,
+                        Tasarım Reçetesi, Parçalı Fonksiyonlar, Pisagor Kuramı)
+                        ve oyununuzu oluştururken nasıl kullandığınızın
+                        ayrıntılarını verebilirsiniz.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Her bir grup öğrencinin farklı bir fonksiyon
+                  hakkında konuştuğundan emin olun, böylece sınıf
+                  çapındaki sunum, oyunun bütününü inceleyecektir.
+                  Grupların, Yürütme Çemberini, Sözleşmeleri,
+                  Tasarım Reçetesinin amacını, Parçalı Fonksiyonları
+                  ve Pisagor Kuramını anlatmalarını da isteyebilirsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Afişi yaptıktan sonra, sunumunuz sırasında
+                  onu nasıl kullanacağınızı düşünün. Dinleyicilere
+                  ne söyleyeceksiniz? Sunuma yardımcı olması açısından
+                  afişe veya kodunuza yazdıklarınızı nasıl kullanabilirsiniz?</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>İçinde kendinizi tanıttığınız ve oyununuzu
+                    anlattığınız 5 dakikalık bir sunum yazın veya
+                    uygulayın, sonra belirlenen fonksiyon veya kavramı
+                    dinleyicilere açıklayın.</p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin sunumlarını yapmalarını ve eşlerinden
+                  geri bildirim almalarını sağlayın. Birkaç kod
+                  satırının açıklamasını örneklemek isteyebilirsiniz,
+                  böylelikle onlardan ne beklediğinizi görebilirler.
+                  Öğrencilerin kodu sadece okumalarına izin vermeyin!
+                  Her bir satırı açıklayabiliyor olmalılar. Onları,
+                  yaptıklarını anlatmaları için baskılamaktan çekinmeyin.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Kutlama</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler sunumlarından dolayı sertifika
+            ile ödüllendirilirler</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme
+              Hedefleri</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün
+              Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>DrRacket veya WeScheme bulunan bilgisayarlar</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler için kurşun veya dolma kalem,
+                  öğretmenler için tahta kalemi</p>
+                </li>
+
+                <li>
+                  <p>Sınıf afişleri (Kurallar listesi, temel beceriler,
+                  ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu (aşağıya bakınız)</p>
+                </li>
+
+                <li>
+                  <p>Her bir takım için oyun kodlarının çıktıları.</p>
+                </li>
+
+                <li>
+                  <p>Fotoğraf makinası - bu anı ölümsüzleştirin!</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <div class="SIntrapara">
+                    (İsteğe Bağlı) Oyun Tasarımı Sertifikaları:
+                  </div>
+
+                  <div class="SIntrapara">
+                    <ul>
+                      <li>
+                        <p>En yaratıcı hikaye</p>
+                      </li>
+
+                      <li>
+                        <p>En yaratıcı görseller</p>
+                      </li>
+
+                      <li>
+                        <p>En İyi Not Tutanlar</p>
+                      </li>
+
+                      <li>
+                        <p>En İyi Odak</p>
+                      </li>
+
+                      <li>
+                        <p>En Pozitif Enerji</p>
+                      </li>
+
+                      <li>
+                        <p>Tasarım Reçetesi Uzmanları</p>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Celebration2221" id=
+            "lesson_Celebration2221"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kutlama <span class="time">(Zaman 15
+            dk)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Tebrikler: gerçekten inanılmaz bir şey
+                  yaptın! Yeni bir programlama dili öğrendin.
+                  Yürütme Çemberi, Sayılar, Metinler, Booleanlar,
+                  Görüntüler, Fonksiyonlar, Değerler,
+                  Conditional Branching,
+                  Tasarım Reçetesi, Sözleşmeler ve daha fazlasını öğrendin.
+                  Bilgisayar grafiklerinin nasıl oluşturulduğunu öğrendin
+                  ve bütün bunları bir araya getirerek bir video oyunu yarattın!</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_2.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>

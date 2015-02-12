@@ -1,0 +1,2545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content="Bluefish 2.2.4" >
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Ünite 1: Video Oyunları ve Koordinat Düzlemleri</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Ünite 1: <span class="mywbr">&nbsp;</span>
+              Bilgisayar oyunları ve Koordinat düzlemleri</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href=
+          "#%28part._.Unit_1__.Videogames_and_.Coordinate_.Planes%29"
+          class="tocsubseclink" data-pltdoc="x">Ünite 1:
+          <span class="mywbr">&nbsp;</span> Bilgisayar oyunları ve Koordinat düzlemleri</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name=
+      "(part._.Unit_1__.Videogames_and_.Coordinate_.Planes)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Ünite 1</span>Bilgisayar oyunları ve Koordinat düzlemleri</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Üniteye Genel Bakış</span>
+
+        <p>Öğrenciler en sevdikleri bilgisayar oyunlarının
+        bileşenlerini tartışırlar, ve bunların bir dizi koordinata
+        indirgenebileceğini keşfederler. Daha sonra Kartezyen
+        uzayındaki koordinatları incelerler, ve bilgisayar
+        oyunundaki karakterlerin değişik zaman anlarındaki
+        koordinatlarını belirlerler. Koordinatlarla rahat çalışır
+        hale geldikten sonra, kendi bilgisayar oyunları hakkında
+        beyin fırtınası yaparlar ve kendi oyunları için zamanın
+        değişik anlarına karşılık gelen örnek koordinat listeleri
+        yaparlar..</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Gündem</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5 dk</span><a href=
+                "#lesson_Introduction1777"><span class=
+                "BSLessonName">Giriş</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">10
+                dk</span><a href=
+                "#lesson_DissectingaDemo1778"><span class=
+                "BSLessonName">Örneği İnceleme</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">15
+                dk</span><a href=
+                "#lesson_CoordinatePlanes1779"><span class=
+                "BSLessonName">Koordinat Düzlemleri</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">15
+                dk</span><a href=
+                "#lesson_Brainstorming1780"><span class=
+                "BSLessonName">Beyin Fırtınası</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                dk</span><a href=
+                "#lesson_OrderofOperations1781"><span class=
+                "BSLessonName">İşlemlerin Sırası</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">15
+                dk</span><a href=
+                "#lesson_IntrotoProgramming1782"><span class=
+                "BSLessonName">Programlamaya Giriş</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                dk</span><a href=
+                "#lesson_Closing1783"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün çıktıları:</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler iş defterlerinde basit bir video
+                oyununu ifade eden bir veri modeli yaratırlar</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler resimlerdeki karakterlerin
+                koordinatlarını tespit ederler</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler kendi oyunlarını tasarlamak için
+                Video Oyunu Tasarım İşlem-sayfası'nı
+                tamamlarlar</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler çoklu temsiller arasında birçok
+                aritmetik ifadeyi çevirirler.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlara uygunluk:</span>
+            <p>Standart müfredata uygunluk değerlendirilmesi henüz yapılmamıştır.</p>
+            <!--<span class="BootstrapHeader">Standartlara uygunluk:</span>
+
+            <p>Standards with prefix BS are specific to Bootstrap;
+            others are from the Common Core. Mouse over each
+            standard to see its corresponding evidence statements.
+            Our <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standards Document</a> shows which units cover each
+            standard.</p>
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">5.G.1-2</span>: Graph points
+                  on the coordinate plane to solve real-world and
+                  mathematical problems</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Use a pair of perpendicular number lines,
+                      called axes, to define a coordinate
+                      system</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>Represent real world and mathematical
+                      problems by graphing points in the first
+                      quadrant of the coordinate plane, and
+                      interpret coordinate values of points in the
+                      context of the situation.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">5.OA.1-2</span>: Write and
+                  interpret numerical expressions</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Use parentheses, brackets, or braces in
+                      numerical expressions, and evaluate
+                      expressions with these symbols</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>Write simple expressions that record
+                      calculations with numbers, and interpret
+                      numerical expressions without evaluating
+                      them.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">6.NS.5-8</span>: The student
+                  performs operations with negative numbers, works
+                  with the number line and coordinate plane, order
+                  and absolute value of numbers, and solves
+                  real-world problems with rational numbers.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>graphs of negative numbers on the number
+                      line.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: The student
+                  interprets the structure of expressions to solve
+                  problems in context</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpretation of complicated expressions
+                      by viewing one or more of their parts as a
+                      single entity</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">N-Q</span>:
+                  The student reasons quantitatively in using units
+                  to solve problems</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>selection of (Identification of)
+                      appropriate quantities for the purpose of
+                      descriptive modeling</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-CE</span>:
+                  The student translates between structured
+                  expressions as arithmetic, code, and Circles of
+                  Evaluation</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>translating a simple (1-operation)
+                      equation into a Circle of Evaluation</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>translating a nested (multi-operation)
+                      equation into a Circle of Evaluation</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>translating a Circle of Evaluation into
+                      its equivalent arithmetic expression</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>translating a Circle of Evaluation into
+                      its equivalent programming syntax</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-IDE</span>:
+                  The student is familiar with using a REPL,
+                  entering expressions properly, and interpreting
+                  error messages</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>enter and evaluate expressions on the
+                      computer</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>look to error messages as a way of
+                      diagnosing syntax errors</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-M</span>:
+                  The student models a problem in context and
+                  determines the data needed to describe the
+                  problem</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>identifying which quantities are fixed and
+                      which are variable</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.1</span>: The student
+                  is familiar with declaring values and applying
+                  built-in functions using the programming
+                  language</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpreting a function application and
+                      identifying its arguments</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>-->
+          </div><span class="BootstrapHeader">Süre: 85
+          dakika</span>
+
+          <div class="" id="Glossary">
+            <span class="BootstrapHeader">Sözlükçe:</span>
+
+             <ul>
+              <li>
+                <p><span class="vocab">uygulama</span>: Verilen bir fonksiyonu kimi girdilerle kullanma</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">argüman</span>: bir fonksiyonun girdileri; argümanlara karşılık gelen ifadeler fonksiyon isminden hemen sonra gelir</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">yürütme çemberi</span>: aritmetik veya program kodu olan bir ifadenin yapısını gösteren şekil </p>
+              </li>
+
+              <li>
+                <p><span class="vocab">tanımlar penceresi</span>: Editör'ün (DrRacket veya WeScheme) üst kısmında, değer ve fonksiyon tanımlarının yazıldığı metin kutusu</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">editör</span>: içerisinde kodu yazabileceğiniz ve yürütebileceğiniz bilgisayar yazılımı</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">hata mesajı</span>: koddaki hatalara ilişkin bilgisayarın verdiği bilgi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">yürütme</span>: bir ifadedeki hesaplamayı gerçekleştirerek sonucu üretme</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">yürütme sonucu</span>: bir ifadeyi hesaplamadan çıkan sonuç</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">ifade</span>: belirli bir dilin (örneğin aritmetik, kod, veya yürütme çemberi dili) kurallarına göre 
+                yazılmış bir hesaplama</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">fonksiyon</span>: bazı girdileri alıp bir çıktı üreten matematiksel nesne</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">etkileşim penceresi</span>:  Editör'ün (DrRacket veya WeScheme) alt kısmında, yürütülmesini istediğiniz ifadelerin yazıldığı metin kutusu
+                </p>
+              </li>
+
+              <li>
+                <p><span class="vocab">geçerli ifade</span>: bir dilin kurallarına uygun yazılmış kod</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">matematiksel ifade</span>: aritmetik ile yazılmış bir hesaplama</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">programlama dili</span>: bilgisayarın yürütebileceği kodların nasıl yazılacağına dair bir kurallar seti</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">değer</span>: belirli bir veri parçası, örneğin 5 veya "merhaba" gibi</p>
+              </li>
+            </ul>
+          </div>
+
+        <div class="" id="Materials">
+            <span class="BootstrapHeader">Malzemeler:</span>
+
+            <ul>
+              <li>
+                <p>Yazma ortamı (üzerine bootstrap-teachpack/önyükleme-eğitim-paketi kurulu WeScheme veya DrRacket)</p>
+              </li>
+
+              <li>
+                <p>Çıkartmalar: <a href=
+                "../../resources/images/ninjacat.png">NinjaKedi</a>,
+                <a href="../../resources/images/dog.png">Köpek</a>
+                ve <a href=
+                "../../resources/images/ruby.png">yakut</a></p>
+              </li>
+
+              <li>
+                <p>Öğrenci iş-defteri, ve yazabileceği bir kalem</p>
+              </li>
+            </ul>
+          </div> 
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık:</span>
+
+            <ul>
+              <li>
+                <p>TERCİHLİ:   <a href=
+                "https://docs.google.com/document/d/1USFPXkeO5AbGOzm_U0tMv4NV3RrxTMTyg-bqIKUf4q4/edit?usp=sharing">
+                Isınma aktivitesini</a> dağıtın.</p>
+              </li>
+
+              <li>
+                <p>Her öğrenci (veya ikili) için çalışan bir WeScheme veya DrRacket</p>
+              </li>
+
+              <li>
+                <p>DrRacket kullanılıyorsa Ninja.rkt dosyasının yüklendiğinden emin olun</p>
+              </li>
+
+              <li>
+                <p>"NinjaCat" [ <a href=
+                "../../resources/source-files.zip">source-files.zip</a>dan NinjaCat.rkt
+                | <a href=
+                "http://www.wescheme.org/view?publicId=LyMwExWayT">WeScheme</a>]
+                öğrenci makinelerinde önceden yüklü</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">iş defteri</a>
+                kapağında isim olan dosyalar, ve yazabilecekleri bir kalem</p>
+              </li>
+
+              <li>
+                <p>Öğrenci iş defteri ve yazacak bir kalem</p>
+              </li>
+
+              <li>
+                <p>Yansıtma projeksiyon</p>
+              </li>
+            </ul>
+          </div>
+          
+
+          
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Tipler</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable"></td>
+
+                <td align="center" class="BootstrapTable"></td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Öğretmen Notlarını Göster"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Tartışma Grubu" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Giriş</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Giriş</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata uygunluk</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>TERCİHLİ:   <a href=
+                "https://docs.google.com/document/d/1USFPXkeO5AbGOzm_U0tMv4NV3RrxTMTyg-bqIKUf4q4/edit?usp=sharing">
+                Isınma aktivitesini</a> dağıtın.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Introduction1777" id=
+            "lesson_Introduction1777"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Giriş</span> <span class="time">(Zaman 5
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Önyükleme'ye hoşgeldiniz! Bu derste yeni bir <span class="vocab">programlama dili</span>, yani bilgisayarlara
+                  onlardan ne yapmasını istediğinizi tam olarak söylemenin bir yolunu öğreneceksiniz. 
+                  Aynı Türkçe veya İngilizce gibi, bir programlama dilinin de öğrenmeniz gereken bir sözcük dağarcığı ve grameri vardır.
+                  Neyse ki burada öğreneceğiniz dilin zaten bildiğiniz basit matematikle birçok ortak noktası bulunuyor!</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Eğitim içeriğini öğrencilerin zaten bildiği şeylerle ilişkilendirin:</p>
+
+                  <ul>
+                    <li>
+                      <p>Bir dil nelerden oluşur? Bazı öğrenciler birden fazla dil biliyor mu?</p>
+                    </li>
+
+                    <li>
+                      <p>Programlama kendi sözdizim ve anlamlandırma kuralları olan bir dile benzer, vs.</p>
+                    </li>
+
+                    <li>
+                      <p>Öğrencilerin hangi bilgisayar oyunlarını en çok sevdiklerini sorun.
+                      Modern oyunların ölçeği konusunda açık olun: bunlar milyonlarca dolara maloluyor, yapımları için
+                      programcılar ve sanatçılardan oluşan devasa ekipler çalışıyor, ve geliştirilmesi yıllar sürüyor.</p>
+                    </li>
+
+                    <li>
+                      <p>Giriş düzeyi, tek bir derste ne kadar şey başarılabileceği konusunda beklentilerin makul olmasını sağlayın.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Örneği inceleme</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel bakış</span></p>
+
+            <p>Basit oyunu oynayın, sonra parçalarına ayrıştırıp
+            bilgisayarda neler olduğunu anlayın.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Basit bir bilgisayar oyununu modelleme</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler bir oyunun bileşenlerini ve herbirinin oyun sırasında
+                  nasıl değiştiğini teşhis edebilecekler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler iş-defterlerinde basit bir video oyununu tarif eden bir model yaratacaklar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Kodlama ortamı (bootstrap-teachpack/önyükleme-eğitim-paketi yüklü WeScheme veya DrRacket)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>Her öğrenci (veya ikili) için WeScheme veya DrRacket çalışan bir bilgisayar</p>
+                </li>
+
+                <li>
+                  <p>Eğer DrRacket kullanılıyorsa Ninja.rkt dosyasının yüklü olduğundan emin olun.</p>
+                </li>
+
+                <li>
+                  <p>"NinjaCat" [NinjaCat.rkt from <a href=
+                  "../../resources/source-files.zip">source-files.zip</a>
+                  | <a href=
+                  "http://www.wescheme.org/view?publicId=LyMwExWayT">
+                  WeScheme</a>] öğrencilerin bilgisayarında yüklü olsun</p>
+                </li>
+
+                <li>
+                  <p>Üzerinde isim olan öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">iş-defteri</a>
+                  ve yazacak bir kalem</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_DissectingaDemo1778" id=
+            "lesson_DissectingaDemo1778"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Demoyu ayrıştıma <span class=
+            "time">(Zaman 10 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Basit bir video oyununu keşfederek başlayalım ve sonrasında da nasıl çalıştığını anlayalım. 
+                  Oyunu oynamak için <a href=
+                  "http://www.wescheme.org/view?publicId=LyMwExWayT"
+                  target="embedded">bu link</a>i tıklayın,
+                  ve bir iki dakika boyunca oyunu keşfedin.
+                  <span style="font-style: italic">
+                  Kediyi sola sağa hareket ettirmek, sıçrayıp yakutu yakalamak, ve köpekten kaçınmak için ok tuşlarını kullanın!
+                  </span></p>
+                </div>
+
+                <div class="teacher">
+                  <p>[<a href=
+                  "https://www.youtube.com/watch?v=KSt_3ovWfjk">Video</a>]
+                  Öğrencilere ya önlerinde oynayarak ya da kendilerinin oynamasına izin vererek
+                  NinjaCat'in demosunu yapın.  Kediyi sola sağa hareket ettirmek, sıçrayıp yakutu yakalamak, ve köpekten kaçınmak için ok tuşlarını 
+                  kullanabilirsiniz. Öğrenciler tüm karakterleri (bulutlar, yakut, köpek ve kedi)
+                  görene kadar gösterin, ayrıca başlığı ve puanı da işaret etmeyi unutmayın.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bu oyun <span style=
+                  "font-style: italic">karakterlerden</span> oluşuyor, ve herbirinin kendine özgü bir davranışı var.
+                  Yakut sağdan sola hareket ediyor, köpek te öyle.
+                  NinjaCat sadece siz tuşlara basınca hareket ediyor, ve sola sağa yukarı ve aşağı gidebiliyor.
+                  Oyunun nasıl anladığını önce karakterlerin nasıl açlıştıklarını anlayarak çözebiliriz.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p><img src="pict_2.png" alt="image" width=
+                    "300" height="240"> İş defterinizin <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">2.
+                    sayfasına</a> gidin. Orada NinjaCat oyununu tersine mühendislik yaparak
+                    nasıl çalıştığını anlamak için kullanacağımız bir tablo bulacaksınız.
+                    O tablonun ilk sütununu oyunda geçen şeylerin bir listesi ile doldurun.</p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu bir takım çalışması da olabilir.
+                  Öğrencilerden birkaçını yaptıklarını seçip paylaşın ki herkes bu alıştırmada neyin listelendiğini
+                  anlasın: "kedi" gibi isimler listelenecek ama "atlama" gibi
+                  eylemler listelenmeyecek.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bütün hareketli karakterleri listelediniz mi?
+                  Oyunda başka ne var? Arkaplan oyunun bir parçası mı?
+                  Peki ya puan göstergesi?</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p><img src="pict_3.png" alt="image" width=
+                    "300" height="240">Burada ayrıca oyunu ornarken
+                    nelerin <span style=
+                    "font-style: italic">değiştiğini</span> 
+                    düşünmemiz lazım. Örneğin yakut? Büyüyor mu?
+                    Rengi değişiyor mu? Dönüyor mu?
+                    Yakut'un değişen tek şeyi  <span style=
+                    "font-style: italic">pozisyonu</span>!
+                    Diğer herşeyi aynı kalıyor.
+                    Peki ya köpek? Kedi? Böylece ikinci sütunu doldurun,
+                    her karakter hakkında değişen her unsuru listeleyin.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p> Köpek, Yakut, Bulut, ve Kedi'nin sadece yer değiştirdiğini, ve başka hiçbir şeyin değişmediğini farkettiniz mi?
+                  Peki ya arkaplan - o hiç değişmiyor, o yüzden
+                  tabloda onunla 
+                   <span style="font-style: italic">ilgili satırı boş bırakabiliriz!</span> 
+                   Puan değişimi göstergesine dikkat ettiniz mi?
+                   Onu da tablonuza eklemelisiniz!</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Koordinat düzlemleri</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel bakış</span></p>
+
+            <p>Öğrenciler resimdeki oyun karakterlerinin yerini
+            ifade etmek için Kartezyen düzlemi kullanmalıdırlar.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Koordinatlar kullanarak yeri ifade etmek konusunda ölçek çigilerinin nasıl kullanıldığını anlamak</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+
+              <ul>
+                <li>
+                  <p>Students apply the number line as a tool for
+                  objectively defining location, first identifying
+                  how to apply it to describe the position of a
+                  character onscreen in one dimension. This
+                  understanding is extended to two dimensions,
+                  ultimately motivating the use of a coordinate
+                  grid.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+
+              <ul>
+                <li>
+                  <p>Students identify the coordinates of
+                  characters in a picture</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+
+              <ul>
+                <li>
+                  <p>Cutouts of <a href=
+                  "../../resources/images/ninjacat.png">NinjaCat</a>,
+                  <a href="../../resources/images/dog.png">Dog</a>
+                  and the <a href=
+                  "../../resources/images/ruby.png">Ruby</a></p>
+                </li>
+
+                <li>
+                  <p>Student Workbooks, and something to write
+                  with</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+
+              <ul>
+                <li>
+                  <p>Student Workbooks, and something to write
+                  with</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_CoordinatePlanes1779" id=
+            "lesson_CoordinatePlanes1779"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Koordinat Düzlemleri <span class=
+            "time">(Süre 15 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_4.png" alt="image" width="191"
+                  height="152"> Bilgisayarlar bir oyun karakterinin ekrandaki yerini temsil etmek için
+                  sayıları kullanır, üzerinde sayılar olan ölçek çizgileri
+                  ekranın sol-alt köşesine olan uzaklığı ölçmek için kullanılırlar.
+                  Biz kendi video oyunumuzda  ölçek çizgilerini ekranın solda 0
+                  pozisyonundan sağda 640 pozisyonuna kadar olacak şekilde yerleştireceğiz.
+                  Köpek resmini alıp ölçek çizgisinde herhangi bir yere yerleştirebiliriz,
+                  ve ölçek çizgisinin sol kenarından olan uzaklığını ölçeriz.
+                  Bu ölçümü bilen birisi, sadece bu sayıyı kullanarak köpeği
+                  aynı şekilde aynı yere yerleştirebilecektir.
+                  Ekranın sağındaki köpeğin koordinatı nedir?
+                  Peki ya merkezdekinin? Koordinat ne olursa köpek
+                  ekranın sol sınırının da dışına çıkar?</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Burada öğrenciler için anahtar nokta
+                  <span style="font-style: italic">kesinlik</span>
+                  ve <span style=
+                  "font-style: italic">nesnellik</span>tir.
+                  Birden fazla doğru cevap var, ama öğrenciler
+                  herhangi bir çözümün niye kesin ve net olması gerektiğini anlamalılar.
+                  Bu da öğrencilerin ortak bir "sıfır" noktasını 
+                  (ölçek çizgisinin başlangıç çizgisi) ve yönü (sağ sol gibi, karakterin posizyonunun ölçüldüğü kenar)
+                  paylaşan çözümler üretmesini gerektirir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_5.png" alt="image" width="316"
+                  height="208">İkinci bir ölçek çizgisi ekleyerek
+                  bir oyun karakterini iki boyutlu ekranda her iki boyutta
+                  da istediğimiz yere yerleştirebiliriz.
+                  Birinci çizgiye x-eskeni deniz ve soldan sağa uzanır.
+                  Yukarıdan aşağıya uzanan ikinci ölçek çizgisine ise
+                  y-ekseni denir.
+                  2-boyutlu bir <span style=
+                  "font-style: italic">koordinat</span> hem x- hem de y-ekseni
+                  üzerindeki yerlerden oluşur.
+                  Mesela NinjaCat'in ekrandaki pozisyonunu belirlemeye çalışalım.
+                  X-koordinatını bulmak için NinjaCat'ten aşağıya bir çizgi çeker ve x-ekseni
+                  ölçek çizgisi üzerindeki sayıyı okuruz.
+                  Y-koordinatı da y-eksenine (yatay) bir çizgi çekerek bulunur.</p>
+                </div>
+
+                <div class="teacher">
+                  <p>A coordinate represents a single point, and an
+                  image is (by definition) many points. Some
+                  students will ask whether a character’s
+                  coordinate refers to the center of the image, or
+                  one of the corners. In this particular program,
+                  the center serves as the coordinate - but other
+                  programs may use another location. The important
+                  point in discussion with students is that there
+                  is flexibility here, <span style=
+                  "font-style: italic">as long as the convention is
+                  used consistently</span>.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>When we write down these coordinates, we
+                  always put the x before the y (just like in the
+                  alphabet!). Most of the time, you’ll see
+                  coordinates written like this: (200, 50) meaning
+                  that the x-coordinate is 200 and the y-coordinate
+                  is 50.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Depending on how a character moves, their
+                  position might change only along the x-axis, only
+                  along the y-axis, or both. Look back to the table
+                  you wrote in the workbook (<a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Page
+                  2</a>). Can NinjaCat move up and down in the
+                  game? Can she move left and right? So what’s
+                  changing: her x-coordinate, her y-coordinate, or
+                  both? What about the clouds? Do they move up and
+                  down? Left and right? Both?</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p><img src="pict_6.png" alt="image" width=
+                    "300" height="240">Fill in the rest of the
+                    table, identifying what is changing for each of
+                    your characters.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Turn to <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">Page
+                    3</a> in your game-planning workbook, and look
+                    at the project sheet that has a picture of the
+                    NinjaCat game. What are the coordinates at the
+                    bottom-left corner of the screen? Top-right?
+                    Center? For practice, label the coordinates at
+                    the midpoint of <span style=
+                    "font-style: italic">each side</span> of the
+                    screen, then label the coordinates of each of
+                    the characters.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Brainstorming</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <p>Students select the theme and characters for their
+            videogame</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+
+              <ul>
+                <li>
+                  <p>Students complete the Videogame Design
+                  Worksheet to design their own game</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+
+              <ul>
+                <li>
+                  <p>Computer for each student (or pair), running
+                  WeScheme or DrRacket</p>
+                </li>
+
+                <li>
+                  <p>If using DrRacket, make sure the Ninja.rkt
+                  file is loaded</p>
+                </li>
+
+                <li>
+                  <p>Student Workbooks, and something to write
+                  with</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Brainstorming1780" id=
+            "lesson_Brainstorming1780"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Brainstorming <span class="time">(Time
+            15 minutes)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>On <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Page
+                  4</a>, you’ll find a planning template for you to
+                  make your own game. Just like we made a list of
+                  everything in the NinjaCat game, we’re going to
+                  start with a list of everything in your game.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>To start, your game will have with four things
+                  in it:</p>
+
+                  <ul>
+                    <li>
+                      <p>A Background, such as a forest, a city,
+                      space, etc.</p>
+                    </li>
+
+                    <li>
+                      <p>A Player, who can move when the user hits
+                      a key.</p>
+                    </li>
+
+                    <li>
+                      <p>A Target, which flies from the right to
+                      the left, and gives the player points for
+                      hitting it.</p>
+                    </li>
+
+                    <li>
+                      <p>A Danger, which flies from the right to
+                      the left, which the player must avoid.</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="teacher">
+                  <p>Have students walk through some sample themes,
+                  to make sure they understand the format of the
+                  game. For example: A football game might have a
+                  quarterback for the player, a rival player for
+                  the danger, and a football as the target. A
+                  jungle game might have a monkey as the player, a
+                  snake as the danger, and bananas as the
+                  target.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Now it’s time to get creative! Fill out
+                    <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">Page
+                    4</a> in your workbook for <span style=
+                    "font-style: italic">your</span> game, using
+                    your own player, target and danger.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Order of Operations</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <p>Students identify the order of operations for
+            complicated arithmetic expressions through diagramming
+            (circles) and evaluating (the numerical answer). This
+            lesson introduces students to the Circle of Evaluation,
+            which is a sentence diagramming tool for arithmetic
+            expressions. This is a powerful way to understand Order
+            of Operations, as it forces students to focus on the
+            structure of expressions over their computed
+            result.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+
+              <ul>
+                <li>
+                  <p>Understand the structure of arithmetic
+                  expressions</p>
+                </li>
+
+                <li>
+                  <p>Understand order of operations in an
+                  expression</p>
+                </li>
+
+                <li>
+                  <p>Write expressions as Circles of Evaluation</p>
+                </li>
+
+                <li>
+                  <p>Translate between Circle of Evaluation and
+                  arithmetic expressions</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+
+              <ul>
+                <li>
+                  <p>Students will be able to explain why
+                  arithemetic expressions require structure</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to identify the order of
+                  operations in an expression that includes adding,
+                  subtracting, multiplying and dividing</p>
+                </li>
+
+                <li>
+                  <p>Given a Circle of Evaluation, students will be
+                  able translate the expression into the arithmetic
+                  expression it represents</p>
+                </li>
+
+                <li>
+                  <p>Given an arithmetic expression, students will
+                  be able to complete a partially-finished Circle
+                  of Evaluation for the same expression</p>
+                </li>
+
+                <li>
+                  <p>Given a bank of Circles of Evaluation and
+                  arithmetic expressions, students will be able to
+                  match them</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to translate the
+                  structure of an arithmetic expression into a
+                  Circle of Evaluation</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+
+              <ul>
+                <li>
+                  <p>Students convert several arithmetic
+                  expressions between multiple representations</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+
+              <ul>
+                <li>
+                  <p>Editing environment (WeScheme or DrRacket with
+                  the bootstrap-teachpack installed)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+
+              <ul>
+                <li>
+                  <p>Computer for each student (or pair), running
+                  WeScheme or DrRacket</p>
+                </li>
+
+                <li>
+                  <p>If using DrRacket, make sure the Ninja.rkt
+                  file is loaded</p>
+                </li>
+
+                <li>
+                  <p>Student Workbooks, and something to write
+                  with</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_OrderofOperations1781" id=
+            "lesson_OrderofOperations1781"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">Order
+            of Operations <span class="time">(Time 20
+            minutes)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Math is a language, just like English,
+                  Spanish, or any other language. We use nouns,
+                  like "bread", "tomato", "mustard" and "cheese" to
+                  describe physical objects. Math has <span class=
+                  "vocab">values</span>, like the numbers
+                  <script type="math/tex">
+1
+                  </script>, <script type="math/tex">
+2
+                  </script> or <script type="math/tex">
+3
+                  </script>, to describe quantities. Humans also
+                  use verbs like "toast", "slice", "spread" and
+                  "melt" to describe operations on these nouns.
+                  Mathematics has <span class=
+                  "vocab">functions</span> like addition and
+                  subtraction, which are operations performed on
+                  numbers. Just as you can "slice piece of bread",
+                  a person can also "add four and five".</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Students should begin to look at math as a
+                  <span style="font-style: italic">language</span>.
+                  To help them with this, you can discuss syntax
+                  and grammar of math, and its potential for
+                  ambiguity in the absence of a fixed order of
+                  operations. Help students see that math is a way
+                  to communicate calculations among people.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    A <span class="vocab">mathematical
+                    expression</span> is like a sentence: it’s an
+                    instruction for doing something. The expression
+                    <script type="math/tex">
+4+5
+                    </script> tells us to add 4 and 5. To
+                    <span class="vocab">evaluate</span> an
+                    expression, we follow the instructions in the
+                    expression. The expression <script type=
+                    "math/tex">
+4+5
+                    </script> <span class="vocab">evaluates
+                    to</span> <script type="math/tex">
+9
+                    </script>.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>What does <script type="math/tex">
+8*4
+                      </script> evaluate to? What does
+                      <script type="math/tex">
+20-16
+                      </script> evaluate to? What does
+                      <script type="math/tex">
+16-20
+                      </script> evaluate to?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Sometimes, we need multiple expressions to
+                  accomplish a task. If you were to write
+                  instructions for making a sandwich, it would
+                  matter very much which came first: melting the
+                  cheese, slicing the bread, spreading the mustard,
+                  etc. The order of functions matters in
+                  mathematics, too. If someone says "four plus two
+                  minus one", they could mean several things:</p>
+
+                  <ul>
+                    <li>
+                      <p>Add four and two, then subtract one:
+                      <script type="math/tex">
+(4+2) - 1
+                      </script></p>
+                    </li>
+
+                    <li>
+                      <p>Add four to the result of subtracting one
+                      from two: <script type="math/tex">
+4 + (2-1)
+                      </script></p>
+                    </li>
+                  </ul>
+
+                  <div class="activity">
+                    <p>Write an expression of your own that can
+                    mean several things.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Depending on which way you read the
+                  expression, you might have very different
+                  results! This is a problem, because we often use
+                  math to share calculations between people. For
+                  example, you and your cell phone company should
+                  agree upfront on how much you will pay for
+                  sending text messages and making calls. Different
+                  results might mean that your bill looks wrong. We
+                  avoid problems by agreeing on the order in which
+                  to use the different operations in an expression.
+                  There are two ways to do this:</p>
+
+                  <ol>
+                    <li>
+                      <p>We can all agree on an order to use</p>
+                    </li>
+
+                    <li>
+                      <p>We can add detail to expressions that
+                      indicate the order</p>
+                    </li>
+                  </ol>
+
+                  <div class="activity">
+                    <p>Write down one reason why it is important to
+                    have rules about the order of operations.</p>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_7.png" alt="image" width="100"
+                    height="91"> Mathematicians didn’t always agree
+                    on the order of operations, but now we have a
+                    common set of rules for how to evaluate
+                    expressions. The pyramid on the right
+                    summarizes the order. When evaluating an
+                    expression, we begin by applying the operations
+                    written at the top of the pyramid
+                    (multiplication and division). Only after we
+                    have completed all of those operations can we
+                    move down to the lower level. If both
+                    operations are present (as in <script type=
+                    "math/tex">
+4+2-1
+                    </script>), we read the expression from left to
+                    right, <span class="vocab">apply</span>ing the
+                    operations in the order in which they appear.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>In what order should we apply the
+                      functions in the following example?
+                      <script type="math/tex">
+19 \div 2 * 11 - 7 + 8
+                      </script></p>
+
+                      <ol>
+                        <li>
+                          <p><script type="math/tex">
++ \div * - 
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+\div * - +
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+\div * + -
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+* \div + -
+                          </script></p>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>This item covers PEMDAS (order of operations
+                  in ambiguous expressions). You can skip this item
+                  if you do not need to cover PEMDAS.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_8.png" alt="image" width="73"
+                    height="67"> One way to indicate the order of
+                    operations in an expression is to first draw
+                    the expression as a diagram. This diagram is
+                    called a <span class="vocab">Circle of
+                    Evaluation</span>. Here you can see an example
+                    of a Circle of Evaluation, for the math
+                    expression <script type="math/tex">
+4-5
+                    </script>. Circles of Evaluation show the
+                    structure that’s going on inside an expression.
+                    All Circles of Evaluation have two rules:
+
+                    <div class="banner">
+                      Circle Rule 1: Each circle must have one
+                      function, which goes at the top of the
+                      circle.
+                    </div>
+
+                    <div class="banner">
+                      Circle Rule 2: The numbers are written below,
+                      in order from left to right.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><img src="pict_9.png" alt="image" width=
+                      "100" height="100">Which rule does this
+                      Circle of Evaluation break?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>[<a href=
+                  "https://www.youtube.com/watch?v=AMFaPKHp3Mg">Video</a>]
+                  This section benefits enormously from visual
+                  aids, diagrams, etc. Make sure you have plenty of
+                  board space to draw examples!</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Try drawing the Circle of Evaluation for
+                      each of the following expressions:</p>
+
+                      <ol>
+                        <li>
+                          <p><script type="math/tex">
+6*4
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+7-10
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+5 + 8
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+\frac{351}{-1} 
+                          </script></p>
+                        </li>
+                      </ol>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <img src="pict_10.png" alt="image" width="73"
+                    height="67"> Every Circle of Evaluation
+                    <span class="vocab">evaluates to</span> the
+                    result of its corresponding expression. For
+                    example, the circle on the right evaluates to
+                    <script type="math/tex">
+-1
+                    </script>, because the circle says to use
+                    subtraction (the function at the top) on the
+                    numbers in order (<script type="math/tex">
+4-5
+                    </script>).
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>It’s important for students to view the
+                  Circles of Evaluation as "just another way of
+                  writing arithemetic". Have students discuss
+                  whether associativity and commutativity still
+                  matter here (they do).</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_11.png" alt="image" width="146"
+                    height="134">To use multiple functions in the
+                    same expression, we can combine Circles of
+                    Evaluation. Look at the Circle of Evaluation
+                    you’ve written for <script type="math/tex">
+351 / -1
+                    </script>. We already know that the Circle for
+                    <script type="math/tex">
+4 - 5
+                    </script> will evaluate to <script type=
+                    "math/tex">
+-1
+                    </script>, so we can <span style=
+                    "font-style: italic">replace the number with
+                    the expression.</span> Does this change what
+                    the expression evaluates to?
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><img src="pict_12.png" alt="image" width=
+                      "200" height="200">Finish writing the Circle
+                      of Evaluation shown here, so that it
+                      represents <script type="math/tex">
+(23 + 7) * (13 - 5)
+                      </script></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>From this point forward, the Circles of
+                  Evaluation are your assessment tool for Order of
+                  Operations. Quizzing students by asking them to
+                  correctly evaluate an expression is fraught with
+                  false negatives, as many student might get the
+                  order right but may still have problems with
+                  basic calculations. This method is also
+                  vulnerable to Commutativity, since a student will
+                  correctly evaluate <script type="math/tex">
+1*2+2
+                  </script> even if they get the order of
+                  operations wrong! Circles of Evaluation have
+                  neither of these flaws, as they put the emphasis
+                  where it should be: exercising a student’s
+                  ability to see the structure inside the
+                  arithemetic.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_13.png" alt="image" width="75"
+                  height="75">What does this Circle of Evaluation
+                  evaluate to? Let’s review how we evaluate a
+                  Circle:</p>
+
+                  <ul>
+                    <li>
+                      <p>We know we are multiplying because that’s
+                      the function at the top of the Circle.</p>
+                    </li>
+
+                    <li>
+                      <p>The Number <script type="math/tex">
+6
+                      </script> is the first number in the
+                      multiplication, because it’s on the left-hand
+                      side.</p>
+                    </li>
+
+                    <li>
+                      <p>The second number in the multiplication is
+                      on the right-hand side. The right-hand side
+                      has a separate circle, so we need to
+                      <span class="vocab">evaluate</span> the
+                      number for that circle. The second number is
+                      therefore <span style=
+                      "font-style: italic">the result of adding 4
+                      and 5</span>.</p>
+                    </li>
+
+                    <li>
+                      <p><script type="math/tex">
+4 + 5
+                      </script> (the inner circle) evaluates to
+                      <script type="math/tex">
+9
+                      </script>, and <script type="math/tex">
+6 * 9
+                      </script> (the outer circle) evaluates to
+                      <script type="math/tex">
+54
+                      </script>. This circle evaluates to
+                      <script type="math/tex">
+54
+                      </script>.</p>
+                    </li>
+                  </ul>
+
+                  <div class="activity">
+                    <p><img src="pict_14.png" alt="image" width=
+                    "75" height="75">Convert this Circle of
+                    Evaluation into an arithmetic expression.</p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Work through several of these examples with
+                  students, asking them to come up with arithmetic
+                  expressions and then convert them into Circles,
+                  or giving them Circles and having them translate
+                  them back into arithmetic. When you talk about
+                  Circles, be sure to consistently use the term
+                  <span style="font-style: italic">function</span>
+                  for what’s on top, rather than similar terms like
+                  "operation", "symbol", "procedure", "name", etc.
+                  The Circles of Evaluation will help students see
+                  the similarity between arithmetic functions (like
+                  <script type="math/tex">
++
+                  </script>) and algebraic functions (like
+                  <script type="math/tex">
+f
+                  </script>) if you use terminology carefully.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Match the following Circles of Evaluation
+                    with the corresponding arithmetic
+                    expressions:</p>
+
+                    <ul class="twoColumnLayout matching">
+                      <li class="twoColumnLayout matchingItem">
+                        <div class="leftColumn">
+                          <p><script type="math/tex">
+9 * (4 - 3)
+                          </script></p>
+                        </div>
+
+                        <div class="rightColumn">
+                          <div class="circleevalsexp">
+                            <span class="expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">/</span> <span class=
+                            "expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">+</span> <span class=
+                            "value wescheme-number">2</span><span class="value wescheme-number">4</span><span class="rParen">)</span></span><span class="expression"><span class="lParen">(</span><span class="operator">-</span>
+                            <span class=
+                            "value wescheme-number">6</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span><span class="rParen">)</span></span>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="twoColumnLayout matchingItem">
+                        <div class="leftColumn">
+                          <p><script type="math/tex">
+(9 * 4) - 3
+                          </script></p>
+                        </div>
+
+                        <div class="rightColumn">
+                          <div class="circleevalsexp">
+                            <span class="expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">-</span> <span class=
+                            "expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">*</span> <span class=
+                            "value wescheme-number">9</span><span class="value wescheme-number">4</span><span class="rParen">)</span></span><span class="value wescheme-number">3</span><span class="rParen">)</span></span>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="twoColumnLayout matchingItem">
+                        <div class="leftColumn">
+                          <p><script type="math/tex">
+(9 - 3) * 4
+                          </script></p>
+                        </div>
+
+                        <div class="rightColumn">
+                          <div class="circleevalsexp">
+                            <span class="expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">*</span> <span class=
+                            "value wescheme-number">-5</span><span class="value wescheme-number">2</span><span class="rParen">)</span></span>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="twoColumnLayout matchingItem">
+                        <div class="leftColumn">
+                          <p><script type="math/tex">
+(2 + 4) / (6 - 3)
+                          </script></p>
+                        </div>
+
+                        <div class="rightColumn">
+                          <div class="circleevalsexp">
+                            <span class="expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">*</span> <span class=
+                            "value wescheme-number">9</span><span class="expression"><span class="lParen">(</span><span class="operator">-</span>
+                            <span class=
+                            "value wescheme-number">4</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span><span class="rParen">)</span></span>
+                          </div>
+                        </div>
+                      </li>
+
+                      <li class="twoColumnLayout matchingItem">
+                        <div class="leftColumn">
+                          <p><script type="math/tex">
+-5 * 2
+                          </script></p>
+                        </div>
+
+                        <div class="rightColumn">
+                          <div class="circleevalsexp">
+                            <span class="expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">*</span> <span class=
+                            "expression"><span class=
+                            "lParen">(</span><span class=
+                            "operator">-</span> <span class=
+                            "value wescheme-number">9</span><span class="value wescheme-number">3</span><span class="rParen">)</span></span><span class="value wescheme-number">4</span><span class="rParen">)</span></span>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Intro to
+        Programming</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <p>Students are introduced to the programming
+            environment</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+
+              <ul>
+                <li>
+                  <p>Convert Circles of Evaluation into code</p>
+                </li>
+
+                <li>
+                  <p>Enter and evaluate code expressions for
+                  arithmetic on the computer</p>
+                </li>
+
+                <li>
+                  <p>Understand the goal of error messages from the
+                  computer</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+
+              <ul>
+                <li>
+                  <p>Students will be able to identify the
+                  Interactions and Definitions windows</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to enter and evaluate
+                  simple arithmetic expressions in the Interactions
+                  window</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to convert Circles of
+                  Evaluation into correctly-formed programs</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to explain an ’unbounded
+                  identifier’ error message</p>
+                </li>
+
+                <li>
+                  <p>Students will be able to explain the purpose
+                  of error messages</p>
+                </li>
+
+                <li>
+                  <p>Given a Circle of Evaluation, students will be
+                  able to complete a partially-written program</p>
+                </li>
+
+                <li>
+                  <p>Given a bank of Circles of Evaluation and
+                  programs, students will be able to match them</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+
+              <ul>
+                <li>
+                  <p>Editing environment (WeScheme or DrRacket with
+                  the bootstrap-teachpack installed)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+
+              <ul>
+                <li>
+                  <p>Computer for each student (or pair), running
+                  WeScheme or DrRacket</p>
+                </li>
+
+                <li>
+                  <p>Student Workbooks, and something to write
+                  with</p>
+                </li>
+
+                <li>
+                  <p>Overhead projector</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_IntrotoProgramming1782" id=
+            "lesson_IntrotoProgramming1782"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">Intro
+            to Programming <span class="time">(Time 15
+            minutes)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Open the programming tool of your choice: If
+                  you’ve installed, DrRacket, double-click the
+                  application to launch it. If you are using the
+                  online-tool, <a href="http://www.wescheme.org/"
+                  target="embedded">click here to log in</a> enter
+                  your username and password to log in, then click
+                  "Start a New Program".</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_15.png" alt="image" width="200"
+                  height="150">This screen is called the
+                  <span class="vocab">editor</span>, and it looks
+                  something like the diagram you see here. There
+                  are a few buttons at the top, but most of the
+                  screen is taken up by two large boxes: the
+                  <span class="vocab">Definitions window</span> at
+                  the top and the <span class="vocab">Interactions
+                  window</span> at the bottom.</p>
+                </div>
+
+                <div class="teacher">
+                  <p>The Definitions window is where programmers
+                  define values and functions in their program,
+                  while the Interactions window allows them to
+                  experiment with those values and functions. This
+                  is analogous to writing a series of function
+                  definitions on a blackboard, and having student
+                  evaluate expressions using those function on
+                  scrap paper. As students are not yet defining
+                  values of their own, it is not important that
+                  students understand this distinction right now.
+                  For now, we will work only with the Interactions
+                  window.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>A program is a <span class="vocab">legal
+                  expression</span> that, when evaluated, produces
+                  a value. You’ve been writing programs using
+                  mathematical expressions since you first learned
+                  how to add! Just as in English, there are rules
+                  that determine whether a sentence makes sense.
+                  Programs have rules too! A program can be very
+                  complicated, but it doesn’t have to be: the
+                  simplest programs of all are just Numbers.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="banner">
+                      Code Rule 1: All values are legal
+                      expressions.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>What do you think <tt>4</tt> will evaluate
+                      to? <a href=
+                      "http://www.wescheme.org/openEditor?interactionsText=4&amp;"
+                      target="embedded">Click here to test it
+                      out.</a></p>
+                    </div>
+                  </div>
+
+                  <ul>
+                    <li>
+                      <p>Enter 4 in the Interactions window and hit
+                      "Return". You will see the value <tt>4</tt>
+                      appear on the next line in the Interactions
+                      window.</p>
+                    </li>
+
+                    <li>
+                      <p>Type 10 in the Interactions window and hit
+                      "Return". Now the value <tt>10</tt> appears
+                      in the Interactions window.</p>
+                    </li>
+
+                    <li>
+                      <p>Try evaluating numbers, like
+                      <tt>10345017</tt>, or negative numbers, like
+                      <tt>-2</tt>. Is there a limit to how big a
+                      number can be? What happens if you write a
+                      decimal? What happens when you click on a
+                      decimal, like <tt>1.5</tt>? You get a new
+                      type of number, a fraction, like
+                      <tt>3/4</tt>.</p>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="teacher">
+                  <p>The editing environment evaluates all
+                  fractions and returns them as decimals by
+                  default. This can be surprising to students at
+                  first, so you may want to take a moment to
+                  explain what’s going on, and show them that these
+                  decimals can be converted back to fractions just
+                  by clicking on them. The environment uses
+                  standard annotations for repeating,
+                  non-terminating decimal expressions and properly
+                  handles expressions like <script type="math/tex">
+(\sqrt -1)
+                  </script>. If you want to work with those kinds
+                  of numbers in your class, enter them to get
+                  familiar with how they appear in the Interactions
+                  window.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>The computer obviously knows about
+                      Numbers, but what happens if you type in
+                      something that it <span style=
+                      "font-style: italic">doesn’t</span> know
+                      about? Will it complain? Crash? Guess?
+                      <a href=
+                      "http://www.wescheme.org/openEditor?interactionsText=dog&amp;"
+                      target="embedded">Try asking the computer</a>
+                      to evaluate <tt>dog</tt> in the Interactions
+                      window.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    These error messages are really useful for
+                    programmers. Rather than saying "this program
+                    doesn’t work", the computer does the best it
+                    can to tell you what went wrong, and to give
+                    you as much information as possible to help you
+                    fix the problem. Make sure you always read
+                    these messages carefully!
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>The error message uses the term "variable".
+                  Don’t worry if your students don’t already know
+                  this term; we will teach it to them shortly. For
+                  now, students just need to get used to error
+                  messages and the kinds of problems that they
+                  catch in programs.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    The Circles of Evaluation are also easy to
+                    convert into computer programs. To translate a
+                    Circle of Evaluation into a program, begin with
+                    an open parenthesis <tt>(</tt>, and then the
+                    function written at the top of the circle. Then
+                    translate the inputs from left to right in the
+                    same way, adding a closing parenthesis
+                    <tt>)</tt> when you’re done. This process gives
+                    us the second rule for <span class=
+                    "vocab">expressions</span>:
+
+                    <div class="banner">
+                      Code Rule 2: Each open parenthesis is
+                      followed by one function, then by one or more
+                      legal expressions, and finally by a closing
+                      parenthesis.
+                    </div><img src="pict_16.png" alt="image" width=
+                    "73" height="67">Here is the code for this
+                    Circle of Evaluation: <tt>(- 4 5)</tt>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><a href=
+                      "http://www.wescheme.org/openEditor?interactionsText=(-%204%205)&amp;"
+                      target="embedded">See what happens</a> when
+                      this code is entered into the Interactions
+                      window. Press the Return key to evaluate the
+                      program. You should see <script type=
+                      "math/tex">
+-1
+                      </script> as an answer.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Have students practice converting simple
+                  Circles of Evaluation into code. If you want to
+                  help students understand when to use the
+                  parentheses, here are two explanations that we
+                  find useful. First, the parens look like the
+                  Circle, and the Circle encloses the function name
+                  and its inputs. Second, we use a more visual
+                  description of an ant eating its way through the
+                  expression. The ant eats into the Circle (an open
+                  paren), then goes to the function at the top,
+                  then to the arguments from left to right, then
+                  finally out of the Circle (a close paren). If the
+                  ant encounters another Circle while writing down
+                  the arguments, it needs another open paren,
+                  etc.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_17.png" alt="image" width="75"
+                    height="75">When a Circle of Evaluation has
+                    other circles inside of it, the translation
+                    still follows the same rules: each Circle
+                    requires a new set of parentheses: <tt>(* 6 (+
+                    4 5))</tt>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Try entering this code into the
+                          Interactions window. What should the
+                          program evaluate to when you hit
+                          Return?</p>
+                        </li>
+
+                        <li>
+                          <p>Practice converting other Circles of
+                          Evaluation you’ve drawn into code.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="banner">All of the expressions that
+                    follow the function name are called
+                    <span class="vocab">arguments</span> to the
+                    function. The following diagram summarizes the
+                    shape of an expression that uses a function.
+                    <img src="pict_18.png" alt="image" width="500"
+                    height="342"></div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>For practice, turn to <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      Page 5</a> in your workbook. For each
+                      mathematical expression, draw the Circle of
+                      Evaluation, then convert that Circle into
+                      Racket code.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    When expressions don’t follow the code rules,
+                    the computer will tell you that it found a
+                    problem. The computer also gives you
+                    information to help you fix the problem. This
+                    information is called an <span class=
+                    "vocab">error message</span>. We’ll talk more
+                    about error messages later. For now, we just
+                    want you to see a couple of error messages so
+                    that you’ll know what they are if you run into
+                    one while programming.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Enter each of the following illegal
+                      expressions in the Interactions Window and
+                      look at the error message or behavior that
+                      the computer gives you.</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>(5 * 6)</tt> [puts the function in
+                          the middle, instead of at the front]</p>
+                        </li>
+
+                        <li>
+                          <p><tt>(*5 6)</tt> [missing a space after
+                          the function]</p>
+                        </li>
+
+                        <li>
+                          <p><tt>* 5 6)</tt> [forgets the open
+                          parenthesis]</p>
+                        </li>
+
+                        <li>
+                          <p><tt>(* 5 6</tt> [forgets the close
+                          parenthesis]</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>At this point, the goal is simply to have
+                  students <span style=
+                  "font-style: italic">see</span> error messages.
+                  Students are not expected to be experts at
+                  reading error messages this early (you will drill
+                  this later). NOTE: When a close parenthesis is
+                  missing, hitting return will do nothing, because
+                  the computer is waiting for the parenthesis. When
+                  an open parenthesis is missing, WeScheme does
+                  nothing and waits for the programmer to add the
+                  parens. If students hit enter and "nothing
+                  happens", they should check their parentheses.
+                  Also note that if you do this sequence of
+                  exercises with <tt>+</tt> instead of <tt>*</tt>,
+                  the error appears differently, because
+                  <tt>+5</tt> is a perfectly valid number (just
+                  like <tt>-5</tt>).</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Closing</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing1783" id=
+            "lesson_Closing1783"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Closing <span class="time">(Time 5
+            minutes)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>You’ve done a lot in this first unit!</p>
+
+                  <ul>
+                    <li>
+                      <p>You took a game apart to see how the parts
+                      move</p>
+                    </li>
+
+                    <li>
+                      <p>You designed your own game, that you’ll
+                      make during this course</p>
+                    </li>
+
+                    <li>
+                      <p>You practiced using coordinates to put
+                      characters into a screen</p>
+                    </li>
+
+                    <li>
+                      <p>You learned about order of operations,
+                      Circles of Evaluation, how to turn Circles of
+                      Evaluation into programs, and how to run
+                      those programs to get answers.</p>
+                    </li>
+                  </ul>
+
+                  <p>In the next unit, we’ll begin writing programs
+                  for more interesting things than just
+                  arithmetic.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div class="ExtraExercises">
+        <span class="BootstrapLessonTitle">Additional
+        Exercises:</span>
+
+        <ul>
+          <li>
+            <p><a href=
+            "exercises/Order-of-Operations/complete-coe-from-arith.html">
+            Completing Partial Circles of Evaluation from
+            Arithmetic Expressions</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Order-of-Operations/arith-to-coe1.html">Creating
+            Circles of Evaluation from Arithmetic
+            Expressions</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Order-of-Operations/coe-to-arith1.html">Converting
+            Circles of Evaluation to Arithmetic Expressions</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Order-of-Operations/match-arith-coe1.html">Matching
+            Circles of Evaluation and Arithmetic
+            Expressions</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Intro-to-Programming/complete-code-from-coe1.html">
+            Completing Partial Code from Circles of
+            Evaluation</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Intro-to-Programming/coe-to-code1.html">Converting
+            Circles of Evaluation to Code</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Intro-to-Programming/coe-code-matching1.html">
+            Matching Circles of Evaluation and Code</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_19.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>

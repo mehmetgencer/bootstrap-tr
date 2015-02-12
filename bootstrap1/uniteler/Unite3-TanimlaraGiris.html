@@ -1,0 +1,1840 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Ünite 3: Tanımlamalara Giriş</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Ünite 3: <span class="mywbr">&nbsp;</span>
+              Tanımlamalara Giriş</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href=
+          "#%28part._.Unit_3__.Introduction_to_.Definitions%29"
+          class="tocsubseclink" data-pltdoc="x">Ünite 3:
+          <span class="mywbr">&nbsp;</span> Tanımlamalara Giriş</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name="(part._.Unit_3__.Introduction_to_.Definitions)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Ünite 3</span>Tanımlamalara Giriş</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Üniteye Genel Bakış</span>
+        <p>Öğrencilere Tanımlamalar penceresi gösterildi ve çeşitli türlerde değerler tanımlama sözdizimi(syntax) öğretildi. Ayrıca, fonksiyon tanımlama sözdizimi ve örnek yaratma sunuldu.</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Gündem</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                dakika</span><a href="#lesson_Review4582"><span class=
+                "BSLessonName">Gözden Geçirme</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">10
+                dakika</span><a href=
+                "#lesson_DefiningVariables4583"><span class=
+                "BSLessonName">Değişken Tanımlama</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">10
+                dakika</span><a href=
+                "#lesson_DefiningVariables(Algebra)4584"><span class="BSLessonName">Değişken Tanımlama (Cebir)</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">30
+                dakika</span><a href=
+                "#lesson_GameImages4585"><span class=
+                "BSLessonName">Oyun Resimleri</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                dakika</span><a href=
+                "#lesson_DefiningFunctions4586"><span class=
+                "BSLessonName">Fonksiyon Tanımlama</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                dakika</span><a href=
+                "#lesson_DefiningFunctions(Algebra)4587"><span class="BSLessonName">Fonksiyon Tanımlama (Cebir)</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                dakika</span><a href=
+                "#lesson_Closing4588"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Sonuçları:</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler video oyun projelerini isimlendirecek</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler, şu tanımlamaları değiştirecekler:
+                <tt>BAŞLIK, BAŞLIK-RENGİ, ARKAPLAN, OYUNCU,
+                HEDEF</tt> ve <tt>TEHLİKE</tt></p>
+              </li>
+
+              <li>
+                <p>Öğrenciler Tasarım Reçetesi kullanarak en az iki fonksiyon tanımlıcaklar</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlar ve Bulgu Durumları</span>
+            <p>BS ön-eki ile başlayan standartlar Bootstrap'e özel, diğerleri ise Ortak Çekirdek (Common Core)'le alakalıdır. Her standart maddesinin üstüne fare ile gelerek uyan bulgu durumlarını görebilirsiniz.
+            <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standartlar Belgemiz</a> ünitlerin kapsadıkları her standartı gösterir.</p> 
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">6.NS.5-8</span>: Öğrenci negatif sayılar ile işlemler gerçekleştirir, sayı doğrusu ve koordinat düzelemi ile çalışır, sayıların mutlak değerlerini sıralar ve rasyonel sayılarla gerçek hayat problemlerini çözer.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>sayı doğrusu üzerindeki negatif sayıların grafiği</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">7.EE.3-4</span>: Öğrenci, sayısal ve cebirsel ifadeler, denklemler
+                  kullanarak gerçek hayat ve matematiksel problemleri çözer.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>değişkenleri kullanarak miktarların temsil edildiği gerçek hayat ya da matematik problemi</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: Öğrenci, içerikteki problemi çözmek için ifadelerin yapısını yorumlar.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>içerikteki miktarların temsil edildiği ifadelerin yorumlanması</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-BF.1-2</span>: Öğrenci, bir fonksiyon oluşturarak iki nicelik arasındaki ilişkiyi modeller.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>özyinelemeli ve belirgin formüller kullanılarak, aritmetik ve geometrik serilerin modellenmesi durumları</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.1-3</span>: Öğrenci, fonksiyon gösterimi kullarak tanımlamalar yapar, değerlendirir, fonksiyonun girdi ve çıktısı açısından yorumlamalar yapar.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>f bir fonsiyondur ve x onun girdi kümesinde bir elamandır, o halde f(x) çıktısını f'in x girdisine uyacak şekilde göstereceği açıklaması</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>fonksiyonların, fonksiyon gösterimi kullanarak tanım kümelerindeki girdiler için değerlendirilmesi</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.4-6</span>: Öğrenci, uygulamanın içeriği tarafından ortaya çıkan fonksiyonların davranışlarını yorumlar.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>iki niceliğin arasındaki ilişkinin, bir tablo ve ya grafikte anahtar özelliklerine göre yorumlanması</p>
+
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.1</span>:Öğrenci, yazılı bir problemi Sözleşme (verilenler) ve Amaç Bildirimi'ne (istenen) çevirebilir.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>verilen bir yazılı problem için fonksiyon girdi ve çıktı kümelerinin belirlenmesi</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.2</span>: Öğrenci, verilen bir sözleşme ve amaç bildirimine uygun test durumları üretebilir.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>bir Sözleşme ve bir Amaç Bildirimi verilir, çoklu örnekler ve ya test durumları yazılır</p>
+
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>çoklu örnekler verilir, değişkenleri etiketlemek ve isimlendirmek amaçıyla desenler tanımlanır</p>
+
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.3</span>: Çoklu test durumları verilir, öğrenci bir fonksiyon tanımlayabilir.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>örnekler ve etiketlenmiş değişken(ler) verilir, fonksiyon tanımlanır</p>
+
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style="font-weight: bold">BS-IDE</span>:
+                  Öğrenci, REPL'i kullanarak, uygun şekilde ifadeler girmeye ve hata mesajlarını yorumlamaya aşinadır.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>bilgisayarda ifadeler girmek ve değerlendirmek</p>
+
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>hata mesajlarına bakıp, sözdizimi (syntax) hatalarını teşhis etmek</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.2</span>: Öğrenci, dahili fonksiyonlar için sözleşme kullanmak ve yazmak konusunda rahattır.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>sözleşme kullanarak bir fonksiyonun girdi ve çıktılarının gösterilmesi</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.3</span>: Öğrenci, programlama dilinin sözdizimini kullanarak değerler ve fonksiyonlar tanımlayabilir.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>değerleri tanımlama ve geri alma</p>
+
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>test durumları yazma</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>fonksiyonları tanımlama ve kullanma</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div><span class="BootstrapHeader">Süre: 100 dakikda</span>
+
+          <div class="" id="Glossary">
+            <span class="BootstrapHeader">Sözlükçe:</span>
+
+            <ul>
+              <li>
+                <p><span class="vocab">sözleşme</span>: bir fonksiyonun ismi, girdisi ve çıktısının açıklamaları</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">tanımlamak</span>: açıklayıcı bir isim ile değeri ilişkilendirmek</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">tanımlamalar penceresi</span>:
+                 Editör'ün (DrRacket veya WeScheme) üst kısmında yer alan, tanımlamaların ve fonksiyonların yazılı olduğu metin kutusu</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">tasarım reçetesi</span>: insanlara belgeleme, test etme ve fonksiyon yazmalarında yardımcı olan adımlar dizisi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">girdi</span>: bir fonksiyonun beklediği veri tipi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">örnek</span>: bir fonksiyonun belirli girdiyi kullanmasını ve bu girdiler ile gerçekleştirilmesi beklenen hesapların gösterilmesi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">fonksiyon tanımı</span>:
+                bir fonksiyon belirten, değişkenlerini sıralayan ve söz konusu fonksiyon kullanıldığında işlem ifadesini gösteren kod</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">isim</span>: bir dilde tanımlanan bir fonksiyon veya değeri kastederiz (örnek: +, *, yıldız, daire)</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">çıktı</span>: bir fonksiyonun ürettiği veri tipi</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">değer</span>: 5 veya "merhaba" gibi belirli bir veri parçası</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">değişken ismi</span>: bir fonksiyon her kullanıldığında farklı olabilen bilginin ismi</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Materials">
+            <span class="BootstrapHeader">Malzemeler:</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler için kalem, öğretmenler için yeni beyaz tahta keçeli kalemi</p>
+              </li>
+
+              <li>
+                <p>Sınıf Posteri (kurallar listesi, dil tablosu, ders takvimi)</p>
+              </li>
+
+              <li>
+                <p>Dil Tablosu (aşağıya bakın)</p>
+              </li>
+
+              <li>
+                <p>Düzenleme ortamı (bootstrap-teachpack yüklenmiş WeScheme ve ya DrRacket)</p>
+              </li>
+
+              <li>
+                <p>"Algebra Translation" [<a href=
+                "../../resources/source-files/Algebra.rkt">DrRacket</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=s2s0tkTgeF">
+                WeScheme</a>] öğrencilerin makinelerine önceden yüklenmiş ve monitörleri kapalı</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">alıştırma kitabı</a>
+                klasörlenmiş ve isimleri kapakta yazılı</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık:</span>
+
+            <ul>
+              <li>
+                <p>İSTEĞE BAĞLI: <a href=
+                "https://docs.google.com/document/d/1FN2uLBnwdk3N4Ci6-qf1n6z-M8KpToo27wqZmRlS5as/edit?usp=sharing">Isınma aktiviteleri 
+                kağıdının</a> dağıtılması.</p>
+              </li>
+
+              <li>
+                <p>Öğrenci oyun dosyalarının yaratılması. [Öğretmen kılavuzuna bakınız, bu ders için gerekli <a href=
+                "http://www.BootstrapWorld.org/materials/Spring2014/courses/bs1/resources/teachers/">korumalı malzemeler</a> ]</p>
+              </li>
+
+              <li>
+                <p>Öğrencilerin makinelerinde: Öğrenci Oyun Dosyaları ("Game" taslağı üzerinden üretilmiş
+                <a href=
+                "../../resources/source-files.zip">source-files.zip</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=RHBJYscAWj">
+                WeScheme</a>])</p>
+
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Türleri</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Sayı</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr sqrt expt</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Kelime</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>string-append string-length</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Resim</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>rectangle circle triangle ellipse star
+                  text scale rotate put-image</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Show Teacher Notes"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Discussion Group" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Gözden Geçirme</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler için kalem, öğretmenler için yeni beyaz tahta keçeli kalemi</p>
+                </li>
+
+                <li>
+                  <p>Sınıf Posteri (kurallar listesi, dil tablosu, ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu (aşağıya bakın)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                      <p>İSTEĞE BAĞLI: <a href=
+                "https://docs.google.com/document/d/1FN2uLBnwdk3N4Ci6-qf1n6z-M8KpToo27wqZmRlS5as/edit?usp=sharing">Isınma aktiviteleri 
+                kağıdının</a> dağıtılması.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Review4582" id=
+            "lesson_Review4582"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Gözden Geçirme<span class="time">(Süre 5
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                  <p>Şimdiye kadar, Yürütme Çemberi'ni gördünüz, Sözleşmeleri öğrendiniz ve farklı veri türlerini deneyimlediniz. Bunların her birinin ne olduklarını hatırladığınızdan emin olun ve eğer gerekli ise, geçmiş derslere bilgilerinizi tazelemesi amacıyla göz atın.</p>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Şekiller çizen üç tane fonksiyon düşünebiliyor musun? Tekrar geriye dönüp Sözleşme sayfasına bakmadan, bu fonksiyonların sözleşmeleri yazamayı dene. Hangi tür veri sürekli tırnak işaretleri arasında oluyordu? Ekranın sol alt köşesinin koordinatları nelerdi? Veya sağ yukarı tarafın?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Değişken Tanımlama</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler, basit değerler (Sayı, Kelime ve Resim) için isimler tanımlarlar ve onları ifadelerde kullanırlar.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+              <ul>
+                <li>
+                  <p>Öğrenciler, sayı, kelime ve resim değerleri için isim tanımlayabilecekler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, fonksiyonlar için isim, girdi, çıktı ve değişken isimlerini gerektiğinde tasarım reçetesi kullanarak belirleyebilirler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler, "Run" (Çalıştır) tuşuna basınca olanları açıklayabilecekler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler için kalem, öğretmenler için yeni beyaz tahta keçeli kalemi</p>
+                </li>
+
+                <li>
+                  <p>Sınıf Posteri (kurallar listesi, dil tablosu, ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>EDüzenleme ortamı (bootstrap-teachpack yüklenmiş WeScheme ve ya DrRacket)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu (aşağıya bakın)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_DefiningVariables4583" id=
+            "lesson_DefiningVariables4583"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Değişken Tanımlama <span class=
+            "time">(Süre 10 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Varsayalım ki elli tane aynı, içi dolu, kırmızı üçgen resmi elde etmek istiyoruz. Bu demek oluyor ki <tt>(triangle 50 "solid" "red")</tt> kodunu elli defa yazmalıyız! Daha da kötüsu, bu üçgenlerde bir değişiklik yapmak istersek, bütün ifadelerde bunu tekrarlamalıyız! İyi programcılar çabalarının bu duruma benzemeyen başka yerlerde harcanmasının daha iyi olduğunu bilirler, bu yüzden onlar programlama dillerinin tekrarlamaları önlemek için bir yolu olduğundan eminlerdir. Bir şeyi, bir defa yazarlar, dilin içersinde bu şey için kısayol oluştururlar ve daha sonra kısayolu istedikleri kadar kullanırlar.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Programlama dilimizdeki değişkenleri isimlendirmek için <span class="vocab">define</span> ifadesini kullanıyoruz.
+                  <a href=
+                  "http://www.wescheme.org/openEditor?interactionsText=&amp;definitionsText=(define%20shape1%20(triangle%2050%20&quot;solid&quot;%20&quot;red&quot;))%0A"
+                  target="embedded">örnek bir tanımlamaya</a> bakalım, burada <tt>shape1</tt>içi dolu, kırmızı bir üçgen olarak tanımlanmış. "Run" tuşuna bastığınızda, <tt>shape1</tt> 'i Etkileşimler Penceresinde değerlendirebilirsiniz ve bilgisayar size üçgeni gösterecek. Eğer "Run" tuşuna <span style=
+                  "font-style: italic">basmadan</span> <tt>shape1</tt>'i sadece yazsaydınız ne olurdu tahmin edebiliyor musunuz? </p>
+               </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin, <tt>shape1</tt>'in "Run" tuşuna basılmadan değerlendirildirdiklerinde neler olduğunu anladıklarından emin olun. Böylece hatayı okuya ve anlayabilirler. Benzer şekilde, onlara <tt>shape1</tt>'in tanımlasını değiştirin ve tekrar "Run" tuşuna basmadan değerlendirtin. Bu onların, bilgisayarın <span style="font-style: italic">tanımlamaları okudugunu</span> ve yapılan herhangi bir değişikliğin yeniden okunması gerektiğini anlamaları için önemli. </p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tanımlamalar editörün yukarı bölümünde yer alan (Etkileşim Penceresi'nin üstündeki) <span class=
+                    "vocab"> Tanımlamalar Penceresi</span> denen yere yazılırlar.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p><tt>shape1</tt> tanımlamasını <span class="vocab">Tanımlamalar Penceresi</span>ne gir.</p>
+                        </li>
+
+                        <li>
+                          <p>Bilgisayarın bu tanımlamayı okuması için "Run" tuşuna tıkla.</p>
+                        </li>
+
+                        <li>
+                          <p>Etkileşim penceresinde <tt>shape1</tt> 'i hesaplatığında ne olacağını düşünüyorsun?</p>
+                        </li>
+
+                        <li>
+                          <p>Tanımlamalar penceresine yeni bir satır ekle, <tt>shape1</tt> tanımının hemen üstüne, ismi <tt>shape2</tt> olan, içi dolu, mavi renkli ve yarıçapı 20 olan bir daire tanımla.</p>
+                        </li>
+
+                        <li>
+                          <p>"Run" tuşuna bas ve <tt>shape2</tt> 'i hesaplatmayı dene.</p>
+                        </li>
+
+                        <li>
+                          <p>Bir sonraki satırda, <tt>age</tt> isminde senin olduğun yaşı gösteren bir sayı değeri tanımla.</p>
+                        </li>
+
+                        <li>
+                          Bir sonraki satırda, <tt>name</tt> isminde senin adını temsil eden bir kelime değeri tanımla.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="banner">
+                    Her seferinde "Run" tuşuna basıldığında, bilgisayar bütün tanımlamaları okur ve dile ekler. Eğer bir tanımlama değişmiş ise, bilgisayar yeniden "Run" tuşuna basılana kadar önceki tanımlamayı kullanmaya devam eder.
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Tanımlamalar Penceresine bir yeni satır daha ekleyelim, <tt>eye-color</tt> isminde göz renginizi belirten bir tanımlama yapalım. Ama henüz "Run" tuşuna basmayın!</p>
+
+                      <ul>
+                        <li>
+                          <p>Etkileşimler Penceresine gidin ve <tt>eye-color</tt> 'ı çalıştırmayı deneyin. Bilgisayarın <tt>eye-color</tt> 'ın ne olduğunu bilmediğini söyleyen bir hata almış olmalısınız, çünkü tanımlamayı ekledikten sonra "Run" tuşuna basmadınız.</p>
+                        </li>
+
+                        <li>
+                          <p>"Run" tuşuna tıklayın.</p>
+                        </li>
+
+                        <li>
+                          <p>Etkileşim Penceresinde tekarar <tt>eye-color</tt> 'ı çağırmayı deneyin. Bu sefer hata almamış olmalısınız.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Tanımlamalar kullanışlıdır çünkü onları daha sonra tekrar kullanabiliriz. Örneğin; <tt>eye-color</tt> 'ı başka bir ifadenin içinde kullanabiliriz, mesela <tt>(circle 10 "solid" eye-color)</tt>. Tanımlamaları, diğer ifadelerin içinde kullanma pratiği yapalım.
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Tanımlamalar Penceresinde, aşağıdaki tanımlamaları yaratın ve Etkileşim Penceresinde onları kontrol edin:</p>
+
+                    <ul>
+                      <li>
+                        <p><tt>prize</tt> isminde içi dolu sarı bir yıldız tanımlayın (istediğiniz boyutu seçebilirsiniz).</p>
+                      </li>
+
+                      <li>
+                        <p><tt>big</tt> isminde <tt>scale</tt> 'i kullanarak <tt>prize</tt> 'ı üç kat büyüten bir değer tanımlayın.</p>
+                      </li>
+
+                      <li>
+                        <p><tt>tilt</tt> isminde <tt>rotate</tt> 'ı kullanarak büyük sarı yıldızın 45 derece döndüren bir değer tanımlayın.</p>
+                      </li>
+
+                      <li>
+                        <p>Etkileşim Penceresine <tt>tilt</tt> yazın ve büyük, eğimli, sarı yıldız aldığınızdan emin olun.</p>
+                      </li>
+
+                      <li>
+                        <p>Ortaya çıktı ki yeşil yıldızlar, sarı yıldızlardan daha popülermiş. <tt>prize</tt> ifadendenisini değiştirerek yıldızın sarı yerine yeşil olmasını sağla. "Run" tuşuna tıkla, böylece bilgisayar yeni tanımlamanı okuyabilsin.</p>
+                      </li>
+
+                      <li>
+                        <p>Şimdiyse Etkileşim Penceresine tekrar <tt>tilt</tt> yaz. Hangi renk yıldız elde ettin? Eğer <tt>big</tt> ve <tt>tilt</tt> 'ı kendi tanımlamalarını kullanarak tanımladıysan, eğimli yeşil bir yıldız görmüş olmalısın! Eğer yeşil bir yıldız görmediysen, bunun gerçekleşmesi için tanımlamalarını düzeltmeyi dene.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilere <tt>define</tt> 'ı deneyimleleri için yeterli zaman ayrılması oldukça önemlidir. Örğrenciler, tanımlanmış isimlerin, değerin yerine kullanılabileceklerini öğrenmeleri gerekmektedir. Onlara farklı değerler tanımlatıp (her biri farklı türlerde) sonrasında başka ifadelerin içinde kullanıldığını örnekler uygulayın.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Değişken Tanımlama (Cebir)</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>"Algebra Translation" [<a href=
+                "../../resources/source-files/Algebra.rkt">DrRacket</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=s2s0tkTgeF">
+                WeScheme</a>] öğrencilerin makinelerine önceden yüklenmiş ve monitörleri kapalı</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name=
+            "lesson_DefiningVariables(Algebra)4584"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Değişken Tanımlama (Cebir)<span class="time">(Süre 10 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bizim programlama dilimizde, değişkenler aşağıdaki gibi tanımlanırlar:
+                    <div class="banner">
+                      &nbsp;
+                      <textarea>
+(define x 4)
+(define y (+ 4 9))
+(define z (* x 2))
+</textarea>
+                    </div>Değerler sabit (ilk örnekteki gibi), bir ifadenin sonuçu (ikinci örnek), hatta başka bir değişken cinsinden (üçüncü örnek) olabilirler. Aynı şeyi cebirde de yapabiliriz:
+
+                    <div class="banner">
+                      <script type="math/tex">
+x = 4
+                      </script> <script type="math/tex">
+y = 4+9
+                      </script> <script type="math/tex">
+z = x \times 2
+                      </script>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki üç cebirsel tanımı, Racket tanımlarına çevirin:</p>
+
+                      <ul>
+                        <li>
+                          <p><script type="math/tex">
+dollars = 16.50
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+feet = 2 \times 3
+                          </script></p>
+                        </li>
+
+                        <li>
+                          <p><script type="math/tex">
+inches = feet \times 12
+                          </script></p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu aktivite için, bütün Racket ifadelerini tahtanın bir tarafına yazın ve diğer tarafınaysa cebirsel ifadeleri ekleyin. Mümkün olduğunca birbirlerine yakın olmalarını sağlayın, böylece iki dil arasındaki bağlantıyı güçlendirebilirsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitaplarınızdan <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">sayfa
+                    38</a> açın. Bir grup değer tanımlaması yazılmış kod göreceksiniz. İki dakika tutup, onları matematiksel tanımlamalara çevirin.</p>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>[<a href=
+                  "https://www.youtube.com/watch?v=xRUoQO1AdVs">Video</a>]</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Oyun Resimleri</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler, kendi video oyunları içindeki değerleri tanımlar</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler video oyun projelerini isimlendirecek</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler, şu tanımlamaları değiştirecekler:
+                <tt>BAŞLIK, BAŞLIK-RENGİ, ARKAPLAN, OYUNCU,
+                HEDEF</tt> ve <tt>TEHLİKE</tt></p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">alıştırma kitabı</a>
+                klasörlenmiş ve isimleri kapakta yazılı</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                <p>Öğrenci oyun dosyalarının yaratılması. [Öğretmen kılavuzuna bakınız, bu ders için gerekli <a href=
+                "http://www.BootstrapWorld.org/materials/Spring2014/courses/bs1/resources/teachers/">korumalı malzemeler</a> ]</p>
+              </li>
+
+              <li>
+                <p>Öğrencilerin makinelerinde: Öğrenci Oyun Dosyaları ("Game" taslağı üzerinden üretilmiş
+                <a href=
+                "../../resources/source-files.zip">source-files.zip</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=RHBJYscAWj">
+                WeScheme</a>])</p>
+              </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_GameImages4585" id=
+            "lesson_GameImages4585"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">Oyun Resimleri<span class="time">(Süre 30 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Video oyunu dosyasını açın (<a href="../../resources/source-files.zip">source-files.zip</a> içindeki Game.rkt veya <a href="http://www.wescheme.org/openEditor?publicId=RHBJYscAWj&amp;" target="embedded">online taslağı</a> kullanarak kodu görebilisiniz). "Run" tuşuna tıklayın (resimlerin yüklenmesi için birkaç saniye beklemeniz gerekebilir!). Video oyununun çalıştığı pencere görüntülencek ama hiç birşeyin hareket etmedğini fark ediceksiiz - "yukarı" veya "aşağı" ok tuşlarına bassanız bile! Şimdilik "kapatma" butonuna tıklayıp, koda geri dönelim.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Bu dosya sizin tanımlayacağınız, oyun karakterlerinin nasıl gözükeceği, hareket edipve etkileşime geçeceğini gösteren bir tanımlamalar listesi içerir. Aşağıya doğru kaydırdıkca, sizin için doldurulmuş bir dizi sahte tanımlamalar göreceksiniz. Kendi oyununuz için yapacağınız tanımlamalar tamamen <span style="font-style: italic">size</span> bağlı!
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Ekranın en aşağısına kadar kaydırın, tanımlanız gereken her şeyi tek tek okuyun. En sona geldip tanımlanın parçası olarak kullanılan <tt>(make_game ...)</tt> 'ı gördüğünüzde durun. <tt>make_game</tt> e verilen değerler hakkında ne fark ediyorsunuz?</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <tt>make_game</tt> sizin yaptığınız bütün tanımlamaları alarak onları birleştiren ve çalışan bir oyuna çeviren, bizim tarafımızdan verilmiş olan bir fonksiyon. <tt>make_game</tt> perdeler arkasında, bütün tanımlamalarınızı, her saniyenin onda birinde tekrar çağrılan dev bir fonskyiona ekler ve tanımlamalarınızı kullanarak o anda neler olacağına karar verir.
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerinize Bootstrap 2'nin onlara bu fonksiyonun nasıl yazılacağını ve onu değiştirerek daha gelişmiş oyunlar (çoklu oyuncu, labirent, v.s.) yaratmayı göstereceğini hatırlatabilirsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tanımlamalar Penceresinde, bu programın birtakım değerler tanımladığını göreceksiniz, örneğin; <tt>BAŞLIK</tt> bir kelime türünden <tt>"My Game"</tt> olarak tanımlanmıştır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Eğer Etkileşim penceresine <tt>BAŞLIK</tt> yazarsanız, ne sonucu vereceğini düşünüyorsunuz?</p>
+                        </li>
+
+                        <li>
+                          <p>Gördüğünüz diğer tanımlamalar neler?</p>
+                        </li>
+
+                        <li>
+                          <p>Değerleri nelerdir?</p>
+                        </li>
+
+                        <li>
+                          <p>Türleri nelerdir?</p>
+                        </li>
+
+                        <li>
+                          <p><tt>ARKAPLAN</tt> dan başlayarak, her değeri Etkileşim penceresinde hesaplatmayı deneyin.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu aktivitenin amacını öğrencilerin kodu <span style=
+                  "font-style: italic">okurmasını</span> ve <span style=
+                  "font-style: italic">konuşması hakkında</span> kendilerine güvenmelerini sağlamaktır. Öğrencilerin gerek kendi aralarında gerekse eğitmen ile sesli bir şekilde konuştuklarından emin olun.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Eğer burada verilen tanımlamaları beğenmediyseniz, onları değiştirebilirsiniz! Ekranın üst tarafında gözükenleri <tt>BAŞLIK</tt> ve <tt>BAŞLIK-RENGİ</tt> 'ni kullanarak değiştirebilirsin ve istersen oyun resimleri tanımlamalarını da değiştirebilirsin (Yeni resim dosyalarını araç çubuğundaki "Images" butonuna basıp, karşınıza çıkan ekrandan "upload" u seçerek yükleyebilirsiniz).</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Resimler PNG veya GIF formatında olmalıdırlar. Arkaplan resimleri 640x480 ve karakter resimleri hiçbir boyuttunda 200 px den büyük olmamalıdır. Karakter resimlerinin şeffaf arkaplanı olduğundan emin olun! TAVSİYE: karakterler için canlandırılmış GIF dosyaları kullanılması sadece oyunun güzel görünmesini değil, aynı zamanda genelde şeffaf arkaplanları oldukları için kullanılması daha iyi olabilir.Oyun dosya ve resimlerini ayarlmak hakkında daha fazla talimatı <a href=
+                  "http://www.BootstrapWorld.org/materials/Spring2014/courses/bs1/resources/teachers/">Öğretmenler Kılavuzu</a>'nda.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tanımlamalarındaki resimlerden birinin daha büyük veya küçük olmasını isterseniz, <tt>scale</tt> fonksiyonunu kullanın:  &nbsp;
+                    <textarea>
+; scale : Sayı Resim -&gt; Resim
+</textarea> Bu fonksiyon <tt>Sayı</tt> 'ı esas alarak <tt>Resim</tt> 'i yeniden boyutlandırır. Örneğin, <tt>(scale 10 (triangle 5 "solid" "green"))</tt> küçük üçgeni on kat daha büyük hale getirir ya da <tt>(scale 0.5 (rectangle 200 100 "outline" "purple"))</tt> dikdörtgeni yarı boyutuna küçültür.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Resimleri <tt>scale</tt> kullanarak büyültüp, küçültme üzerine pratik yapın. Daha fazla fonksiyonla deney yapmak isterseniz aşağıdaki sözleşmeleri kullanın:  &nbsp;
+                      <textarea>
+; flip-vertical : Resim -&gt; Resim
+; flip-horizontal : Resim -&gt; Resim
+; rotate : Sayı Resim -&gt; Resim
+</textarea> <a href=
+"http://www.wescheme.org/openEditor?interactionsText=(scale%203%20(star%2050%20&quot;solid&quot;%20&quot;red&quot;))&amp;"
+                      target="embedded">Bu örnek ile oynamayı deneyin</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Eğer öğrenciler bu bölümde zorlanırsalar, Yürütme Çemberi ve sözleşmeler bölümüne geri dönebilirsiniz. Örneğin; <tt>rotate</tt> için ilk önce bir çember çizdirin ve sonrasında Sözleşme kullanarak girdilerinin neler olduklarını bulmalarını sağlayın. İkinci girdiye geldiklerinde (<tt>image</tt>) hangi şekli döndürmek istediklerini sorun. Cevapları ne olursa olsun, sözleşme sayfalarına bakıp Yürütme Çemberi <span style="font-style: italic">içine</span> çizmelerini isteyin. Bu iş doğru bir şekilde bittiğinde, onu koda çevirmeleri sağlayın. Kendilerine güvenleri geldiklerinde, onları başka bir fonksiyon daha kullanmaya teşvik edin, belki döndürülmüş bir şekli dikine çevirme.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bu programdaki bir başka tanımlama ise <tt>SCREENSHOT</tt>, Bu ifade <tt>put-image</tt> fonksiyonunu kullanarak, resimleri üst üste koyar, koordinatları kullanarak her birinin nerelerde olması gerektiğine karar verir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Video oyunları için yapılan reklamlarda, genellikle değişmeyen oyun içi aksiyon resimleri (<span style="font-style: italic">screenshots [ekran görüntüsü]</span> adında) kullanılır, böylece insanlar oynarken nasıl gözüktüceğini bilirler. Video oyununuzun resmini almak için,<tt>SCREENSHOT</tt> tanımlamanız içindeki koordinatları değiştirin (Hatırlatma: ekran 640 pixel genişliğinde ve 480 pixel uzunluğunda!).</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu koordinatları hatırlatmak için oldukça iyi bir fırsat, özellikle de pratik yapmaya ihtiyacı olan öğrenciler için.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bir programlama dilinde, değerleri tanımlayabiliyor olmak yazılımcıların kodlarını sadeleştirmesini ve hem daha okunabilir hem de kolay bakımı yapılabilir hale getiren, oldukca güçlü bir araçtır.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Fonksiyon Tanımlama</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <p>Öğrenciler Tasarım Reçetesi'nin tanını alırlar ancak, ilk amaç fonksiyon tanımlama sözdiziminin gösterilmesidir.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, verilen basit bir kelime problemi üzerine, oldukça basit fonksiyonlar tanımlayabilecekler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler, Tasarım Reçetesi kullanarak en az iki fonksiyon tanımlarlar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenci <a href="../../resources/workbook/StudentWorkbook.pdf">alıştırma kitabı</a>
+                klasörlenmiş ve isimleri kapakta yazılı</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_DefiningFunctions4586" id=
+            "lesson_DefiningFunctions4586"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Fonksiyon Tanımlama <span class=
+            "time">(Süre 20 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Programın içersinde birçok benzer ifadeler varken, <span class="vocab">değerleri</span> tanımlamak oldukça yardımcı olur. Bazen program, içinde özdeş olmasalarda <span style="font-style: italic"> oldukça çok benzeyen</span> ifadelere sahiptir. Elli tane içi dolu yeşil üçgene sahip olan bir program, <span style="font-style: italic">hepsi aynı boyutta olduğu sürece</span> tek bir değer ile sadeleştirilebilir. Ancak, program farklı boyutlarda elli tane yeşil üçgene sahipse ne olacak?</p>
+                </div>
+
+                <div class="teacher">
+                  <p>[<a href=
+                  "https://www.youtube.com/watch?v=ZWdLNtPu6PQ">Video</a>]</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Daha önceden kullanmış olduğunuz bir resim fonksiyonunu düşünelim, mesela <tt>star</tt> ve <tt>circle</tt>. Girdileri alıp, resim üretirler. Benzer şekilde, biz de boyutunu girdi olarak alan, bize yeşil üçgen üreten bir fonksiyon istiyoruz. Programlama dili bize bu fonskiyonu önceden vermiyor ama kendi fonksiyonunu tanımlamanı sağlıyor. Girdi olarak bir sayı alan ve bize istediğimiz boyutta yeşil üçgen üreten, kendi fonksiyonumuzu tanımlamak istiyoruz (isim olarak ona <tt>gt</tt> verelim).</p>
+
+                  <ul>
+                    <li>
+                      <p><tt>(gt 10)</tt> bu kodun kısayolu olurdu:
+                      <tt>(triangle 10 "solid" "green")</tt></p>
+                    </li>
+
+                    <li>
+                      <p><tt>(gt 20)</tt> bu kodun kısayolu olurdu:
+                      <tt>(triangle 20 "solid" "green")</tt></p>
+                    </li>
+
+                    <li>
+                      <p><tt>(gt 1980)</tt> bu kodun kısayolu olurdu:
+                      <tt>(triangle 1980 "solid" "green")</tt></p>
+                    </li>
+
+                    <li>
+                      <p><tt>(gt 98)</tt> bu kodun kısayolu olurdu:
+                      <tt>(triangle 98 "solid" "green")</tt></p>
+                    </li>
+
+                    <li>
+                      <p>ve benzeri...</p>
+                    </li>
+                  </ul>
+
+                  <p>Fonksiyon tanımlamak için ihtiyacımız olan sözlü soru şu şekilde ifade edilebilir:</p>
+                  <div class="banner">
+                    <tt>gt</tt> isminde, bir sayı alan ve istenilen büyüklükte içi dolu yeşil üçgen üreten bir fonksiyon tanımla.
+                  </div>Şanslıyız ki, belirli adımları takip ederek problemi çözecek fonksşyonu tanımlayabiliriz. <tt>gt</tt> tanımlamıza yardım edicek adımların üzerinde çalışmaya başlayalım.
+                </div>
+
+                <div class="teacher">
+                  <p>Bunu daha çok elle tutulur yapmak için, bir öğrencinizi gt olarak "hareket" etmesini isteyin. Fonksiyonu çagırmak için başka bir öğrenci "gt yirmi!" diye seslensin (hem fonksiyonun ismi hemde girdiyi söylediklerinden emin olun). gt ise cevap olarak  çalıştığının ve girdiyi aldığının göstergesi olarak "triangle 20 solid green" versin.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="banner">
+                    Adım 1: Sözleşmenin Yazılması
+                  </div>Fonksiyon tanımlamanın ilk adımı onun <span class="vocab">Sözleşmesi</span>'nin hazırlanmasıdır. Sözleşme bir fonksiyon hakkında üç esas bilgiyi özetler:
+
+                  <ul>
+                    <li>
+                      <p>Fonksiyon <span class="vocab">İsmi</span>: bu durumda, daha önceden verilen <tt>gt</tt></p>
+                    </li>
+
+                    <li>
+                      <p>Fonksiyonun <span class="vocab">Girdisi</span>, hangi türde bilgi beklediğini gösterir. Bu durumda, sadece bir Sayı (boyutu temsil eden). </p>
+                    </li>
+
+                    <li>
+                      <p>Fonksiyonun <span class="vocab">Çıktısı</span>, onun ne çeşit veri ürettiğini gösterir: bu durumda içi dolu yeşil bir üçgen ürettiği için, çıktımız Resim'dir.</p>
+                    </li>
+                  </ul>
+
+                  <div class="SIntrapara">
+                    <tt>gt</tt> için kod olarak yazılmış Sözleşme işte burada! Satır noktalı virgül ile başlıyor, ardından isim ile devam ediyor, bir virgül, Girdi, ok işareti ve sonrasında Çıktı: &nbsp;
+                    <textarea>
+; gt : Sayı -&gt; Resim
+</textarea> Yazılı problemler fonksiyonun İsmi, Girdisi ve çıktısı hakkında ipuçları verirler. Problemi dikkatlice okudpundan emin ol! Bazı problemler birden fazla veya farklı türlerde Girdi alabilen fonksiyonları tarif edebilirler.
+
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitaplarınızdan <a href="../../resources/workbook/StudentWorkbook.pdf">Sayfa 9</a>'da "hızlı fonksiyonlar" yazan bölümü açın ve <tt>gt</tt> fonksiyonu için Sözleşme yazın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilere farklı yazılı problemler vermek ve onların herbirisi için Sözleşmelerini yazmalarını istemek iyi bir fikir olabilir.<br>
+                  <br>
+                  Sözleşmeler Racket'ta <span style="font-style: italic">yorum</span> olarak yazılırlar: Racket ne zaman noktalı virgülle başlayan bir satır görse geri kalanını işleme sokmaz. Bu demek oluyor ki Racket size asla hatalı biçimlendirilmiş yorum hatası vermicektir. Ayrıca bu, öğrencilerinizin Sözleşmelerini daha yakından incelemeniz gerektiği anlamına geliyor çünkü, bilgisayar onları (biçim veya içerik) kontrol etmicektir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="banner">
+                      Adım 2: Örnekler Vermek
+                    </div>Fonksiyonu yazmaya başlamadan önce birkaç örneğini düşünmek her zaman iyi bir fikirdir. Örnekler, kısayol fonksiyonun ne üretemeye çalışacakalrını gösterirler. Bu programlama dilinde önceden tanımlı <tt>EXAMPLE</tt> adında bize fonksiyonun ne üreteceğini göstermemizde yardımcı olan bir araç bulanmaktadır. Sözleşmenin hemen altında yazılmış olan iki örneğe bakabilirsiniz: &nbsp;
+                    <textarea>
+; gt : Sayı -&gt; Resim
+(EXAMPLE (gt   50) (triangle   50 "solid" "green"))
+(EXAMPLE (gt  100) (triangle  100 "solid" "green"))
+</textarea> Bu örnekler bilgisayara, <tt>(gt 50)</tt> yazmanın <tt>(triangle 50 "solid" "green")</tt> ile aynı sonucu üretmesi gerektiğini söylüyorlar. Aynı şekilde <tt>(gt 100)</tt> da <tt>(triangle 100 "solid" "green")</tt> koduna eşittir. Problemimiz bize 'gt' ismini kullanmamızı ve içi dolu yeşil üçgen üretmemizi <span style="font-style: italic">şart</span> koşuyor.
+                  </div>
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitapınıza, kendiniz iki tane bu fonksiyonlardan yazın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p><span style="font-weight: bold">EXAMPLE'ın büyük harflerle yazılı olduğundan ve bütün örneklerin tanımalama penceresine yazılığından emin olun.</span>Birçok öğrenci bu bölüme kadar basitce şablonu takip ederek anlamdan gelecektir. Oldukça fazla soru sorduklarından emin olun ve her adımı doğruladıklarından emin olun:</p>
+
+                  <ul>
+                    <li>
+                      <p>Neden örnek gt ile başlamak zorunda? (Çünkü o, sözleşmede de belirtiğimiz gibi fonskiyonun ismi)</p>
+                    </li>
+
+                    <li>
+                      <p><tt>gt</tt>'nin sadece bir sayı istediğini nerden biliyoruz? (Çünkü o, sözleşmede de belirtiğimiz gibi fonskiyonun girdisi)</p>
+                    </li>
+
+                    <li>
+                      <p><tt>triangle</tt> kullanmamız gerektiğini nasıl biliyoruz? (Çünkü problem bize nasıl bir şekli üretmemiz gerektiğini söyledi)</p>
+                    </li>
+
+                    <li>
+                      <p>Üçgenin yeşil ve içi dolu olması gerektiğini nasıl biliyoruz? (Çünkü problem bize nasıl bir şekli üretmemiz gerektiğini söyledi)</p>
+                    </li>
+
+                    <li>
+                      <p><tt>triangle</tt> için girdilerin doğru sırasını nereden biliyoruz? (<tt>triangle</tt> 'ın Sözleşmesi bize bunu gösterdi)</p>
+                    </li>
+                  </ul>
+
+                  <p>Buradaki büyük fikirlerden birisi her adımın bir sonraki hakkında bilgi veriyor olduğudur. Öğrencilere Sözleşmenin örnekleri yazarken oldukça çok güçlü ipuçları verdiği açıkca gösterilmelidir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Programcılar genellikle her fonksiyon için birkaç örnek yazarlar. Örnekler programcı tarafından yapacağı işin hakkında düşünmek üzere kullanılan yollardan birisidir. Ayrıca, örnekler ifadelerin hangilerinin değiştirebileceğini ve ya girdiye göre nasıl <span style="font-style: italic">farklılaşa</span> bileceklerini gösterirler.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki örnekleri kağıt üstüne yazıp farklı olan bölümleri çember içine alın: &nbsp; 
+                      <textarea>
+(EXAMPLE (gt   50) (triangle   50 "solid" "green"))
+(EXAMPLE (gt  100) (triangle  100 "solid" "green"))
+</textarea></p>
+                    </div>
+                  </div>
+
+                  <p>İfadede hangi bölümlerin değiştiğini bulduktan sonra, tanımladıkları içeriklerle isimlendirilmiş bir çember ile işaretleyin. Mesela; bizim iki <tt>gt</tt> örneğimizde, çemberin boyutunu belirten alanı işaretledik. Çembere alınmış ve isimlendirilmiş ifadeniz aşağıdaki şemaya benzer şekilde olmalıdır: </p>
+
+                  <div class="banner"><img src="pict_2.png" alt=
+                  "image" width="489" height="119"></div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin neleri çembere aldığına yakından ilgi gösterin: Örneğin iki tarafındaki (sol tarafa kullanılan fonksiyon ve sağ taraftaki ifade) değerleri işaretlemelidirler; ayrıca bütün ifade boyunca aynı kavramı ve ismi kullanmalıdırlar. Çemberler değişkenlere karşılık gelmektedir, bu yüzden değişkenler örneğin hem sağ hem de sol taraftada yer almalıdırlar.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="banner">
+                    Adım 3: Fonksiyon Tanımlama
+                  </div>Sözleşmeyi, iki örneği yazıktan ve çemberleri isimlendirten sonra fonksiyonun kendisini tanımlamak oldukça basittir.
+
+                  <ul>
+                    <li>
+                      <p>EXAMPLE satırlarınızdan birinde aynı kalan herşeyi (çember içine alınmamış olan herşey) kopyalayın (kağıt üstüne veya metin düzenleyiciye)</p>
+                    </li>
+
+                    <li>
+                      <p>Her çemberin bulunduğu yere, öncesinden vermiş olduğunuz ismi yazın.</p>
+                    </li>
+
+                    <li>
+                      <p><tt>EXAMPLE</tt> 'ı <tt>define</tt> ile değiştirin.</p>
+                    </li>
+                  </ul>
+
+                  <p>&nbsp;
+                  <textarea>
+; gt : Sayı -&gt; Resim
+(EXAMPLE (gt   50) (triangle   50 "solid" "green"))
+(EXAMPLE (gt  100) (triangle  100 "solid" "green"))
+(define  (gt size) (triangle size "solid" "green"))
+</textarea></p>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu nokta öreneklerin hangi bölümlerinin <span style="font-style: italic">değişe bilir</span> olduğunu ve ne zaman <span style="font-style: italic">değişken</span> kullanılması gerektiğini göstermek için güzel bir şans olabilir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Öncelikle kağıt üstünde <tt>gt</tt> fonskiyonunu tanımlayıp, <span class="vocab">Sözleşme</span>, <span class="vocab">Örnekleri</span> yazdıktan daha sonra Tanımlamalar Penceresinde tanımlamayı yapın.</p>
+                        </li>
+
+                        <li>
+                          <p>Bilgisayarın bu tanımı okuması için "Run" tuşuna tıklayın.</p>
+                        </li>
+
+                        <li>
+                          <p>Etkileşimler Penceresinde, <tt>(gt 100)</tt> yazarak tanımladığınız fonsiyonu çağırın.</p>
+                        </li>
+
+                        <li>
+                          <p>Farklı sayılar kullanarak fonksiyonu deneyin.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <a href=
+                    "http://www.wescheme.org/openEditor?definitionsText=;%20gt%20:%20Number%20-%3E%20Image%0A(EXAMPLE%20(gt%2050)%20(triangle%2050%20&quot;solid&quot;%20&quot;green&quot;))%0A(EXAMPLE%20(gt%2095)%20(triangle%2095%20&quot;solid&quot;%20&quot;green&quot;))%0A(define%20(gt%20size)%20(triangle%20size%20&quot;solid&quot;%20&quot;green&quot;))"
+                    target="embedded">Cevabınız buna benzer gözükmeli.</a>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bu adımlar, problemlere göre fonksiyon tanımlamamıza yardımcı olan, <span class="vocab">Tasarım Reçetesi</span> olarak bilinen güçlü araçlardır.
+
+                    <div class="banner">
+                      Alıştırma: <tt>bc</tt> adında bir sayı alan ve verilen boyutta içi dolu mavi bir daire üreten fonksiyonu yazın.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitabınızda (hala <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      9.sayfa</a>), bu fonksiyon için <span class=
+                      "vocab">Sözleşme</span> yazın.</p>
+
+                      <ul>
+                        <li>
+                          <p>Fonksiyonun İsmi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Girdisi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Çıktısı nedir?</p>
+                        </li>
+                      </ul>
+
+                      <p>Yazmış olduğunuz Sözleşmeyi kullanarak, fonksiyon için iki tane <span class="vocab">Örnek</span> yazın.</p>
+
+                      <ul>
+                        <li>
+                          <p>Sözleşmenin hangi bölümü örneğin sol tarafını yazarken size yardımcı oldu?</p>
+                        </li>
+
+                        <li>
+                          <p>Sözleşmenin hangi bölümü size fonksiyonun ne türde bir girdiye ihtiyacı olduğunu söylüyor?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Çıktısı örnekleri yazmanızda nasıl yardımcı oldular?</p>
+                        </li>
+                      </ul>
+
+                      <p>Bu iki örneğe bakarak, <span style="font-style: italic">değiştirebilir</span> olan bölümleri işaretleyip, <span class="vocab">değişken ismi</span> verelim.
+                    </p>
+
+                      <ul>
+                        <li>
+                          <p>Seçtiğiniz değişken ismi <tt>gt</tt> için seçtiğiniz ile aynı mı? Eğer öyleyse neden veya neden değil?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonu tanımlamadan önce değişkenleri isimlerini seçmek neden yararlıdır?</p>
+                        </li>
+                      </ul>
+
+                      <p>Şimdi, yazmış olduğunuz örnekleri kullanarak <span class="vocab">Fonksiyon Tanımlaması</span> yapın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <pTasarım Reçetesindeki her adımı bir sonraki ile bağlamak isteyebilirsiniz. Öğrencilere <span style="font-weight: bold">Sözleşmenin</span> her bölümünü doğrulmak için sorular sorun daha sonra geriye yazılı probleme referans vererek <span style="font-weight: bold">Örnekleri</span> doğrulayın, son olarak yazılı probleme <span style="font-style: italic">ve</span> Sözleşmeye refarans vererek yapılan <span style="font-weight: bold">tanımlamanın</span> her adımını doğrulayın. Aynı değişken ismi birden çok fonksiyonda kullanılabilir, tıpkı matematikte olduğu gibi (örneğin bir çok fonksiyonun değişken ismi olarak <tt>x</tt>'ı kullanması gibi).</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Aşağıdaki problemi adım adım gözden geçirin: &nbsp;
+                  <textarea>
+; bc : Sayı -&gt; Resim
+(EXAMPLE (bc     16) (circle     16 "solid" "blue"))
+(EXAMPLE (bc    421) (circle    421 "solid" "blue"))
+(define  (bc radius) (circle radius "solid" "blue"))
+</textarea></p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="banner">
+                      Alıştırma: <tt>dot</tt> isminde, bir Renk alan ve karşılığında verilen renkte içi dolu, yarıçapı 20 olan bir daire üreten fonksiyonu yazın.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitabınızda (hala <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      9.sayfa</a>), bu fonksiyon için <span class=
+                      "vocab">Sözleşme</span> yazın.</p>
+
+                      <ul>
+                        <li>
+                          <p>Fonksiyonun İsmi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Girdisi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Çıktısı nedir?</p>
+                        </li>
+                      </ul>
+
+                      <p>Yazmış olduğunuz Sözleşmeyi kullanarak, fonksiyon için iki tane <span class="vocab">Örnek</span> yazın ve sonrasında değişkenleri çember içine alıp isimlendirin.</p>
+
+                      <ul>
+                        <li>
+                          <p>Sözleşmenin hangi bölümü örneğin sol tarafını yazarken size yardımcı oldu?</p>
+                        </li>
+
+                        <li>
+                          <p>Sözleşmenin hangi bölümü size fonksiyonun ne türde bir girdiye ihtiyacı olduğunu söylüyor?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun Çıktısı örnekleri yazmanızda nasıl yardımcı oldular?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu örneklerde değişen bölümler için verilebilecek en iyi değişken ismi nedir?</p>
+                        </li>
+                      </ul>
+
+                      <p>Şimdi, yazmış olduğunuz örnekleri kullanarak <span class="vocab">Fonksiyon Tanımlaması</span> yapın.</p>
+
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Aşağıdaki problemi adım adım gözden geçirin: &nbsp;
+                    <textarea>
+; dot : String -&gt; Image
+(EXAMPLE (dot  "red") (circle 15 "solid"  "red"))
+(EXAMPLE (dot "blue") (circle 15 "solid" "blue"))
+(define  (dot  color) (circle 15 "solid"  color))
+</textarea>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Fonksiyon Tanımlama (Cebir)</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name=
+            "lesson_DefiningFunctions(Algebra)4587"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Fonksiyon Tanımlama (Cebir) <span class="time">(Süre 20 dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Racket'da tanıtılmış bir çok fonksiyon gördün, örneğin: <tt>(define (f x) (+ x 1))</tt>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Bu fonksiyonun ismi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Kaç değişken alıyor?</p>
+                        </li>
+
+                        <li>
+                          <p>Değişken(ler)in ismi nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyon <tt>x</tt> değişkeni ile ne yapıyor?</p>
+                        </li>
+
+                        <li>
+                          <p><tt>g</tt> isminde <tt>q</tt> değişkenini alan ve onu 20 ile çarpan bir fonksiyon tanımlayın.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin fonksiyon isminin <span style="font-style: italic">f</span> ("fx" veya "f'in x'i" değil) olduğunu anladıklarından emin olun. Sözlü anlatımları, Racket sözdizimiyle tanılamaya çevirme konusunda rahat olana kadar alıştırma yapmalarını sağlayın.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bu fonksiyonları cebirsel hala çevirmek için, değerlere benzer bir işlem uygularız. İşte <tt>f</tt> fonksiyonun cebirsel sözdizimiyle yazılmış şekli:<script type=
+                    "math/tex">
+f(x) = x + 1
+                    </script>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Translate the function <tt>g</tt> into
+                      algebra, using the translation of <tt>f</tt>
+                      as a model. 
+                      <tt>f</tt> fonksiyonuna yaptığımız çeviri işlemi model alarak, <tt>g</tt> fonksiyonu da cebirsel fonksiyona çevir. Bu bittikten sonra <script type="math/tex">
+h
+                      </script>
+                      isminde, <tt>x</tt> adında bir değişken alıp, onu 2 ile bölen bir fonksiyon tanımlayın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrenciler buna benzer sözlü tanımların (Racket sözdizi kullanarak verilmemiş) fonskiyonlara çevirdiği birkaç alıştırma daha çözsünler.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitaplarınızın 
+                    on <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">38. sayfasında</a> yer alan bütün Racket fonskiyonlarını cebirsel fonksiyonara çevirin.</p>
+                    
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Kapanış</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Genel Bakış</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Bulgu Durumları</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Sonuçları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing4588" id=
+            "lesson_Closing4588"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kapanış <span class="time">(Süre 5 dakikda)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bu ünitede, değerleri isimlendirmeyi ve fonksiyonlar tanımlayı öğrendiniz. İsimlendirdiğiniz değerleri oyununuzun resim elementleri için kullanacaksınız. Fonksiyonları kullanaraksa oyun içindeki elementlerin hareket etmesi için kullanılacak. Yakında göreceğiniz gibi, fonksiyonlar oyun yapımında oldukca önemlilerdir. Bir sonraki ünitede, birşeylerin ekranda hareket etmesini sağlayan ilk fonksiyonunuzu yazmak dahil olmak üzere, onlarla biraz daha pratik yapıcaksınız.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div class="ExtraExercises">
+        <span class="BootstrapLessonTitle">Ek Alıştırmalar:</span>
+
+        <ul>
+          <li>
+            <p><a href=
+            "exercises/Defining-Functions/match-examples-functions1.html">
+            Örneklerin ve Fonksiyon Tanımlarının Eşlendirilmesi</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Defining-Functions/create-contracts-examples1.html">
+            Örneklerden Sözleşmeler Yaratılması</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/4.0/"><img src="pict_3.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/4.0/">Creative
+        Commons 4.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>

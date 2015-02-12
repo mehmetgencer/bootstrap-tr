@@ -1,0 +1,1320 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta name="generator" content="Bluefish 2.2.4" >
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Unit 8: Collision Detection</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+  <script type="text/javascript" src="scribble-common.js">
+</script>
+  <script type="text/javascript" src="codemirror.js">
+</script>
+  <script type="text/javascript" src="runmode.js">
+</script>
+  <script type="text/javascript" src="scheme2.js">
+</script>
+  <script type="text/javascript" src="bootstraplesson.js">
+</script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
+</script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+</head>
+
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
+
+              <td></td>
+
+              <td><a href="" class="tocviewselflink" data-pltdoc=
+              "x">Unit 8: <span class="mywbr">&nbsp;</span>
+              Çarpışma Tespiti</a></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td><a href="#%28part._.Unite_8__.Çarpışma_.Tespiti%29"
+          class="tocsubseclink" data-pltdoc="x">Unit 8:
+          <span class="mywbr">&nbsp;</span> Çarpışma
+          Tespiti</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="maincolumn">
+    <div class="main">
+      <a name="(part._.Unite_8__.Çarpışma_.Tespiti)"></a>
+
+      <p><script type="text/javascript" src=
+      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+</script><script type="text/javascript" src="easyXDM.min.js">
+</script><script type="text/javascript" src="json2.min.js">
+</script><script type="text/javascript" src="bootstrap-helpers.js">
+</script></p>
+
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum">Unite 8</span>Çarpışma Tespiti</span>
+      </div>
+
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Uniteye Genel Bakış</span>
+
+        <p>Öğrenciler Pisagor Teoremini türetir, tartışır ve kanıtlar ve ardından 
+          çarpışmalarıtespit etmek için bu teoremi kullanırlar.(Boolean'larla birlikte)</p>
+      </div>
+
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed"></iframe>
+
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Agenda</p>
+
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">20
+                Dakika</span><a href=
+                "#lesson_1DDistance2161"><span class=
+                "BSLessonName">1 Boyutta Uzaklık</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">35
+                Dakika</span><a href=
+                "#lesson_2DDistance2162"><span class=
+                "BSLessonName">2 Boyutta Uzaklık</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">25
+                Dakika</span><a href=
+                "#lesson_collide%3F2163"><span class=
+                "BSLessonName">Çarpışma?</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5
+                Dakika</span><a href=
+                "#lesson_Closing2164"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Çıktıları:</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler uzaklık fonksiyonunu kendi oyun 
+                     dosyalarında yazarlar.</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler oyuncunun ve tehlikenin çarpışmasını
+                      tespit etmek için <tt>collide?</tt> fonksiyonu eklerler.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standartlara Uygunluk:</span>
+
+            <p>Standart müfredata uygunluk değerlendirilmesi henüz yapılmamıştır.</p>
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">6.NS.5-8</span>: Öğrenciler işlemleri negatif sayılarla 
+                         gerçekleştirir,sayı doğrusu ve koordinat düzleminde,sayı dizileri ve
+                    mutlak değerlerinde çalışırlar ve gerçek hayattaki problemleri rasyonel 
+                      sayılarla çözerler.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Aynı birinci veya ikinci koordinatlar arasındaki 
+                         noktaların uzaklığının hesaplanması.</p> 
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">8.F.1-3</span>:Öğrenci fonksiyonları tanımlar,değerlendirir
+                                          ve karşılaştırır.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Her bir girdiye kesinlikle bir çıktı belirten bir fonksiyonun kural olarak tanımı.</p> 
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>Farklı şekillerde tanımlanan iki fonksiyonun özelliklerinin karşılaştırılması 
+                     (alcebrik,grafiksel,tablolarda rakamsal veya sözlü tanım olarak)</p>
+                    </li> 
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">8.G.6-8</span>: Öğrenci gerçek dünya ve matematik problemlerini 
+                             çözmek için Pisagor Teoremini kullanır.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Pisagor Teoreminin bir kanıtının açıklanması
+                                          ve bunun sağlamasının yapılması.</p>  
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>Pisagor Teoreminin  uygulanması bir dik üçgende bilinmeyen kenarın gerçek
+                            hayatta ve matematikte iki ve üç boyutta bulunmasını sağlar. </p> 
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p> Pisagor Teoreminin uygulanması bir koordinat sisteminde
+                                iki nokta arası uzaklığın bulunması sağlar. </p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: Öğrenci kaynaktaki sorunları çözmek 
+                                         için ifadelerin yapısını yorumlar.</p> 
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Bir ifadenin yapisinin manipule edilmesi. Ornegin, karelerin farki yerine x4_y4 yazmak.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.1-3</span>:Öğrenciler fonksiyon formülünü fonksiyonların
+                        girenler kümesi(domain) ve çıkanlar kümesi(range) ,değerlendirmek ve yorumlamak için kullanır.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Bir fonksiyonu girenler(domain) ve çıkanlar(range) kümesine göre tanımlamak.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.4-6</span>: Uygulamalarda ortaya çıkan fonksiyonların davranışlarını 
+                                           kaynağa göre yorumlar.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Bir fonksiyonun girdiler kümesinin çizimine olan ilişkisi ve
+                                 uygun olduğunda da tanımladığı nicelik ilişkisine olan ilişkisi.</p> 
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.3</span>: Çeşitli test durumları verildiğinde, 
+                                        öğrenci fonksiyonu tanımlayabilir.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Örnekler ve değişkenler verilir ve 
+                                       fonksiyon tanımlanır.</p> 
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.3</span>: Öğrenci programlma dilinin cümle 
+                            yapısını değerleri ve fonksiyonları tanımlamak için kullanabilir.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>Fonksiyonları tanımlamak ve kullanmak.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-PL.4</span>: Öğrenci koşullu programlamanın 
+                                                          cümle yapısına aşinadır.</p> 
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p> Fonksiyonları tanımlayıp kullandıktan
+                          sonra koşullu programlamayı dahil et.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div><span class="BootstrapHeader">Length: 85
+          minutes</span>
+
+          <div class="" id="Sözlükçe">
+            <span class="BootstrapHeader">Sözlükçe:</span>
+
+            <ul>
+              <li>
+                <p><span class="vocab">hipotenüs</span>: dik üçgende 90 derecelik
+                açının karşısındaki kenara denir.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Malzemeler">
+            <span class="BootstrapHeader">Malzemeler:</span>
+
+            <ul>
+              <li>
+                <p>Bilgisayarlar w/ DrRacket veya WeScheme</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">Çalışma Kitabı</a></p>
+              </li>
+
+              <li>
+                <p>Öğrenciler için kurşun veya tükenmez 
+                           kalemler, öğretmenler için yeni tahta kalemleri.</p>
+              </li>
+
+              <li>
+                <p>Sınıf afişleri (Kurallar Listesi, temel beceriler,
+                ders takvimi)</p>
+              </li>
+
+              <li>
+                <p>Dil Tablosu (alta bakınız)</p>
+              </li>
+
+              <li>
+                <p>Bütün öğrencilerin bilgisayarlarına oyunlarının taslakları 
+                    öğrencilerin resim dosyalarıyla birlikte bağlantılı olarak yüklenmiş olmalıdır.</p> 
+              </li>
+
+              <li>
+                <p>Pisagor Teoreminin parçalarını [<a href=
+                "../../resources/images/pythag1.png">1</a>,
+                <a href="../../resources/images/pythag2.png">2</a>]
+                her grup başına 1 düşecek şekilde bölünüz.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Hazırlık">
+            <span class="BootstrapHeader">Hazlırlık:</span>
+
+            <ul>
+              <li>
+                <p>TERCİHLİ: <a href=
+                "https://docs.google.com/document/d/1Vkaz30B8AAaze6fMiFJypFb1bOIeH0RzkeaBLCCPf9E/edit?usp=sharing">
+                Warmup Activity Sheet</a> dağıtın.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Türler</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Rakam</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr sqrt expt</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>String</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>string-append string-length</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Resim</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>rectangle circle triangle ellipse star
+                  text scale rotate put-image</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Boolean</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>= &gt; &lt; string=? and or</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Öğretmenin notlarını göster"
+            onclick="toggleTeacherNotes(this);"><br>
+            <input type="button" value="Grup tartışması" onclick=
+            "showGroup()">
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">1 Boyutta Uzaklık</span>
+
+        <div class="content">
+          <div class="giriş">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Giriş</span></p>
+
+            <p>Ogrenciler cakisma tespitinin matematiksel davranışı hakkinda mantik yuruturler</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler 1. boyutta objeler arasındaki uzaklığı hesaplamayı öğrenirler. </p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler sayı doğrusunu nasıl 1. Boyutta uzaklık hesaplamak için kullandığını açıklayabiliyor olacak.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler nasıl <tt>line-length</tt> fonksiyonunu şartlı kullandığını açıklayabiliyor olacak.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Bilgisayarlar w/ DrRacket veya WeScheme</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler için kurşun veya tükenmez 
+                           kalemler, öğretmenler için yeni tahta kalemleri.</p>
+                </li>
+
+                <li>
+                  <p>Sınıf afişleri (Kurallar Listesi, temel beceriler,
+                ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu (alta bakınız)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_1DDistance2161"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">1D
+            Uzaklık <span class="time">(Süre 20 dakika)
+             </span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Boşlukta hareket eden ve her birinin kendi(x,y) koordinatları
+                   iki objemiz olduğunu farzedelim. Bunların kenarları ne zaman üst
+                  üste gelmeye başlar?Eğer bunların koordinatları aynıysa (x1=x2, y1=y2) 
+                  bunlar kesinlikle üst üste gelir, ama ya eğer bunların koordinatları
+                  küçük uzaklıklarla ayrılmışsa? Peki bunların kenarları değmeden ne 
+                   kadar küçük bir uzaklık gerekiyor?
+                  </p>
+                </div>
+
+                <div class="teacher">
+                  <p>Görsel araçlar burda anahtar öğeler:bu diagramın panoda olduğuna emin olun</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_2.png" alt="image" width="186"
+                    height="148">1. Boyutta, iki objenin üst üste geldiğini hesaplamak kolaydır.Bu örnekte,
+                    kırmızı çemberin yarıçapı 1,mavi çemberin yarıçapı 1.5 tir. Çemberler arası uzaklık <span style=
+                    "font-style: italic">between their
+                    centers</span> is <span style=
+                    "font-style: italic">lçemberlerin yarıçapları toplamından</span> (<script type="math/tex">
+1 + 1.5 = 2.5
+                    </script>) küçük olursa çemberler üst üste gelir. 
+                    Bu çemberlerin arasındaki mesafe nasıl hesaplandı? Bu örnekte
+                    bunların merkezleri 3 ayrı parçadır çünkü,
+                    <script type="math/tex">
+4 - 1 = 3
+                    </script>.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Eğer çemberlerin yerleri değiştirilirse aralarındaki uzaklık değişir mi? Neden evet ya da neden hayır?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Birkaç örnek üzerinde çalışıp sayı duğrusunu kullanarak öğrencilere 
+                  nasıl iki nokta arasındaki uzaklığı hesaplayacaklarını sorduk.
+                  Öğrenciler bu işi de iyi yapabildiler:bir sayı doğrusu çiz, iki öğrenci bu sayı 
+                  doğrusunun farklı noktalarında durdular,kendi araçları ve kesicileriyle objelere 
+                  farklı boyutlar verdiler.Öğrencileri aralarındaki mesafeyi hesaplayabilmek için
+                 birbirine değinceye kadar sayı doğrusu üzerinde hareket ettir
+                  Videomuzun ilk saniyelerinde <a href=
+                  "http://www.youtube.com/watch?v=leP3tQ_GZL8&amp;feature=player_embedded">
+                  Bootstrap video</a> bu alıştırmanın nasıl olduğu gösteriliyor.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Senin oyun dosyaların iki nokta arasındaki farkı sayı doğrusunda gösteren <tt>line-length</tt> 
+                    fonksiyonunu sağlar.
+                    Spesifik olarak <tt>line-length</tt> fonksiyonu 
+                     2 sayıyı girdi olarak alır ve aralarındaki mesafeyi hesaplar.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki örneklerin sonucunun
+                      <tt>line-length</tt> fonksiyonuna göre ne olmasını beklersiniz.</p>
+
+                      <ul>
+                        <li>
+                          <p><tt>(line-length 2 5)</tt></p>
+                        </li>
+
+                        <li>
+                          <p><tt>(line-length 5 2)</tt></p>
+                        </li>
+                      </ul>
+
+                      <p>Sizce ilk girdinin küçük veya büyük olması farketmeksizin aynı sonucu elde edebilir miyiz?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Eğer vaktiniz olsa ve kodunuzu örneklerle daha sağlamlaştırmak isteseniz,
+                <tt>(EXAMPLE (line-length 2 5) ___)</tt> örneğinde olduğu gibi
+                 boşlukları dolduran öğrencileriniz olabilir, çemberler arası farkı bulan,
+                 ilk rakamın büyük veya küçük olduğunda fark olup olamayacağını hesaplayan.
+                 Bundan dolayı <tt>line-length</tt> fonksiyonunu kodunun bir şarta ihtiyacı olduğu önerilir.
+                 Bu durumda ilk şartımız sonucun mutlak değerini almamak olur. (<tt>abs</tt> fonksiyonu 
+		 bunu yapar does this); Eğer mutlak değeri bilen eski öğrencilerle çalışıyorsanız 
+		  onlara gösterebilirsiniz. <tt>cond</tt> kullanarak, ve ayrıca örnekteki yapının nasıl yükseltiğini vurgulayarak.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Oyunundaki <tt>line-length</tt> ve
+                    <tt>collide?</tt> fonksiyonlarını listele.
+                    Ayrıca <tt>line-length</tt> fonksiyonunda
+                    farkı bulurken büyük olandan küçük olanı 
+                    çıkarma şartın olduğuna dikkat et. 
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><tt>line-length</tt> fonksiyonunun neden <tt>cond</tt>?
+                     fonksiyonuna ihtiyacı olduğunu açıklayabilir misin? Kodda dikkat edilmesi 
+                     gereken bu iki şart nelerdir?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu iki şart:</p>
+
+                  <ul>
+                    <li>
+                      <p>A <span style="font-style: italic">küçüktür
+                      </span> B</p>
+                    </li>
+
+                    <li>
+                      <p>B  <span style="font-style: italic">küçük
+                      veya eşittir</span> A</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_3.png" alt="image" width="150"
+                  height="172">Ne yazık ki, <tt>line-length</tt>
+                  fonksiyonu sadece 1 boyutta iki nokta arasındaki (x,y) uzaklığı hesaplayabilir.
+                  Peki 2 boyutlu bir düzlemde hareket eden iki obje arasındaki uzaklık nasıl hesaplanabilir?
+                  (Oyun içerisindeki objelerden)?
+                  <tt>line-length</tt>  fonksiyonu gösterilen grafikteki dikey ve yatay doğruları
+		  x-koordinatları ve y-koordinatları arasındaki uzaklığı kullanarak hesaplayabilir.
+                  Ancak,bu bize bu iki merkez arasındaki uzaklığı söylemez.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_4.png" alt="image" width="200"
+                  height="200">Bir objenin merkezinden diğer objenin merkezine çizilen doğru
+                  kenarları A, B ve C olan bir dik üçgen yaratır.A ve B yatay ve dikey uzaklıklar olup C
+		ile birlikte iki koordinat arasındaki uzaklığı oluşturur. <tt>line-length</tt> fonksiyonu
+		A ve B yi hesaplamak için kullanılabilir fakat C yi nasıl hesaplayacağız?</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilerin oyun bütün oyun dosyaları
+                  <tt>*distances-color*</tt> denilen boş string kümelerine sahiptir.<tt>""</tt>. Bunu değiştirdiğimizde
+             	 örneğin "yellow" veya "red", oyun her karakter arasına dik üçgenler çizer ve aralarındaki 
+ 	          mesafeleri renkle doldurur.Bunu kendi oyununuzu kullanarak kanıtlayabilirsiniz ve bununla birlikte
+                 bunu takip eden öğrencilere sahip olabilirsiniz.
+                 İpucu:
+                  Dik üçgenleri olabildiğince kolay görmeniz için, arkaplanınız basit olsun.(siyah kare ve 
+                  yavaş inen animasyon fonksiyonlarıyla)</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bir dik üçgende, 90-derecelik açının
+		karşısındaki kenara <span class=
+                  "vocab">hipotenüs</span> denir. Çarpışma Tespitini 
+ 		  düşündüğümüzde zaman eğer hipotenüs <span style=
+                  "font-style: italic">objelerin yarıçapları toplamından küçük</span>
+                  ise objeler çarpışır.
+                   Hipotenüsün uzunluğunu bilmek çarpışma olup olmayacağına karar vermek açısından önemlidir.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">2D Uzaklık</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Giriş</span></p>
+
+            <p> Öğrenciler kağıttaki şekilleri kullanarak Pisagor Teoremini ve Çarpışma Tespitinin 
+matematiksel davranışını araştırırlar.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler 2. Boyutta uzaklığın dik üçgenin hipotenüsüne denk geldiğini öğrenirler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler 2. Boyutta objeler arası uzaklığı nasıl hesaplayacaklarını öğrenirler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler 2. Boyutta uzaklık hesaplamanın 1. Boyutta uzaklık
+		hesaplamaktan farklı olduğunu anlarlar.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler iki koordinat arası uzaklığı hesaplayabilmek için
+			dik üçgen çizebilecekler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler geometri kullanmanın hesaplamayı yapabilmek için 
+		kullanışlı bir araç olduğunu anlayacaklar.</p>
+                </li>
+
+                <li>
+                  <p>Bazı öğrenciler geometri kullanarak Pisagor Teoremini türetebilecekler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler Pisagor Teoremini ifade edebilecekler.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler <tt>distance</tt> fonksiyonunu kullanarak Pisagor Teoremini koda çevirebilecekler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler kendi oyun dosyaları için uzaklık fonsksiyonu yazarlar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+              <ul>
+                <li>
+                  <p>Bilgisayarlar w/ DrRacket veya WeScheme</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Çalışma Kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Bütün öğrencilerin bilgisayarlarına oyunlarının taslakları 
+                    öğrencilerin resim dosyalarıyla birlikte bağlantılı olarak yüklenmiş olmalıdır.</p>
+                </li>
+
+                <li>
+                  <p>Pisagor Teoreminin parçalarını
+                  [<a href=
+                  "../../resources/images/pythag1.png">1</a>,
+                  <a href=
+                  "../../resources/images/pythag2.png">2</a>] - 1
+                  beraber çalışan öğrencilere bölmek</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler için kurşun veya tükenmez 
+                           kalemler, öğretmenler için yeni tahta kalemleri.</p>
+                </li>
+
+                <li>
+                  <p>Sınıf afişleri (Kurallar Listesi, temel beceriler,
+                ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu(Alta bakınız)</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+
+              <ul>
+                <li>
+                  <p>TERCİHLİ: <a href=
+                  "https://docs.google.com/document/d/1Vkaz30B8AAaze6fMiFJypFb1bOIeH0RzkeaBLCCPf9E/edit?usp=sharing">
+                  Warmup Activity Sheet</a>çıktısı.</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_2DDistance2162"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">2D
+            Uzaklık <span class="time">(Süre 35
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>AEski medeniyetlerde de aynı problem vardı:
+                  onlar da 2. Boyutta objeler arası uzaklığı bulmak için çabaladılar.Hadi bu problemi detaylı olarak inceleyelim: 
+                   Dik üçgendeki hipotenüsün uzunluğunu hesaplamayı nasıl ifade edebiliriz?</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Bu alıştırma küçük gruplara ayrılmış öğrencilerle çok iyi yapıldı(2-3 her grupta).
+                Pisagor Teoreminin kanıt malzemelerini [<a href=
+                  "../../resources/images/pythag1.png">1</a>,
+                  <a href=
+                  "../../resources/images/pythag2.png">2</a>] her gruba dağıtalım ve onlara hepsini inceletelim:</p>
+
+                  <ul>
+                    <li>
+                      <p>Bir büyük ve içinde bir küçük beyaz kareler.</p>
+                    </li>
+
+                    <li>
+                      <p>Aynı boyutta 4 tane gri üçgen.</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p><img src="pict_5.png" alt="image" width="213"
+                  height="193">Herhangi bir dik üçgende hipotenüsü kullanarak bir karenin her dört kenarını da çizmek mümkündür.
+		Diaramda gösterildiği gibi beyaz kare 4 aynı boyutta dik üçgen, birer kenarları A ve B olan ve karenin ortak kenarı olan
+		C yani hipotenüsleri ile çevrilmiştir.Eğer karenin alanı <script type="math/tex">
+side * side
+                  </script> ile ifade ediliyorsa o zaman beyaz karenin alanı
+                  
+                  <script type="math/tex">
+C^{2}
+                  </script> olur.</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilere gri üçgenleri kağıtlarına çizdir,diagramı eşleştir.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="Pythag_anim.gif" alt="">Gri üçgenleri hareket
+		ettirerek karemizin içine sığabilecek 2 tane dikdörtgen oluşturmak mümkündür.
+		  Üçgenlerin kapladığı bölge kayarken,küçülüp büyümemiştir.Benzer şekilde
+		beyaz boşluk iki tane küçük kareye bölünür ama toplamda geriye yine aynı boyut kalır.
+		A ve B kenarlarının uzunluğunu kullanarak iki karenin de alanları hesaplanabilir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Küçük karenin alanı nedir? Büyük karenin alanı nedir?
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Üçgenin kenar uzunluğunun karenin de bir kenar uzunluğu olabileceğini
+		açık bir şekilde gösterebilirsiniz.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="pict_6.png" alt="image" width="217"
+                    height="203">Küçük karenin alanı
+                    <script type="math/tex">
+A^{2}
+                    </script>, ve büyük karenin alanı
+                    <script type="math/tex">
+B^{2}
+                    </script>.Bu kareler asıl karenin ikiye bölünmesi ile
+			oluştuğu için bu karelerin alanlarının toplamının
+			asıl karenin alanına eşit olacağını biliyoruz:
+
+                    <div class="banner">
+                      <script type="math/tex">
+A^{2} + B^{2} = C^{2}
+                      </script>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Bu eşitlik A ve B nin diğer herhanhi bir değeri
+		 için de sağlanır mı?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                   C yi bulabilmek için A ve B nin karesinin toplamını kök içine almak gerekir:
+
+                    <div class="banner">
+                      <script type="math/tex">
+\sqrt{A^{2} + B^{2}} = C
+                      </script>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitabında <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      sayfa 29</a>u açın, orda aynı formülün yazılı olduğunu göreceksiniz
+		       ,bu sefer de <tt>line-length</tt> fonksiyonunu kullanarak x ve y eksenleri
+			boyunca uzaklık hesaplayacaz.Circle of Evaluation fonksiyonunun bir kısmı burada tamamlandı,
+			ama geri kalanını kendiniz bitirmelisiniz. Bir kere bitirince,circle'daki işlemleri sayfanın
+			altına koda çevirin.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>Öğrencilere A ve B nin <tt>line-length</tt> le hesaplanmış yatay ve dikey uzunluklar 
+		olduğunu hatırlatın.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">Sayfa
+                    29</a> daki kod tam olarak merkezleri (3,0) ve (0,4) olan objeler
+			arası uzaklığı hesaplar. Peki ya diğer noktalar?Ama <span style=
+                    "font-style: italic">herhangi</span> iki noktalar kümesi
+			arasındaki uzaklığı hesaplayabilen bir fonksiyon iyi olurdu.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitabınızda <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      sayfa 30 30</a>u açınız,ve dizayn yöntemlerini kullanarak kendi 
+			<tt>distance</tt> fonksiyonunu yaz.
+                      Önceki sayfadaki örneklerden yararlanmakta özgürsün ama daha sonra yeni kendi
+		         fonksiyonunu yazmalısın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher">
+                  <p>UYARI:Öğrencilerin <tt>line-length</tt> düzgün koordinatlar verdiğine emin olun. 
+			Bir çok öğrenci yanlışlıkla x koordinatları yerine  <tt>px</tt> ve <tt>py</tt> koordinatlarını
+                  yazıyor.Öğrencilerin çalışmalarını dikkatlice kontrol edin.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">collide?</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Giriş</span></p>
+
+            <p>Ogrenciler cakisma tespitinin matematiksel BEHAVIORU hakkinda mantik yuruturler.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+
+              <ul>
+                <li>
+                  <p> Öğrenciler kendi oyunlarında çarpışma tespitini yapabilmek için
+		 nasıl uzaklık formulünü kullanacaklarını öğrenirler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Müfredata Uygunluk</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler objeler arasındaki uzaklık belli bir eşiğin altına indiğinde
+		çarpışma meydana geleceğini anlarlar.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler iki obje arasındaki bu eşiğin nasıl belirleneceğini anlarlar.</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler oyuncunun ve tehlikenin tespitinin yapılabilmesi için
+		<tt>collide?</tt> fonksiyonu yazarlar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler oyuncunun ve tehlikenin çarpışmasını
+                      tespit etmek için <tt>collide?</tt> fonksiyonu eklerler.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+
+            <ul>
+                <li>
+                  <p>Bilgisayarlar w/ DrRacket veya WeScheme</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">Çalışma Kitabı</a></p>
+                </li>
+
+                <li>
+                  <p>Bütün öğrencilerin bilgisayarlarına oyunlarının taslakları 
+                    öğrencilerin resim dosyalarıyla birlikte bağlantılı olarak yüklenmiş olmalıdır.</p>
+                </li>
+
+
+                <li>
+                  <p>Öğrenciler için kurşun veya tükenmez 
+                           kalemler, öğretmenler için yeni tahta kalemleri.</p>
+                </li>
+
+                <li>
+                  <p>Sınıf afişleri (Kurallar Listesi, temel beceriler,
+                ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil Tablosu(Alta bakınız)</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_collide%3F2163"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">collide? <span class="time">(Süre 25
+            dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Şimdiye kadar <tt>distance</tt> denilen fonksiyonunu tanımladınız:
+			Bu fonksiyonun 4 girdisi var(Bunlar playerX, playerY, dangerX ve
+                    dangerY) ve bu fonksiyon bu koordinatlar arası uzaklığı olarak çıktı verir. 
+			Eğer oyuncu (320, 240) noktasında duruyorsa ve tehlike (400, 159) noktasında ise
+			uzaklık <tt>(distance 320 240 400 159)</tt> yoluyla hesaplanır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Her bir oyuncu ve tehlikenin koordinatları için <tt>distance</tt> fonksiyonunu kullanan
+		bir ifade yazın ve bu ifade noktalar araasındaki uzaklığı hesaplasın.Kod veya 
+			Circle of Evaluation programı yazabilirsiniz.</p>
+
+                      <ul>
+                        <li>
+                          <p>Oyuncu (100, 225) noktasında ve tehlike (174, 300) noktasında.</p>
+                        </li>
+
+                        <li>
+                          <p>Oyuncu (48, 20) noktasında ve tehlike (210, 160) noktasında.</p>
+                        </li>
+
+                        <li>
+                          <p>Oyuncu (300, 60) noktasında ve tehlike (130, 240) noktasında.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Artık iki obje arasındaki uzaklığı hesaplamayı biliyorsunuz, şimdi iki objenin ne zaman 
+		çarpışacağına karar vermelisiniz.Bunu daha önceki ünitede çemberleri kullanmayla:
+		yani iki çemberin çarpışması için yarıçapları toplamından az uzaklık olması gerektiğini
+		söylemiştik.Eğer sizin objenizin şekli çemberden daha ilginç ise 
+		bu hesaplama bu hesaplamanın daha zor olacağı kesindir. Neyse ki çoğu oyun
+		bu kesinliğe sahip olmak zorunda değildir(insanlara çarpışma anının etkisini
+		göstermek için hızlı hareket ederler). Biz sadece nesnelerin yeterince yakın olduğunu
+		anlamalı ve çarpışma tespitini yapmalıyız.</p>
+                </div>
+
+                <div class="teacher">
+                  <p>Siz diğer şekiller arasında çarpışma tespitinin nasıl
+		 hesaplanacağını bulmak için öğrencilerle 
+		ekstra zaman harcayabilirsiniz.Bootstrap ın geri kalanında 
+		buna ihtiyacımız yok fakat
+		eğer matematik öğretiyorsanız bu ekstra geometriyle birleştirmek 
+		için iyi bir yoldur.
+		</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                   Oyun için seçtiğiniz resimler çok küçük olmadığı
+		sürece,genellikle 50 pixel oyuncu ve tehlike arasındaki
+		uzaklığı tespit etmek için yeterlidir.Eğer çok küçük resimler
+		kullanıyorsanız karakterler arası uzaklık 20 nin altında
+		olduğunda da çarpışma tespiti yapmayı isteyebilirsiniz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>(320, 240) noktası ile (400, 159) noktası arasındaki
+		uzakluğın <span style="font-style: italic">50 den az</span> 
+		olup olmadığını nasıl kontrol edersiniz. Aynı zamanda bu koordinatlar arasındaki
+		uzaklığın 20 den az olup olmadığını nasıl anlarsınız.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma Kitabında <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      31. sayfayı</a> açınız, ve dizayn yöntemlerini(Design Recipe) kullanarak
+			eğer koordinatlar arası uzaklık <span style="font-style: italic">50 den az</span> 
+			ise <tt>true</tt> sonucunu çıkar.
+                      İPUCU: <tt>distance</tt> fonksiyonunu kullanmalısınız.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p> <tt>collide?</tt> fonksiyonunun tanımını kendi oyun
+			dosyanızın içine giriniz. Oyununuzu oynayınız ve oyuncu ile tehlikeyi
+			çarpıştırınız. Oyununuz artık  <tt>collide?</tt>? fonksiyonunu
+			yazmadan önceki halinden farklı şeyler yapıyor mu?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Closing</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Hedefleri</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Malzemeler</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing2164"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kapanış <span class="time">(Time 5
+            min)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tebrikler-oyununuz tamamlandı! Yazdığınız tüm kodları listelemek için
+		bir dakikanızı ayırın ve neler öğrendiğinizi bir düşünün.The Circles of Evaluation programı,
+		veritürleri <tt>Number</tt>, <tt>String</tt>,
+                    <tt>Image</tt> ve <tt>Boolean</tt> gibi,Contract(range,domain)lerin önemi,
+		yazılan kodların amacı ve parçalı fonksiyonlar. Yeni bir programlama dilinin hepsini,
+		ve hatta kelime problemlerini ve programlama zorluklarını
+		çözmeni sağlayan dizayn yöntemlerini ve bu yöntemlerde her aşamaya tek tek
+		odaklanıp bir aşama bitmeden diğerine devam öğrendin.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Programcilar birseyi calistirinca, kodlarinin hep ustunden gecerler ve okunabilir oldugundan, 
+		acik ve diger insanlar icin anlasilir oldugundan emin olurlar.İyi calisan bir araba guzel olabilir ama tamir edilmesi veya 
+		geliştirilmesi mümkün değilse sadece iyi olması değerini belirlemez.
+		 Kodunuzun içten ve dıştan güzel göründüğüne emin olun.</p>
+
+                      <ul>
+                        <li>
+                          <p>Bütün fonksiyonların contract larını doğru yazılmış mı?</p>
+                        </li>
+
+                        <li>
+                          <p>Bütün fonksiyonlardaki kodların yazılış amacı tam olarak amacı ifade 
+			edebiliyor mu?</p>
+                        </li>
+
+                        <li>
+                          <p>Bütün fonksiyonlar en az iki ÖRNEK içeriyor mu?</p>
+                        </li>
+
+                        <li>
+                          <p>"Run" a bastığın zaman bütün örneklerin düzgün çalışıyor mu?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_7.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
+</body>
+</html>
