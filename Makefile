@@ -1,6 +1,6 @@
 uniteler=1 2 3 4 5 6 7 8 9
 default: makeweb
-	echo "DONE"
+	echo "DONE. VIEW THE NEW WEB AT /tmp/bootstraptrweb"
 
 clean:
 	rm -fr /tmp/bootstraptrweb || echo "already clean"
@@ -25,3 +25,6 @@ makeweb: clean
 			cp bootstrap1/uniteler/Unite$$x-Egzersizler/`basename $$y`/* /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`/; \
 		done; \
 	done
+
+publish:
+	rsync -av  --delete --rsh=ssh /tmp/bootstraptrweb/ mgencer.com:/var/www/yakinokul.org/onyukleme1

@@ -156,7 +156,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit1/the-unit.html">Ünite 1</a></span>:
+                "unite1/the-unit.html">Ünite 1</a></span>:
                 Öğrenciler favori bilgisayar oyunlarının bileşenlerini tartışırlar, 
                 ve bunların bir dizi koordinata dönüştürülebileceğini keşfederler.
                 Daha sonra Kartezyen uzayındaki koordinatları incelerler, ve
@@ -177,7 +177,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit2/the-unit.html">Ünite 2</a></span>:
+                "unite2/the-unit.html">Ünite 2</a></span>:
                 Öğrencilere fonksiyonların bir set eşleştirme olduğu, ve fonksiyonun
                 bir değer alanındaki noktaları bir değer kümesine tercüme ettiği anlatılır.
                 Değerlendirme Çemberleri'ni anlamış olmalarıyla birleşerek, öğrenciler 
@@ -196,7 +196,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit3/the-unit.html">Unit 3</a></span>:
+                "unite3/the-unit.html">Unit 3</a></span>:
                 Students are introduced to the Definitions window,
                 and learn the syntax for defining values of various
                 types. They are also introduced to the syntax of
@@ -206,7 +206,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit4/the-unit.html">Unit 4</a></span>:
+                "unite4/the-unit.html">Unit 4</a></span>:
                 Students continue to practice the Design Recipe by
                 applying it to simple problems.</p>
               </li>
@@ -214,7 +214,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit5/the-unit.html">Unit 5</a></span>:
+                "unite5/the-unit.html">Unit 5</a></span>:
                 Students define functions that map attributes of
                 their game from one frame to the next, allowing
                 them to move their dangers, targets, and
@@ -224,7 +224,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit6/the-unit.html">Unit 6</a></span>:
+                "unite6/the-unit.html">Unit 6</a></span>:
                 Students discover Boolean types, and use them to
                 create programs that test values, and then model
                 scenarios using these programs.</p>
@@ -233,7 +233,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit7/the-unit.html">Unit 7</a></span>:
+                "unite7/the-unit.html">Unit 7</a></span>:
                 Students use geometry and conditional branching to
                 move their player characters in response to
                 key-presses.</p>
@@ -242,7 +242,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit8/the-unit.html">Unit 8</a></span>:
+                "unite8/the-unit.html">Unit 8</a></span>:
                 Students derive, discuss, and prove the Pythagorean
                 theorem, then use this theorem—<wbr>in conjunction
                 with Booleans—<wbr>to detect collisions in their
@@ -252,7 +252,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit9/the-unit.html">Unit 9</a></span>:
+                "unite9/the-unit.html">Unit 9</a></span>:
                 Students will edit game details and prepare for
                 their Launch Party!</p>
               </li>

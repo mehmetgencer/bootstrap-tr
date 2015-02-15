@@ -46,7 +46,7 @@
 
       <li><a href="/">Malzemeler</a></li>
 
-      <!-- <li><a href="/">Profiller</a></li> -->
+      <li><a href="/">Ekip</a></li>
 
       <li><a href="/">Katkıda bulunanlar</a></li>
 
@@ -156,7 +156,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit1/the-unit.html">Ünite 1</a></span>:
+                "unite1/the-unit.html">Ünite 1</a></span>:
                 Öğrenciler favori bilgisayar oyunlarının bileşenlerini tartışırlar, 
                 ve bunların bir dizi koordinata dönüştürülebileceğini keşfederler.
                 Daha sonra Kartezyen uzayındaki koordinatları incelerler, ve
@@ -177,7 +177,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit2/the-unit.html">Ünite 2</a></span>:
+                "unite2/the-unit.html">Ünite 2</a></span>:
                 Öğrencilere fonksiyonların bir set eşleştirme olduğu, ve fonksiyonun
                 bir değer alanındaki noktaları bir değer kümesine tercüme ettiği anlatılır.
                 Değerlendirme Çemberleri'ni anlamış olmalarıyla birleşerek, öğrenciler 
@@ -196,7 +196,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/unit3/the-unit.html">Unit 3</a></span>:
+                "unite3/the-unit.html">Unit 3</a></span>:
                 Students are introduced to the Definitions window,
                 and learn the syntax for defining values of various
                 types. They are also introduced to the syntax of
