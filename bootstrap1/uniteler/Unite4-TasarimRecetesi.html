@@ -1,2201 +1,399 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-
+<!DOCTYPE html>
 <html>
 <head>
-  <meta name="generator" content=
-  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
-  <meta http-equiv="content-type" content=
-  "text/html; charset=utf-8">
-
-  <title>Unit 4: The Design Recipe</title>
-  <link rel="stylesheet" type="text/css" href="scribble.css" title=
-  "default">
-  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
-  title="default">
-  <link rel="stylesheet" type="text/css" href="codemirror.css"
-  title="default">
-  <link rel="stylesheet" type="text/css" href="bootstrap.css"
-  title="default">
-  <link rel="stylesheet" type="text/css" href="textbook.css" title=
-  "default">
-  <link rel="stylesheet" type="text/css" href=
-  "extra_curriculum.css" title="default">
-  <script type="text/javascript" src="scribble-common.js">
-</script>
-  <script type="text/javascript" src="codemirror.js">
-</script>
-  <script type="text/javascript" src="runmode.js">
-</script>
-  <script type="text/javascript" src="scheme2.js">
-</script>
-  <script type="text/javascript" src="bootstraplesson.js">
-</script>
-  <script type="text/javascript" src=
-  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js">
-</script>
-<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
+<title>Tasarım Reçetesi</title>
+ <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">	
+<style>
+#header {
+    background-color:black;
+    color:white;
+    text-align:left;
+    padding:5px;
+}
+#nav {
+    line-height:30px;
+    background-color: #E6E6FA;
+text-align:left;   
+    padding:5px;	      
+}
+</style>
 </head>
-
-<body id="scribble-racket-lang-org">
-  <div class="tocset">
-    <div class="tocview">
-      <div class="tocviewlist tocviewlisttopspace">
-        <div class="tocviewtitle">
-          <table cellspacing="0" cellpadding="0">
-            <tr>
-              <td style="width: 1em;">•</td>
-
-              <td></td>
-
-              <td><a href="" class="tocviewselflink" data-pltdoc=
-              "x">Unit 4: <span class="mywbr">&nbsp;</span> The
-              Design Recipe</a></td>
-            </tr>
-          </table>
-        </div>
-      </div>
-    </div>
-
-    <div class="tocsub">
-      <table class="tocsublist" cellspacing="0">
-        <tr>
-          <td><a href="#%28part._.Unit_4__.The_.Design_.Recipe%29"
-          class="tocsubseclink" data-pltdoc="x">Unit 4:
-          <span class="mywbr">&nbsp;</span> The Design
-          Recipe</a></td>
-        </tr>
-      </table>
-    </div>
-  </div>
-
-  <div class="maincolumn">
-    <div class="main">
-      <a name="(part._.Unit_4__.The_.Design_.Recipe)"></a>
-
-      <p><script type="text/javascript" src=
-      "http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
-</script><script type="text/javascript" src="easyXDM.min.js">
-</script><script type="text/javascript" src="json2.min.js">
-</script><script type="text/javascript" src="bootstrap-helpers.js">
-</script></p>
-
-      <div class="headercontent">
-        <span class="BootstrapTitle"><img src="pict.png" alt=
-        "image" width="150" height="150"><span class=
-        "TitleUnitNum">Unit 4</span>The Design Recipe</span>
-      </div>
-
-      <div class="SubFlow" id="overviewDescr">
-        <span class="BootstrapHeader">Unit Overview</span>
-
-        <p>Students continue to practice the Design Recipe by
-        applying it to simple problems.</p>
-      </div>
-
-      <blockquote class="OverviewBoundary">
-        <iframe id="forum_embed" name="forum_embed"></iframe>
-
-        <div class="summary">
-          <div class="" id="BootstrapAgenda">
-            <p>Agenda</p>
-
-            <ul class="BootstrapAgendaList">
-              <li class="BootstrapAgendaListItem">
-                <p><span class="BSLessonDuration">25
-                min</span><a href=
-                "#lesson_TheDesignRecipe1918"><span class=
-                "BSLessonName">The Design Recipe</span></a></p>
-              </li>
-
-              <li class="BootstrapAgendaListItem">
-                <p><span class="BSLessonDuration">40
-                min</span><a href=
-                "#lesson_PracticingtheDesignRecipe1919"><span class="BSLessonName">Practicing
-                the Design Recipe</span></a></p>
-              </li>
-
-              <li class="BootstrapAgendaListItem">
-                <p><span class="BSLessonDuration">40
-                min</span><a href=
-                "#lesson_TheDesignRecipe(Algebra)1920"><span class=
-                "BSLessonName">The Design Recipe
-                (Algebra)</span></a></p>
-              </li>
-
-              <li class="BootstrapAgendaListItem">
-                <p><span class="BSLessonDuration">5
-                min</span><a href=
-                "#lesson_Closing1921"><span class="BSLessonName">Closing</span></a></p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="" id="ProductOutcomes">
-            <span class="BootstrapHeader">Product Outcomes:</span>
-
-            <ul>
-              <li>
-                <p>Students will use the Design Recipe to define a
-                function, which is used to make a rocket fly.</p>
-              </li>
-
-              <li>
-                <p>Students will write functions to solve simple
-                problems by using the Design Recipe</p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="" id="LearningObjectives">
-            <span class="BootstrapHeader">Standards and Evidence
-            Statements:</span>
-
-            <p>Standards with prefix BS are specific to Bootstrap;
-            others are from the Common Core. Mouse over each
-            standard to see its corresponding evidence statements.
-            Our <a href=
-            "http://www.bootstrapworld.org/materials/Standards.shtml">
-            Standards Document</a> shows which units cover each
-            standard.</p>
-
-            <ul class="LearningObjectivesList">
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">8.F.1-3</span>: The student
-                  defines, evaluates, and compares functions</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>comparison of properties of two functions
-                      each represented in a different way
-                      (algebraically, graphically, numerically in
-                      tables, or by verbal descriptions)</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">A-SSE.1-2</span>: The student
-                  interprets the structure of expressions to solve
-                  problems in context</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>interpretation of expressions that
-                      represent a quantity in context</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>interpretation of terms, factors, and
-                      coefficients of an expression</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">F-BF.3-4</span>: The student
-                  builds new functions from existing functions.</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>inversion of a function</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">F-IF.1-3</span>: The student
-                  uses function notation to describe, evaluate, and
-                  interpret functions in terms of domain and
-                  range</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>description of a function using terms
-                      domain and range</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>explanation that if f is a function and x
-                      is an element of its domain, then f(x)
-                      denotes the output of f corresponding to the
-                      input x</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>evaluation of functions using function
-                      notation for inputs in their domains</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>interpretation of statements that use
-                      function notation in terms of a context</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">F-IF.4-6</span>: The student
-                  interprets the behavior of functions that arise
-                  in applications in terms of the context</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>interpretation of a relationship between
-                      two quantities in a table or graph in terms
-                      of key features</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>relation of the domain of a function to
-                      its graph and, where applicable, to the
-                      quantitative relationship it describes</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">BS-DR.1</span>: The student
-                  is able to translate a word problem into a
-                  Contract and Purpose Statement</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>given a word problem, identify the domain
-                      and range of a function</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>given a word problem, write a Purpose
-                      Statement (i.e. - rewrite the problem in
-                      their own words)</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">BS-DR.2</span>: The student
-                  can derive test cases for a given contract and
-                  purpose statement</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>given a Contract and a Purpose Statement,
-                      write multiple examples or test cases</p>
-                    </li>
-
-                    <li class="EvidenceStatementsListItem">
-                      <p>given multiple examples, identify patterns
-                      in order to label and name the variables</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-
-              <li class="LearningObjectivesListItem">
-                <div class="LearningObjectivesListItemContents">
-                  <p><span style=
-                  "font-weight: bold">BS-DR.3</span>: Given mutiple
-                  test cases, the student can define a function</p>
-
-                  <ul class="EvidenceStatementsList">
-                    <li class="EvidenceStatementsListItem">
-                      <p>given examples and labeled variable(s),
-                      define the function</p>
-                    </li>
-                  </ul>
-                </div>
-              </li>
-            </ul>
-          </div><span class="BootstrapHeader">Length: 110
-          minutes</span>
-
-          <div class="" id="Glossary">
-            <span class="BootstrapHeader">Glossary:</span>
-
-            <ul>
-              <li>
-                <p><span class="vocab">contract</span>: a statement
-                of the name, domain, and range of a function</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">design recipe</span>: a
-                sequence of steps that help people document, test,
-                and write functions</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">domain</span>: the type of
-                data that a function expects</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">example</span>: shows the
-                use of a function on specific inputs and the
-                computation the function should perform on those
-                inputs</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">name</span>: how we refer to
-                a function or value defined in a language
-                (examples: +, *, star, circle)</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">purpose statement</span>: a
-                brief description of what a function does</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">range</span>: the type of
-                data that a function produces</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">type</span>: refers to a
-                general kind of data, like Number, String, Image,
-                or Boolean</p>
-              </li>
-
-              <li>
-                <p><span class="vocab">variable</span>: something
-                that changes</p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="" id="Materials">
-            <span class="BootstrapHeader">Materials:</span>
-
-            <ul>
-              <li>
-                <p>Pens/pencils for the students, fresh whiteboard
-                markers for teachers</p>
-              </li>
-
-              <li>
-                <p>Class poster (List of rules, language table,
-                course calendar)</p>
-              </li>
-
-              <li>
-                <p>Language Table (see below)</p>
-              </li>
-
-              <li>
-                <p>Student <a href=
-                "../../resources/workbook/StudentWorkbook.pdf">workbook</a>
-                folders with names on covers, and something to
-                write with</p>
-              </li>
-
-              <li>
-                <p>Language Table</p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="" id="Preparation">
-            <span class="BootstrapHeader">Preparation:</span>
-
-            <ul>
-              <li>
-                <p>Write agenda on board</p>
-              </li>
-
-              <li>
-                <p>Display Class posters, Language Table, Design
-                Recipe</p>
-              </li>
-
-              <li>
-                <p>"Rocket" [Rocket.rkt from <a href=
-                "../../resources/source-files.zip">source-files.zip</a>
-                | <a href=
-                "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6">
-                WeScheme</a>] preloaded on students’ machines</p>
-              </li>
-
-              <li>
-                <p>Seating arrangements: ideally clusters of
-                desks/tables</p>
-              </li>
-
-              <li>
-                <p>OPTIONAL: Hand out <a href=
-                "https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit?usp=sharing">
-                Warmup activity sheet</a>.</p>
-              </li>
-            </ul>
-          </div>
-
-          <div class="" id="LanguageTable">
-            <table cellspacing="0" class="thetable">
-              <tr>
-                <td align="center" class="BootstrapTable">
-                  <p class="BootstrapTableHeader">Types</p>
-                </td>
-
-                <td align="center" class="BootstrapTable">
-                  <p class="BootstrapTableHeader">Functions</p>
-                </td>
-              </tr>
-
-              <tr>
-                <td align="center" class="BootstrapTable">
-                  <p>Number</p>
-                </td>
-
-                <td align="center" class="BootstrapTable">
-                  <p><tt>+ - * / sqr sqrt expt</tt></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td align="center" class="BootstrapTable">
-                  <p>String</p>
-                </td>
-
-                <td align="center" class="BootstrapTable">
-                  <p><tt>string-append string-length</tt></p>
-                </td>
-              </tr>
-
-              <tr>
-                <td align="center" class="BootstrapTable">
-                  <p>Image</p>
-                </td>
-
-                <td align="center" class="BootstrapTable">
-                  <p><tt>rectangle circle triangle ellipse star
-                  text scale rotate put-image</tt></p>
-                </td>
-              </tr>
-            </table>
-          </div>
-
-          <div class="fixed" id="lessonToolbar">
-            <input type="button" value="Show Teacher Notes"
-            onclick="toggleTeacherNotes(this);"><br>
-            <input type="button" value="Discussion Group" onclick=
-            "showGroup()">
-          </div>
-        </div>
-      </blockquote>
-
-      <blockquote class="LessonBoundary">
-        <span class="BootstrapPageTitle">The Design Recipe</span>
-
-        <div class="content">
-          <div class="overview">
-            <p><span class="BootstrapLogo"><img src="logo.png" alt=
-            "bootstrap logo"></span></p>
-
-            <p><span class=
-            "BootstrapLessonTitle">Overview</span></p>
-
-            <p>Students are formally introduced to the steps of the
-            Design Recipe.</p>
-
-            <div class="LessonLearningObjectives">
-              <p><span style="font-weight: bold">Learning
-              Objectives</span></p>
-
-              <ul>
-                <li>
-                  <p>Students practice using Contracts to create
-                  examples of functions</p>
-                </li>
-
-                <li>
-                  <p>Students learn to abstract over examples to
-                  create functions</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonEvidenceStatements">
-              <p><span style="font-weight: bold">Evidence
-              Statements</span></p>
-
-              <ul>
-                <li>
-                  <p>Given a definition, students will be able to
-                  identify the Name, Type and Value that is
-                  defined.</p>
-                </li>
-
-                <li>
-                  <p>Given a contract and purpose statement for a
-                  simple, one-variable function, students will be
-                  able to write two Examples</p>
-                </li>
-
-                <li>
-                  <p>Given two examples for a simple function,
-                  students will be able to identify the
-                  variable</p>
-                </li>
-
-                <li>
-                  <p>Given two examples for a simple function,
-                  students will be able to write the definition</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonProductOutcomes">
-              <p><span style="font-weight: bold">Product
-              Outcomes</span></p>
-
-              <ul>
-                <li>
-                  <p>Students will use the Design Recipe to define
-                  a function, which is used to make a rocket
-                  fly.</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonMaterials">
-              <p><span style=
-              "font-weight: bold">Materials</span></p>
-
-              <ul>
-                <li>
-                  <p>Pens/pencils for the students, fresh
-                  whiteboard markers for teachers</p>
-                </li>
-
-                <li>
-                  <p>Class poster (List of rules, language table,
-                  course calendar)</p>
-                </li>
-
-                <li>
-                  <p>Language Table (see below)</p>
-                </li>
-
-                <li>
-                  <p>Student <a href=
-                  "../../resources/workbook/StudentWorkbook.pdf">workbook</a>
-                  folders with names on covers, and something to
-                  write with</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonPreparation">
-              <p><span style=
-              "font-weight: bold">Preparation</span></p>
-
-              <ul>
-                <li>
-                  <p>Write agenda on board</p>
-                </li>
-
-                <li>
-                  <p>Display Class posters, Language Table, Design
-                  Recipe</p>
-                </li>
-
-                <li>
-                  <p>"Rocket" [Rocket.rkt from <a href=
-                  "../../resources/source-files.zip">source-files.zip</a>
-                  | <a href=
-                  "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6">
-                  WeScheme</a>] preloaded on students’ machines</p>
-                </li>
-
-                <li>
-                  <p>Seating arrangements: ideally clusters of
-                  desks/tables</p>
-                </li>
-
-                <li>
-                  <p>OPTIONAL: Hand out <a href=
-                  "https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit?usp=sharing">
-                  Warmup activity sheet</a>.</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="segment">
-            <p><a name="lesson_TheDesignRecipe1918" id=
-            "lesson_TheDesignRecipe1918"></a></p><span class=
-            "BootstrapLessonTitle"><span class="BSLessonName">The
-            Design Recipe <span class="time">(Time 25
-            minutes)</span></span></span>
-
-            <ul class="lesson">
-              <li class="lessonItem">
-                <div class="student">
-                  <p>Functions are a key part of animation in
-                  computer programs. A function that draws a static
-                  picture of a cat, for example, can place the cat
-                  at a different location based on the input. When
-                  that input changes slightly based on time or
-                  user-interaction, the cat will appear to move.
-                  This is similar to the way that flip-book
-                  animations work, in which each page draws a
-                  static image that has changed by a small amount.
-                  When the pages are displayed quickly, the images
-                  appear to change smoothly.</p>
-
-                  <div class="banner"><img src="pict_2.png" alt=
-                  "image" width="500" height="154"></div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    <img src="flipbook.gif" alt="">Putting these
-                    images together, we arrive at an animation of
-                    the rocket moving up the screen. Let’s see an
-                    example of this kind of animation, using a
-                    function to make a rocket-blast off! Turn to
-                    <a href=
-                    "../../resources/workbook/StudentWorkbook.pdf">Page
-                    12</a> in your workbook, and read the word
-                    problem carefully.
-
-                    <div class="banner">
-                      A rocket blasts off, traveling at 7 meters
-                      per second. Write a function called
-                      <tt>rocket-height</tt> that takes in the
-                      number of seconds that have passed since the
-                      rocket took off, and which produces the
-                      height of the rocket at that time.
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <ul>
-                        <li>
-                          <p>What is the <tt>rocket-height</tt>
-                          function taking in as an input? What type
-                          of data is that?</p>
-                        </li>
-
-                        <li>
-                          <p>What is the function producing as an
-                          output? What type of data is that?</p>
-                        </li>
-
-                        <li>
-                          <p>What are the three parts of a
-                          <span class="vocab">Contract</span>?</p>
-                        </li>
-
-                        <li>
-                          <p>What is the <span class=
-                          "vocab">Name</span> of the function you
-                          are being asked to define?</p>
-                        </li>
-
-                        <li>
-                          <p>What is the <span class=
-                          "vocab">Domain</span> of the
-                          function?</p>
-                        </li>
-
-                        <li>
-                          <p>What is the <span class=
-                          "vocab">Range</span> of the function?</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Check student understanding carefully, to make
-                  sure students read the problem carefully. It may
-                  be helpful to draw a diagram or table showing the
-                  change of rocket position on the board, and to
-                  have students verbally walk through a few
-                  examples.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    The Contract is a way of thinking about the
-                    function in a general way, without having to
-                    worry about exactly how it will work or how it
-                    will be used. Starting with simple questions
-                    like these will make later steps much easier to
-                    think about. However, the Contract doesn’t
-                    always have enough information! The Domain for
-                    <tt>star</tt>, for example, specifies that the
-                    function needs a Number and two Strings, but
-                    doesn’t mention the fact that the first String
-                    must be <tt>"solid"</tt> or <tt>"outline"</tt>.
-                    To add this information, programmers write
-                    <span class="vocab">Purpose Statements</span>,
-                    which are simple sentences that explain what a
-                    function does.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Underneath the Contract, copy the
-                      following simple Purpose Statement for
-                      <tt>rocket-height</tt>.</p>
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    &nbsp;
-                    <textarea>
-; rocket-height : Number -&gt; Number
-; multiply the number of seconds by 7 to find the height
-</textarea>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>This is an opportunity to talk about the
-                  importance of writing, clarity, and brevity. What
-                  information is essential for a purpose statement?
-                  What information is irrelevant? A good purpose
-                  statement describes what is computed and how its
-                  inputs are used; it should go beyond the
-                  information given in the contract and implicit in
-                  the name of the function.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Armed with the Contract and Purpose Statement,
-                    it becomes easy to write an <tt>EXAMPLE</tt>.
-                    Every example begins with the name of the
-                    function and a sample input, both of which are
-                    written in the Contract. In this case, you know
-                    that the function is called
-                    <tt>rocket-height</tt> and that it expects a
-                    single number as input. The Purpose Statement
-                    goes further, telling you that the input is
-                    multiplied by 7. We can use this to write two
-                    examples, with different numbers of seconds as
-                    inputs. &nbsp;
-                    <textarea>
-; rocket-height : Number -&gt; Number
-; multiply the number of seconds by 7 to find the height
-(EXAMPLE (rocket-height 11)
-         (* 11 7))
-(EXAMPLE (rocket-height 72)
-         (* 72 7))
-</textarea> <span style="font-weight: bold">Note:</span> The
-example shown above is broken into two lines! As functions and
-examples become more complex, it will become difficult to squeeze
-them into a single line. In your workbooks, every example and
-definition from this point onwards will use the two-line format.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>In your workbook, write two new examples
-                      of <tt>rocket-height</tt> using different
-                      values for the number of seconds. Both
-                      examples will have a lot in common (they all
-                      use <tt>rocket-height</tt> as the function
-                      name, they all multiply their input by 7,
-                      etc). Once you are done writing them, circle
-                      only the parts of the examples that are
-                      <span style=
-                      "font-style: italic">changeable</span>.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>The main idea for students in this activity is
-                  to realize that the Contract and Purpose
-                  Statement can be relied upon to write examples.
-                  Ask students to justify every part of each
-                  example, using only the Contract and Purpose
-                  Statement. Students are often tripped up by the
-                  switch from one-line examples to two-line ones.
-                  Be <span style="font-style: italic">very</span>
-                  careful to point this out to students, and to
-                  check their workbooks to see where they are
-                  writing their examples. At the end of the
-                  activity, make sure that students circle ONLY
-                  what has changed.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    By comparing two different examples, it is easy
-                    to tell what changes. According to the Purpose
-                    Statement, it is the number of seconds that the
-                    rocket has been flying.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>On your paper, label the items you circled
-                      with "seconds".</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Have a discussion with students about why
-                  "seconds" is a better name than "time". Talk
-                  about specificity, relevance, and
-                  readability.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Labeling what is <span style=
-                    "font-style: italic">changeable</span> gives
-                    programmers a sense for the names of a
-                    function’s <span class=
-                    "vocab">variables</span>. Variables are like
-                    placeholders for values that can be different
-                    at different times. A function that computed
-                    how much you pay for text messages each month,
-                    for example, might have a variable for the
-                    number of messages that you sent in that month.
-                    The number of messages you sent might change
-                    from month to month, but each one could still
-                    cost 20 cents.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>How many variables does
-                      <tt>rocket-height</tt> have? What is the name
-                      of each variable? Define the function, using
-                      all the information from your Examples,
-                      Contract and Purpose Statement.</p>
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    &nbsp;
-                    <textarea>
-; rocket-height : Number -&gt; Number
-; multiply the number of seconds by 7 to find the height
-(EXAMPLE (rocket-height 11)
-         (* 11 7))
-(EXAMPLE (rocket-height 72)
-         (* 72 7))
-(define (rocket-height seconds)
-         (* seconds 7))
-</textarea>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>As with the Examples, ask students to justify
-                  each part of the definition. In this case, the
-                  function name can be derived from the Contract,
-                  and the variable name and function body from the
-                  Examples.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    The Design Recipe allows a programmer to focus
-                    on one step of the problem at a time, and to
-                    use previous steps to help complete the next
-                    one.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <ul>
-                        <li>
-                          <p>What does the <span class=
-                          "vocab">Contract</span> tell a programmer
-                          about a function?</p>
-                        </li>
-
-                        <li>
-                          <p>What does the <span class=
-                          "vocab">Purpose Statement</span> tell a
-                          programmer about a function?</p>
-                        </li>
-
-                        <li>
-                          <p>How do the Contract and Purpose
-                          Statement help a programmer write
-                          <span class="vocab">Examples</span>?</p>
-                        </li>
-
-                        <li>
-                          <p>Why is it helpful to circle and label
-                          the parts of the Examples that
-                          change?</p>
-                        </li>
-
-                        <li>
-                          <p>How do all of these steps help a
-                          programmer define a function?</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    You may have noticed that the Examples for
-                    <tt>rocket-height</tt> wrote out the
-                    multiplication as <tt>(* 11 7)</tt>, rather
-                    than the actual answer (<tt>77</tt>). Why
-                    bother to show the way a calculation is
-                    performed? By doing this, Examples can provide
-                    hints about what process is taking place. In
-                    the provided Rocket code (Rocket.rkt from
-                    <a href=
-                    "../../resources/source-files.zip">source-files.zip</a>
-                    | or the <a href=
-                    "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6&amp;"
-                    target="embedded">online file</a>), you will
-                    see why it is so important to show your work
-                    when writing examples.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Click "Run", and wait until a window
-                      appears with a rocket at the bottom of the
-                      screen and numbers for "time" and "height" at
-                      the top. This animation is set to update the
-                      rocket every time the spacebar is pressed, to
-                      simulate time going by. Hit the spacebar a
-                      few times, and notice that the time at the
-                      top of the window increases. Does the rocket
-                      move? Time is passing, but our rocket’s
-                      height hasn’t changed! Close the rocket
-                      window, so that you can see the code.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <p>The Contract for this function is correct: the
-                  function’s Name, Domain and Range are all
-                  accurately written here. However, the next step
-                  definitely has some problems:</p>
-
-                  <ol>
-                    <li>
-                      <p>There is only one Example. This makes it
-                      difficult to notice what is changing, which
-                      could lead to mistakes when identifying
-                      variables</p>
-                    </li>
-
-                    <li>
-                      <p>The Example doesn’t show how the height is
-                      calcluated - instead, this programmer just
-                      wrote the "answer", without showing their
-                      work.</p>
-                    </li>
-                  </ol>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    By skipping these steps in the Examples, it can
-                    be easy to make mistakes when defining the
-                    function.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Can you see the mistake the programmer
-                      made?</p>
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    Without seeing multiple Examples, this
-                    programmer failed to realize that the height of
-                    the rocket has to be calculated for
-                    <span style="font-style: italic">every
-                    input</span>. Instead, they just produce the
-                    same number every time (in this case, zero). As
-                    a result, the rocket is always at zero, no
-                    matter how many seconds have passed.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <ul>
-                        <li>
-                          <p>Fix this programmer’s Example to show
-                          their work.</p>
-                        </li>
-
-                        <li>
-                          <p>Write a second Example, below the
-                          first one.</p>
-                        </li>
-
-                        <li>
-                          <p>Fix the definition for the function,
-                          so that it multiplies the number of
-                          seconds by 7.</p>
-                        </li>
-
-                        <li>
-                          <p>Click "Run", and then use the spacebar
-                          to make the rocket fly!</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </blockquote>
-
-      <blockquote class="LessonBoundary">
-        <span class="BootstrapPageTitle">Practicing the Design
-        Recipe</span>
-
-        <div class="content">
-          <div class="overview">
-            <p><span class="BootstrapLogo"><img src="logo.png" alt=
-            "bootstrap logo"></span></p>
-
-            <p><span class=
-            "BootstrapLessonTitle">Overview</span></p>
-
-            <p>Students use the Design Recipe to define simple
-            functions (of one and two variables), given various
-            word problems</p>
-
-            <div class="LessonLearningObjectives">
-              <p><span style="font-weight: bold">Learning
-              Objectives</span></p>
-            </div>
-
-            <div class="LessonEvidenceStatements">
-              <p><span style="font-weight: bold">Evidence
-              Statements</span></p>
-
-              <ul>
-                <li>
-                  <p>Given a contract and purpose statement for a
-                  simple function, students will be able to write
-                  two Examples.</p>
-                </li>
-
-                <li>
-                  <p>Given two examples for a simple function,
-                  students will be able to identify the
-                  variable</p>
-                </li>
-
-                <li>
-                  <p>Given two examples for a simple function,
-                  students will be able to write the definition</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonProductOutcomes">
-              <p><span style="font-weight: bold">Product
-              Outcomes</span></p>
-
-              <ul>
-                <li>
-                  <p>Students will write functions to solve simple
-                  problems by using the Design Recipe</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonMaterials">
-              <p><span style=
-              "font-weight: bold">Materials</span></p>
-
-              <ul>
-                <li>
-                  <p>Pens/pencils for the students, fresh
-                  whiteboard markers for teachers</p>
-                </li>
-
-                <li>
-                  <p>Class poster (List of rules, language table,
-                  course calendar)</p>
-                </li>
-
-                <li>
-                  <p>Language Table</p>
-                </li>
-
-                <li>
-                  <p>Student <a href=
-                  "../../resources/workbook/StudentWorkbook.pdf">workbook</a>
-                  folders with names on covers, and something to
-                  write with</p>
-                </li>
-              </ul>
-            </div>
-
-            <div class="LessonPreparation">
-              <p><span style=
-              "font-weight: bold">Preparation</span></p>
-
-              <ul>
-                <li>
-                  <p>Write agenda on board</p>
-                </li>
-
-                <li>
-                  <p>Display Class posters, Language Table, Design
-                  Recipe</p>
-                </li>
-
-                <li>
-                  <p>Seating arrangements: ideally clusters of
-                  desks/tables</p>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <div class="segment">
-            <p><a name="lesson_PracticingtheDesignRecipe1919" id=
-            "lesson_PracticingtheDesignRecipe1919"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Practicing
-            the Design Recipe <span class="time">(Time 40
-            minutes)</span></span></span>
-
-            <ul class="lesson">
-              <li class="lessonItem">
-                <div class="student">
-                  <p>The Design Recipe is a roadmap for defining
-                  functions, which programmers use to make sure the
-                  code they write does what they want it to do.
-                  Each step builds on the last, so any mistakes can
-                  be caught early in the process. This roadmap has
-                  a series of steps:</p>
-
-                  <ul>
-                    <li>
-                      <p>Moving from a word problem to a
-                      Contract</p>
-                    </li>
-
-                    <li>
-                      <p>Writing Examples based on the contract</p>
-                    </li>
-
-                    <li>
-                      <p>Defining a function that matches the
-                      examples</p>
-                    </li>
-                  </ul>
-
-                  <div class="SIntrapara">
-                    Start out by practicing each of these steps,
-                    one at a time.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>For each of the following word problems,
-                      write down the Contract:</p>
-
-                      <ul>
-                        <li>
-                          <p>Define a function ’purple-star’, that
-                          takes in the size of the star and
-                          produces an outlined, purple star of the
-                          given size.</p>
-                        </li>
-
-                        <li>
-                          <p>Define a function ’spot’, that takes
-                          in a color and produces a solid circle of
-                          radius 50, filled in with that color</p>
-                        </li>
-
-                        <li>
-                          <p>To find the average of two numbers,
-                          they should be added together and divided
-                          by two. Define a function ’average’,
-                          which takes in two numbers and produces
-                          their average</p>
-                        </li>
-
-                        <li>
-                          <p>A company logo is a word drawn in big,
-                          red letters, rotated some number of
-                          degrees. Define a function ’logo’, that
-                          takes in a company name and a rotation,
-                          and produces a logo for that company</p>
-                        </li>
-                      </ul>
-
-                      <p>Be sure to include a good <span class=
-                      "vocab">Name</span> for each function, and
-                      remember that the <span class=
-                      "vocab">Domain</span> and <span class=
-                      "vocab">Range</span> can only include
-                      <span class="vocab">types</span> like
-                      Numbers, Images, Strings, etc.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>If students come up with different Domains or
-                  Ranges for their functions, have them explain
-                  their thinking for each one. These conversations
-                  are an important part of this step!</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    A Contract is the foundation for a function,
-                    which gives programmers just enough information
-                    to use them: the name of the function, the
-                    types of data it expects and the type of data
-                    it returns.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Now that you’ve completed the Contracts
-                      for all four word problems, try to generate
-                      two Examples for each one.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Challenge students to defend their Examples
-                  (their function name, the number of inputs, their
-                  types and the type of the returned value). Make
-                  sure that the two Examples for each function have
-                  <span style="font-style: italic">different input
-                  values</span>! For each of these questions,
-                  students must be able to point to the specific
-                  part of their Contract as the justification for
-                  their Example.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Once you have two or more Examples, it should
-                    be easy to identify what has changed between
-                    them. In fact, the number of things that change
-                    should match the number of things in the
-                    function’s Domain: if the Domain has a Number
-                    and a String in it, then those two values
-                    should be the things that differ between your
-                    Examples.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Identify what has changed between these
-                      Examples, and use this information to define
-                      all four functions.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Make sure students have chosen good variable
-                  names for their function definitions, and ask
-                  students to justify every part of the function
-                  body. The only acceptable answers should be "I
-                  copied this because it’s the same in both
-                  Examples", or "I used a variable name because it
-                  differs between Examples."</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="activity">
-                    <p>Turn to <a href=
-                    "../../resources/workbook/StudentWorkbook.pdf">Page
-                    13</a> in your workbook, and read the word
-                    problem carefully.</p>
-
-                    <ul>
-                      <li>
-                        <p>Circle the <span class=
-                        "vocab">Name</span> of the function, and
-                        underline what it takes in and what it
-                        produces.</p>
-                      </li>
-
-                      <li>
-                        <p>Write the <span class=
-                        "vocab">Contract</span> for this function,
-                        using what you underlined to help you find
-                        the <span class="vocab">Domain</span> and
-                        <span class="vocab">Range</span>.</p>
-                      </li>
-
-                      <li>
-                        <p>Underneath the Contract, write the
-                        <span class="vocab">Purpose
-                        Statement</span> by summarizing what the
-                        function does in a single sentence</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Challenge students to explain why this
-                  function does not need to know the color of the
-                  square, or whether or not it is solid. They main
-                  idea here is that the function already "knows"
-                  these things, so the only thing that is changing
-                  is the size of the square. Note that there are
-                  actually two easy solutions here: using the
-                  <tt>square</tt> function, or using
-                  <tt>rectangle</tt> with the same variable for
-                  width and height.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Remember that the Contract and Purpose
-                    Statement can be used to write the Examples,
-                    even if a programmer isn’t sure how to begin.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Using only the Contract and Purpose
-                      Statement, see if you can answer the
-                      following questions:</p>
-
-                      <ul>
-                        <li>
-                          <p>Every Example begins with the name of
-                          the function. Where could you find the
-                          name of the function?</p>
-                        </li>
-
-                        <li>
-                          <p>Every Example has to include sample
-                          inputs. Where could you find out how many
-                          inputs this function needs, and what
-                          types they are?</p>
-                        </li>
-
-                        <li>
-                          <p>Every Example has to include an
-                          expression for what the function should
-                          <span style=
-                          "font-style: italic">do</span> when given
-                          an input. Where could you look to find
-                          out what this function does?</p>
-                        </li>
-
-                        <li>
-                          <p>Write two Examples on your paper, then
-                          circle and label what is changing between
-                          them.</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Make sure students realize that every answer
-                  can be found in the Contract or Purpose
-                  Statement. Suggestion: write these steps on the
-                  board, and draw arrows between them to highlight
-                  the process. The goal here is to get students
-                  into the habit of asking themselves these
-                  questions each time they write Examples, and then
-                  using their own work from the previous step to
-                  find the answers. NOTE: students can solve this
-                  using either <tt>square</tt> or
-                  <tt>rectangle</tt>. The latter requires them to
-                  use the same variable twice, which is a useful
-                  thought-exercise.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Once the two Examples are written and the
-                    variable (or variables) are labeled, it becomes
-                    easy to define the function.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Using the Contract, Purpose Statement and
-                      Examples, see if you can answer the following
-                      questions:</p>
-
-                      <ul>
-                        <li>
-                          <p>Every function definition begins with
-                          the name. Where did you write this
-                          already?</p>
-                        </li>
-
-                        <li>
-                          <p>Every definition has to include
-                          variable names for the inputs. Where did
-                          you write these down?</p>
-                        </li>
-
-                        <li>
-                          <p>Every definition should work exactly
-                          the way the Examples did. Where could you
-                          look to figure out what the function
-                          should <span style=
-                          "font-style: italic">do?</span></p>
-                        </li>
-
-                        <li>
-                          <p>Write the function definition on your
-                          paper.</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    When typing in a function definition, be sure
-                    to type in all three parts: The Contract and
-                    Purpose Statement, the Examples and the
-                    Definition. When "Run" is clicked, the computer
-                    will read the definition, test your Examples to
-                    make sure it works correctly, and then add the
-                    definition to your language. Once added, you
-                    can use the function as if it were built into
-                    the computer.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p><a href=
-                      "http://www.wescheme.org/openEditor?definitionsText=;%20red-square%20:%20Number%20-%3E%20Image%0A;%20draw%20a%20solid,%20red%20square%20using%20the%20given%20size%0A(EXAMPLE%20(red-square%2042)%20(square%2042%20&quot;solid&quot;%20&quot;red&quot;))%0A(EXAMPLE%20(red-square%2073)%20(square%2073%20&quot;solid&quot;%20&quot;red&quot;))%0A(define%20(red-square%20size)%20(square%20size%20&quot;solid&quot;%20&quot;red&quot;))"
-                      target="embedded">Test out this function by
-                      using it with various inputs.</a></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Some functions take more than one input. The
-                    <tt>red-square</tt> function always makes solid
-                    red squares, with size being the only thing
-                    that varies. Suppose, however, we wanted the
-                    function to make red squares that could be
-                    <span style="font-style: italic">either</span>
-                    solid or outline? This would mean that both the
-                    size and the style can vary, so a user might
-                    type <tt>(red-square 50 "solid")</tt> or
-                    <tt>(red-square 50 "outline")</tt>
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <ul>
-                        <li>
-                          <p>How would that change the Domain of
-                          the function?</p>
-                        </li>
-
-                        <li>
-                          <p>How would the Examples have to
-                          change?</p>
-                        </li>
-
-                        <li>
-                          <p>How would the definition change?</p>
-                        </li>
-                      </ul>
-
-                      <p>Change each part of the code you typed, to
-                      allow <tt>red-square</tt> to take in "solid"
-                      or "outline" as a second argument.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    The Design Recipe can be used for functions
-                    that take any number of inputs. As a simple
-                    example, take the following word problem:
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Turn to <a href=
-                      "../../resources/workbook/StudentWorkbook.pdf">
-                      Page 14</a> in the workbook, and read the
-                      word problem carefully.</p>
-
-                      <ul>
-                        <li>
-                          <p>Circle the <span class=
-                          "vocab">Name</span> of the function, and
-                          underline what it takes in and what it
-                          produces.</p>
-                        </li>
-
-                        <li>
-                          <p>How many things does this function
-                          take as input? Are they Numbers? Strings?
-                          Images?</p>
-                        </li>
-
-                        <li>
-                          <p>Write the <span class=
-                          "vocab">Contract</span> for this
-                          function, using what you underlined to
-                          help you find the <span class=
-                          "vocab">Domain</span> and <span class=
-                          "vocab">Range</span>.</p>
-                        </li>
-
-                        <li>
-                          <p>Underneath the Contract, write the
-                          <span class="vocab">Purpose
-                          Statement</span> by summarizing what the
-                          function does in a single sentence.</p>
-                        </li>
-
-                        <li>
-                          <p>Write two Examples for this function,
-                          then circle and label what varies between
-                          them.</p>
-                        </li>
-
-                        <li>
-                          <p>Write the Definition for this
-                          function.</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>If time allows, pass out extra Design Recipe
-                  worksheets [<a href=
-                  "../../resources/DesignRecipeWorksheet.pdf">PDF</a>],
-                  and have students practice with other word
-                  problems. Practice variations on red-square,
-                  involving two inputs changing while other
-                  parameters stay fixed.</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </blockquote>
-
-      <blockquote class="LessonBoundary">
-        <span class="BootstrapPageTitle">The Design Recipe
-        (Algebra)</span>
-
-        <div class="content">
-          <div class="overview">
-            <p><span class="BootstrapLogo"><img src="logo.png" alt=
-            "bootstrap logo"></span></p>
-
-            <p><span class=
-            "BootstrapLessonTitle">Overview</span></p>
-
-            <div class="LessonLearningObjectives">
-              <p><span style="font-weight: bold">Learning
-              Objectives</span></p>
-            </div>
-
-            <div class="LessonEvidenceStatements">
-              <p><span style="font-weight: bold">Evidence
-              Statements</span></p>
-            </div>
-
-            <div class="LessonProductOutcomes">
-              <p><span style="font-weight: bold">Product
-              Outcomes</span></p>
-            </div>
-
-            <div class="LessonMaterials">
-              <p><span style=
-              "font-weight: bold">Materials</span></p>
-            </div>
-
-            <div class="LessonPreparation">
-              <p><span style=
-              "font-weight: bold">Preparation</span></p>
-            </div>
-          </div>
-
-          <div class="segment">
-            <p><a name=
-            "lesson_TheDesignRecipe(Algebra)1920"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">The
-            Design Recipe (Algebra) <span class="time">(Time 40
-            minutes)</span></span></span>
-
-            <ul class="lesson">
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    The real power of programming isn’t how well
-                    you know the language. It’s about how well you
-                    can use it to solve problems! You’ve learned
-                    about a powerful tool that helps you take word
-                    problems on paper and turn them into functions
-                    on the computer: the <span class="vocab">Design
-                    Recipe</span>! It turns out that the Design
-                    Recipe can also be used to help you solve word
-                    problems in algebra, too!
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Turn to <a href=
-                      "../../resources/workbook/StudentWorkbook.pdf">
-                      Page 39</a> in your workbooks, read the word
-                      problem carefully, and write down the
-                      Contract for the function: <span style=
-                      "font-style: italic">"A rocket is flying from
-                      Earth to Mars at 80 miles per second. Write a
-                      function that describes the distance
-                      <script type="math/tex">
-D
-                      </script> the rocket has traveled, as a
-                      function of time.</span>"</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    The distance a rocket travels is measured in
-                    numbers of miles, and time is measured in
-                    numbers of seconds. This gives us the contract:
-
-                    <div class="banner">
-                      <script type="math/tex">
-distance : Number \rightarrow Number
-                      </script>
-                    </div>Just as before, the Contract gives us a
-                    strong hint about how to write the Examples.
-                    Here is one Example, written in Racket code:
-                    <tt>(EXAMPLE (distance 5) (* 5 80))</tt> Here’s
-                    the same example, written in algebra:
-                    <script type="math/tex">
-distance(5) = 5 \times 80
-                    </script>
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Write two additional Examples for this
-                      function, using Algebraic notation.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Point out that the Contract hasn’t changed
-                  <span style="font-style: italic">at all</span>
-                  between Racket and Algebra.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    As before, a function’s variables can be
-                    identified by writing two Examples, and looking
-                    at what changes between them.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Using the Examples you’ve written,
-                      identify the variable(s) for the function.
-                      Then define the function <span style=
-                      "font-style: italic">using Algebraic
-                      syntax</span>.</p>
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    The Design Recipe helps transition from a
-                    written description of a function into a formal
-                    definition,
-
-                    <div class="banner">
-                      <script type="math/tex">
-distance(4) = 4 \times 80
-                      </script> <script type="math/tex">
-distance(7) = 7 \times 80
-                      </script> <script type="math/tex">
-distance(t) = t \times 80
-                      </script>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="activity">
-                    <p>Turn to <a href=
-                    "../../resources/workbook/StudentWorkbook.pdf">Page
-                    40</a> in your workbooks, read the word problem
-                    carefully, and write down the Contract for the
-                    function: <span style="font-style: italic">"A
-                    rocket is traveling from Earth to Mars at 80
-                    miles per second. Write a function that
-                    describes the time the rocket has been
-                    traveling, as a function of
-                    distance."</span></p>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Point out that this is the same relationship
-                  between distance and time as before, <span style=
-                  "font-weight: bold">only now we want be able to
-                  see the relationship from the opposite
-                  direction</span>: time in terms of distance,
-                  rather than distance in terms of time.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Once we have the Contract, it’s easy to write
-                    Examples: <script type="math/tex">
-time : Number \rightarrow Number
-                    </script>
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Use the Contract to write two Examples for
-                      this function, then identify the variable(s)
-                      for the function.</p>
-
-                      <ul>
-                        <li>
-                          <p>How many variables does this function
-                          have?</p>
-                        </li>
-
-                        <li>
-                          <p>Name the variable(s).</p>
-                        </li>
-
-                        <li>
-                          <p>Define this function, using Algebraic
-                          syntax.</p>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    Once your function is set up, it’s easy to just
-                    plug in values and get answers back.
-                    <span style="font-style: italic">With most word
-                    problems, the hard part is setting up the
-                    function in the first place.</span> Luckily,
-                    the Design Recipe makes setting up that
-                    function a lot easier! We’ve just used it to
-                    set up two different functions, which could be
-                    used to give us answers in terms of distance or
-                    time. Defining functions is like building
-                    tools, which you can use to solve simple
-                    problems or combine together to solve more
-                    complex ones.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Suppose you wanted to know how far the
-                      rocket traveled in 6 seconds: which of the
-                      two functions here would you use? What if you
-                      wanted to know how long it takes for the
-                      rocket to go a thousand miles?</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Ask students to identify which function they
-                  would use to answer a variety of different
-                  questions.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="activity">
-                    <p>Turn to <a href=
-                    "../../resources/workbook/StudentWorkbook.pdf">Page
-                    41</a> in your workbooks, read the word problem
-                    carefully: <span style="font-style: italic">"A
-                    rocket leaves Earth, headed for Mars at 80
-                    miles per second. At the exact same time, an
-                    asteroid leaves Mars traveling towards Earth,
-                    moving at 70 miles per second. If the distance
-                    from the Earth to Mars is 50,000,000 miles, how
-                    long will it take for them to meet?"</span></p>
-
-                    <ul>
-                      <li>
-                        <p>What are the facts that the problem
-                        <span style="font-weight: bold">gives
-                        you</span>?</p>
-                      </li>
-
-                      <li>
-                        <p>What is the problem <span style=
-                        "font-weight: bold">asking you
-                        for</span>?</p>
-                      </li>
-
-                      <li>
-                        <p>Use your answers to complete the
-                        following sentence: "Given ____, write a
-                        function that produces ____."</p>
-                      </li>
-
-                      <li>
-                        <p>If such this function existed, what
-                        would be a good name for it?</p>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-
-                <div class="teacher">
-                  <p>Ultimately, the problem is asking students
-                  about a functional relationship between distance
-                  and collision-time.</p>
-                </div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    If we had a function that computed
-                    collision-time, it would be easy to answer this
-                    question just by plugging in the distance
-                    between the Earth and Mars. Rather than start
-                    worrying about setting up an equation, you can
-                    use the Design Recipe to build the function
-                    itself!
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Write down the contract for this function,
-                      then write two Examples using different
-                      distances.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <p>By now, you’ve got the contract for this
-                  function and a good purpose statement:</p>
-
-                  <div class="banner">
-                    <script type="math/tex">
-collide : Number \rightarrow  Number
-                    </script> <script type="math/tex">
-collide(0) = ...
-                    </script>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    So now we need to figure out what calculations
-                    go after the equals sign. Luckily, we have a
-                    hint: we know that whatever it is, it must come
-                    out to zero, since we know that they’ve already
-                    collided when they are zero miles apart.
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>If the rocket is going 80 miles/second,
-                      and the asteroid is going 70 miles/second,
-                      <span style="font-style: italic">how fast are
-                      they approaching each other?</span></p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <div class="SIntrapara">
-                    <script type="math/tex">
-60 + 70 = 150
-                    </script>, so we know that they are getting
-                    closer and closer together at a rate of 150
-                    miles per second. This isn’t that different
-                    from our <tt>time</tt> function: we have some
-                    speed, and we want to know how much time it
-                    will take to go a given distance. So what do we
-                    write for our example?
-
-                    <div class="banner">
-                      <script type="math/tex">
-collide(0) = 0/150
-                      </script>
-                    </div>
-                  </div>
-
-                  <div class="SIntrapara">
-                    <div class="activity">
-                      <p>Write two Examples of your own using
-                      different distances, then define the function
-                      so it works with any distance.</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-
-              <li class="lessonItem">
-                <div class="student">
-                  <p>By now, you may already see the big picture:
-                  the distance given in this problem can be plugged
-                  into the equation without having to define the
-                  function itself. Sometimes the Design Recipe will
-                  get you to the answer without even having to
-                  finish! Other times, however, you may not see the
-                  big picture until you’ve broken the problem down
-                  into smaller parts, each with it’s own
-                  function.</p>
-                </div>
-
-                <div class="teacher">
-                  <p>You can add as many Design Recipe pages as you
-                  like to the workbooks, using any algebra problem
-                  you like. We recommend using word problems from
-                  your students’ algebra textbook, or even from
-                  your state’s standardized test!</p>
-                </div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </blockquote>
-
-      <blockquote class="LessonBoundary">
-        <span class="BootstrapPageTitle">Closing</span>
-
-        <div class="content">
-          <div class="overview">
-            <p><span class="BootstrapLogo"><img src="logo.png" alt=
-            "bootstrap logo"></span></p>
-
-            <p><span class=
-            "BootstrapLessonTitle">Overview</span></p>
-
-            <div class="LessonLearningObjectives">
-              <p><span style="font-weight: bold">Learning
-              Objectives</span></p>
-            </div>
-
-            <div class="LessonProductOutcomes">
-              <p><span style="font-weight: bold">Product
-              Outcomes</span></p>
-            </div>
-
-            <div class="LessonMaterials">
-              <p><span style=
-              "font-weight: bold">Materials</span></p>
-            </div>
-
-            <div class="LessonPreparation">
-              <p><span style=
-              "font-weight: bold">Preparation</span></p>
-            </div>
-          </div>
-
-          <div class="segment">
-            <p><a name="lesson_Closing1921" id=
-            "lesson_Closing1921"></a></p><span class=
-            "BootstrapLessonTitle"><span class=
-            "BSLessonName">Closing <span class="time">(Time 5
-            minutes)</span></span></span>
-
-            <ul class="lesson">
-              <li class="lessonItem">
-                <div class="student">
-                  <p>In this unit, you started to see how functions
-                  are useful in writing animations: functions help
-                  produce information (such as the height of a
-                  rocket) that are used to create scenes in a game.
-                  With the extra practice writing functions and
-                  using the Design Recipe, you are now ready to
-                  start writing functions that will move the
-                  elements within your own game.</p>
-                </div>
-
-                <div class="teacher"></div>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </blockquote>
-
-      <div class="ExtraExercises">
-        <span class="BootstrapLessonTitle">Additional
-        Exercises:</span>
-
-        <ul>
-          <li>
-            <p><a href=
-            "exercises/Practicing-the-Design-Recipe/examples-same-contracts1.html">
-            Do Examples Have the Same Contracts?</a></p>
-          </li>
-
-          <li>
-            <p><a href=
-            "exercises/Practicing-the-Design-Recipe/match-contracts-examples1.html">
-            Matching Contracts and Examples</a></p>
-          </li>
-        </ul>
-      </div>
-
-      <div id="copyright">
-        <a href=
-        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_3.png"
-        alt="image" width="88" height="31"></a>Bootstrap by
-        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
-        Schanzer</a> is licensed under a <a href=
-        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
-        Commons 3.0 Unported License</a>. Based on a work at
-        <a href=
-        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
-        Permissions beyond the scope of this license may be
-        available at <a href=
-        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
-      </div>
-    </div>
-  </div>
-
-  <div id="contextindicator">
-    &nbsp;
-  </div>
+<body>
+<title>Tasarım Reçetesi</title>
+  <h1>Üniteye Genel Bakış</h1>
+  <p>Öğrenciler Tasarım Reçetesi çalışmalarına, basit problemlere uygulayarak devam edecektir.</p>
+<h3>Ajanda</h3>
+<ul>
+ <li>25 dakika Tasarım Reçetesi</li>
+ <li>40 dakika Tasarım Reçetesini Uygulamak</li>
+ <li>40 dakika Tasarım Reçetesi (Matematik)</li>
+ <li>5 dakika Kapanış</li>
+</ul>
+<h1>Ürün Çıktısı</h1>
+ <li>Öğrenciler Tasarım Reçetesini, bir roketi uçurma fonksiyonunu tanımlamak için kullanacaklar.</li>
+ <li>Öğrenciler Tasarım Reçetesini kullanarak basit problemleri çözmek için fonksiyonlar yazacaklar.</li>
+ <h1>Teknik Terim  ve İfade Açıklamaları</h1>BS ile başlayan terimler Bootstrap (önyükleme)
+
+<h1>Sözlükçe: </h1>
+
+<h4>Kontrat:</h4><p>Etkinlik alanı (domain) adı ve fonksiyon çeşidi.</p>
+<h4>Tasarım Reçetesi :</h4><p> İnsanlara dökümantayon, test ve fonksiyon yazmak için yardımcı olacak adımlar dizisi.</p>
+<h4>Etkinlik alanı:</h4><p>Bir fonksiyonun beklediği veri çeşidi.</p>
+<h4>Örnek:</h4><p> Belirli girdilerle bir fonksiyonunun kullanımını ve bu girdilerle fonksiyonun ne şekilde çalışması gerektiğini gösterir. </p>
+<h4>İsim :</h4><p>Bir fonksiyonun ya da tanımlı bir değerin bir programlama dilinin içinde nasıl ifade edileceği. </p>
+<h4>Amaç Açıklamaları:</h4><p>Fonksiyonun ne yaptığıyla ilgili kısa bir açıklama.</p>
+<h4>Aralık:</h4><p>Fonksiyonun ürettiği veri aralığı.</p>
+<h4>Çeşit:</h4><p>Number , String , Image, Boolean gibi genel veri çeşitleri.</p>
+<h4>Değişken:</h4><p> Değişebilen veri tipi.</p>
+<h1> Materyaller: </h1>
+<ul>
+ <li>Öğrencileri için kalemler, öğretmenler için tahta kalemleri</li>
+ <li>Sınıf posterleri (Kurallar listesi, dil tabelası, Ders takvimi)</li>
+ <li>Dil tabelası</li>
+ <li>Öğrenci <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf">çalışma kitabı </a> dosyaları kapaklarda isimleriyle</li>
+</ul>
+<h1>Hazırlık: </h1>
+<ul>
+ <li>İlerleme planlamasını yazınız</li>
+ <li>Ders posterlerini görüntüleyin</li>
+ <li>"Rocket" [Rocket.rkt from source-files.zip | WeScheme] Öğrenciler bilgisayarlarına önceden yüklenebilir</li>
+ <li>Oturma ayarlamaları : ideal olarak yerleştirilmiş masalar </li>
+<li>İsteğe Bağlı : <a href="https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit">Isınma aktiviteleri </a> </li>
+</ul>
+<table style="width:100%">
+  <tr>
+    <td> Tipler </td>
+    <td> Fonksiyonlar </td>  
+  </tr>
+  <tr>
+    <td> Number (Sayı) </td>
+    <td>+  - * / sqr(Sayının karesi)  sqrt(Sayının Karekökü)  expt(sayının üssü) </td> 
+    
+  </tr>
+<tr>
+    <td> String (dizi)  </td>
+    <td> String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu) </td> 
+    
+  </tr>
+<tr>
+    <td> Image (imaj) </td>
+    <td> Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme </td> 
+    
+  </tr>
+</table>
+<a href="  ????  "> Öğretmen notlarını göster</a>
+<a href=" ?????   "> Tartışma grubu</a>
+<h2>Tasarım Reçetesi</h2>
+
+<ul>
+ <li> Özet</li>
+ <li> Öğrencilere önceden tasarım reçetesinin adımları anlatıldı .</li>
+</ul>
+
+<h2>Öğrenme Amaçları</h2>
+<ul>
+<li> Öğrenciler fonksiyon örnekleri yaratmayı ve üzerlerinde çalışmayı öğrenir</li>
+ <li> Öğrenciler fonksiyonlar üzerinden çalışarak örnek fonksiyon yaratmayı öğrenir.</li>
+</ul>
+<h2>İfade Açıklamaları</h2>
+<ul>
+<li> Tanım verildiğinde, öğrenciler tanımlanan İsmi, Tipi ve Değeri açıklayabilecektir.
+</li>
+ <li> Tek değişkenli fonksiyonda sözleşme ve amaç açıklandığında, öğrenciler iki Örnek verebiliyor olacaklar.</li>
+<li> Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler değişkeni ayırt edebiliyor olacaklar.</li>
+ <li> Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler tanım yazabiliyor olacaklar.</li>
+</ul>
+<h2>Ürün Çıktıları</h2>
+<ul>
+<li> Öğrenciler fonksiyon tanımlamak için Tarif Reçetesini kullanacak ve bir roketi uçuracaklardır.</li>
+</ul>
+
+<h2>Materyaller:</h2>
+<ul>
+<li> Öğrencileri için kalemler, öğretmenler için tahta kalemleri,</li>
+<li> Sınıf posterleri (Kurallar listesi, dil tabelası, Ders takvimi)</li>
+<li> Dil tabelası</li>
+<li> Öğrenci çalışma kitabı dosyaları kapaklarda isimleriyle</li>
+</ul>
+
+<h2>Hazırlık:</h2>
+<ul>
+<li> İlerleme planlamasını yazınız</li>
+<li> Ders posterlerini görüntüleyin</li>
+<li> "Rocket" [Rocket.rkt from source-files.zip | WeScheme] Öğrenciler bilgisayarlarına önceden yüklenebilir </li>
+<li> Oturma ayarlamaları : ideal olarak yerleştirilmiş masalar </li>
+<li> İsteğe Bağlı : Isınma aktiviteleri edinin</li>
+</ul>
+<table style="width:100%">
+  <tr>
+    <td> Tipler </td>
+    <td> Fonksiyonlar </td>  
+  </tr>
+  <tr>
+    <td> Number (Sayı) </td>
+    <td>+  - * / sqr(Sayının karesi)  sqrt(Sayının Karekökü)  expt(sayının üssü) </td> 
+    
+  </tr>
+<tr>
+    <td> String (dizi)  </td>
+    <td> String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu) </td> 
+    
+  </tr>
+<tr>
+    <td> Image (imaj) </td>
+    <td> Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme </td> 
+    
+  </tr>
+</table>
+<div id="header">
+<h1>Tasarım Reçetesi (25 dakika) </h1>
+</div>
+<p>Fonksiyonlar bilgisayar programlarındaki animasyonların anahtar bölümleridir. Bir fonksiyon bir kedinin statik(durağan) resmini çizebilir, örneğin, kedinin verilen girdiye göre yer değiştirmesini sağlayabilir. Girdi zamandan ya da kullanıcı etkileşiminden dolayı değişime uğradığında, kedi hareket etmeye başlayabilir. Bu durum gerçek çevirmeli defterlerde çizilen karakterlerin hareket etmesine benzer. Her sayfada durağan bir imaj küçük farklılıklarla çizilidir. Sayfalar hızlıca çevrildiği zaman imaj da değişiyor gibi görünür. </p>
+<img src=“http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/pict_2.png">
+<img src=“http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/flipbook.gif">
+<p>Bu imajları bir araya getirerek, roketin ekranda yukarıya doğru gittiği bir animasyona ulaşmış oluyoruz. Bu çeşit bir animasyonun bir örneğini görelim. Çalışma kitabınızdan 12. sayfayı açın ve problem kelimesini dikkatle okuyun</p>
+<h3>Roket saniyede 7 metre hızla kalkış yapar. Adı rocket-height olan, içine roketin kalkmak için ihtiyacı olan saniye değerini sayı olarak alan ve roketin o saniye sonunda havalanması olayını gerçekleştiren bir fonksiyon yazın . </h3>
+<div id = “nav”>
+<ul>
+ <li> rocket-height fonksiyonunun içine ne veri alır? Ne tür veridir?</li>
+ <li> Fonksiyon çıktı olarak ne veri üretiyor üretiyor? Üretilen verinin türü nedir?</li>
+ <li> Sözleşmenin üç bölümü nelerdir?</li>
+ <li> Tanımlamanız istenen fonksiyonun Adı nedir?</li>
+<li> Fonksiyonun  etkinlik alanı nedir?</li>
+<li> Fonksiyonun aralığı nedir?</li>
+</ul>
+</div>
+<p>Kontrat, fonksiyonu genel anlamda, nasıl çalışacağını düşünmeden, nasıl kullanılacağını bilmeden düşünebilme yoludur. Yukarıdakiler gibi basit sorulardan başlamak kalan adımları çok daha kolay atmanızı sağlar. Buna rağmen, Kontrat her zaman yeterli bilgi vermez! Yıldız için etkinlik alanı örneğin, fonksiyonun ihtiyacı olanın bir Number ve iki String olduğudur ama String in içinin dolu mu yoksa sadece sınırları olan bir String olup olmadığından söz etmez. Bu bilgiyi eklemek için yazılımcılar<p style="color:blue">Açıklamaları Amaç </p>  yazar, bunlar fonksiyonun ne yaptığını anlatan basit cümlelerdir. </p>
+<div id = “nav”>
+<p>Kontratın alt bölümüne rocket-height fonksiyonu için aşağıdaki basit Amaç Açıklamasını kopyalayın.</p>
+</div>
+<code>
+<p style="color:orange">;rocket-height : Number -> Number</p>
+<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
+</code>
+<p>Kontrat ve Amaç Açıklamaları ile donandıktan sonra, bir örnek yazmak çok daha kolay bir hal alıyor. Her örnek fonksiyonun adıyla ve örnek bir veri girdisiyle başlar. İkisi de hazırlanan Kontrat içinde yazıyor. Bu durumda, fonksiyonun adının <p style="color:blue">rocket-height </p> olduğunu biliyorsunuz ve bu fonksiyon içine yalnızca bir Number tipinde girdi bekliyor. Amaç Açıklaması biraz daha fazla gidiyor ve size girdimizin 7 ile çarpıldığını söylüyor. Böylelikle farklı saniye sayılarını girdi olarak kullanıp, iki örnek yazabiliriz.</p>
+<code>
+<p style="color:orange">;rocket-height : Number -> Number</p>
+<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
+<p style="color:blue"> (EXAMPLE (rocket-height 11)
+         <p style="color:blue">(* 11 7))</p></p>
+<p style="color:blue"> (EXAMPLE (rocket-height 72)
+         <p style="color:blue">(* 72 7))</p></p>
+</code>
+<p>Not:  Yukarıda gösterilen örnekler iki satıra bölünmüştür! Fonksiyonlar ve örnekler çok daha uzun ve karmaşık bir hal alacağı için hepsini tek satıra sıkıştırmak çok zor olacaktır. Çalışma kitaplarınızda, her örnek ve tanım bundan sonra satırlara bölünerek yazılacaktır.</p>
+<div id="nav">
+<p> Çalışma kitaplarınızda, iki tane farklı saniye değerleri kullanarak rocket-height fonksiyonu yazınız. İki örnek de çok fazla ortak özelliğe sahip olacak (İkisi de rocket-height ismini kullacak, ikisi de girdilerini 7 ile çarpacak, vs.) Bitirdiğiniz zaman, örneklerin sadece değişebilir olan bölümlerini daireye alarak işaterleyin.</p>
+</div>
+
+<p>İki farklı örneği kıyaslayarak neyin değişip neyin değişmediğini söyleyebilmek kolay. Amaç Açıklamaları hazırlığımızı göz önünde bulundurduğumuzda roketin uçtuğu saniye sayıları diyebiliriz.</p>
+<div id="nav">
+<p>Sayfa üzerinde, “saniyeler” ile daire içine aldığınız maddeleri etiketleyin.</p>
+</div>
+<p>Değişebilir olan şeyleri etiketlemek, programcılara fonksiyon içerisindeki değişkenlere isim verebilme hissi kazandırır. Değişkenler, farklı zamanlarda değişebilecek olan değerler için yer tutucu gibidir. Her ay içinde mesaj göndermek için ne kadar ödediğinizi hesaplayan bir fonksiyon olsun, örneğin bu fonksiyonun içerdiği, içinde bulunduğunuz aya ait olan kaç tane mesaj gönderdiğiniz bilgisini tutan bir değişkeni olabilir. Gönderdiğiniz mesaj sayısı aydan aya değişebilir ama yine de her mesajın fiyatı 20 kuruş tutarındadır. </p>
+<div id="nav">
+<p>Rocket-height fonksiyonunda kaç değişken vardır? Her değişkenin adı nedir? Örneklerinizden ve Anlaşma ve Amaç Özellikleri bölümündeki bilgilerden yararlanarak fonksiyonu tanımlayın.</p>
+</div>
+<code>
+<p style="color:orange">;rocket-height : Number -> Number</p>
+<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
+<p style="color:blue"> (EXAMPLE (rocket-height 11)
+         <p style="color:blue">(* 11 7))</p></p>
+<p style="color:blue"> (EXAMPLE (rocket-height 72)	
+         <p style="color:blue">(* 72 7))</p></p>
+<p style="color:blue"> (define (rocket-height seconds)	
+         <p style="color:blue">(* seconds 7))</p></p>
+</code>
+
+<p>Tasarım Reçetesi programcıya bir adımda bir problem üzerine odaklanmasını ve önceki adımları kullanarak bir sonraki adımları tamamlamasını öğretir.</p>
+<div id = “nav”>
+<ul>
+ <li> Kontrat programcıya fonksiyonla ilgili ne anlatır?</li>
+ <li> Amaç Açıklamaları, programcıya fonksiyonla ilgili ne anlatır?</li>
+ <li> Kontrat ve Amaç Açıklamaları, programcıya Örnekler yazması için nasıl yardımcı olur?</li>
+ <li> Örnekler içerisinde değişebilen bölümleri etiketlemek ve daire içine almak neden yardımcıdır?</li>
+<li> Bütün bu adımlar programcıya bir fonksiyon tanımlama sırasında nasıl yardımcı olur?</li>
+</ul>
+</div>
+
+<p>Fark etmiş olabileceğiniz gibi Örnekler içinde bulunan rocket-height fonksiyonundaki çarpma işlemi direkt (77) sonucu olarak yazılmak yerine (* 11 7) şeklinde yazılmıştır. Neden çarpmanın hesaplanma yolunu göstermeye zahmet edilmiş olsun? Bunu yaparak, Örnekler hangi adımın gerçekleştirileceği konusunda ipuçları sunar.  Gösterilen Rocket kodunda (Rocket.rkt source-files.zip den alınan | ya da online file ), Örnekler yazarken uygulanan işlemlerin gösterilmesinin neden önemli olduğunu göreceksiniz.</p>
+<div id = “nav”>
+<p>“Run” a tıklayın, ve pencerenin en altında bir roket belirene kadar ve en yukarıda “zaman” ve “yükseklik” sayıları görüntülenene kadar bekleyin. Bu animasyon roketi, her boşluk tuşuna basıldığında yenilemek üzere ve zamanı geçiyor gibi göstermek üzere ayarlanmıştır. Boşluk tuşuna birkaç kere basın ve pencerenin üstünde beliren zamanın artışını gözlemleyin. Roket hareket etti mi? Zaman akıyor, ancak roketin yüksekliği değişmiyor! Roket penceresini kapatın, böylece kodu görebilirsiniz. </p>
+</div>
+<p>Bu fonksiyon için Kontrat doğru: Fonksiyonun Adı, Etkinlik Alanı, Aralığı burada doğru olarak yazılmıştır. Buna rağmen bir sonraki adım kesinlikle bazı problemlere sahip:</p>
+<ol type="1">
+  <li> Sadece bir Örnek var. Bu durum neyin değiştiğini anlamamız konusunda zorluk yaratabilir, böylece değişkenleri anlamaya çalışırken hatalara yol açabilir.</li>
+  <li> Örnek yüksekliğin nasıl hesaplandığını göstermez –onun yerine, programcı yapılan işi göstermek yerine sadece “cevabı” yazar.</li>
+</ol>
+<p>Örnek içindeki bu adımları atlayarak, Fonksiyonu tanımlarken hata yapmak kolaylaşabilir.</p>
+<div id = “nav”>
+<p>Programcının yaptığı hataları görebiliyor musunuz?</p>
+</div>
+<p>Birden fazla Örnek görmeden, bu programcı roketin yüksekliğinin her veri için ayrıca hesaplanacağını fark etmek konusunda sıkıntıya düşmüştür. Bunun yerine, her seferinde aynı sayıyı üretmişlerdir ( bu durumda sayı sıfır). Sonuç olarak, kaç saniye geçmiş olursa olsun, roket her zaman sıfır yüksekliğindedir. </p>
+<ul>
+ <li> Bu programcının yazdığı Örnek teki hatayı düzeltin.</li>
+ <li> İlkinin altına ikinci bir Örnek yazın.</li>
+ <li> Fonksiyon tanımını tamir edin, böylece fonksiyon saniye sayısını7 ile çarpıyor hale gelsin.</li>
+ <li> “Run” a tıklayıp arkasından boşluk tuşuna basın ve roket uçsun!</li>
+</ul>
+<div id="header">
+<h1>Tasarım Reçetesi  Uygulaması (40 dakika) </h1>
+</div>
+<p>Tasarım Reçetesi , programcıların yazdıkları kodların doğruluğundan emin olmak için kullandıkları , fonksiyonları tanımlamak için bir yol haritası niteliğindedir. Her adım son anda oluşturulur böylece karşılaşılabilecek hatalar erkenden önlemiş olur. Bu yol haritası bir seri adıma sahiptir:</p>
+<ul>
+ <li> Bir kelime hatasından Kontrata hareket etmek</li>
+ <li> Kontratı göz önünde bulundurarak örnekler yazmak</li>
+ <li> Örneklerle uyuşan bir fonksiyon tanımlamak </li>
+</ul>
+<p>Bu adımları bir bir uygulayarak başlayın.</p>
+<div id = “nav”>
+<p>Aşağıdaki her kelime problemi için Kontratı yazınız:</p>
+<ul>
+ <li> Purple-star (mor-yıldız) adında bir fonksiyon tanımlayın. Fonksiyon içine yıldızın boyutunu alsın ve verilen boyutta çizgisel bir yıldız üretsin. </li>
+ <li> Spot (nokta) adında bir fonksiyon tanımlayın. Fonksiyon içine renk alsın ve yarıçapı 50 olan verilen renkte, katı bir daire üretsin.</li>
+ <li> İki sayının ortalamasının hesaplanması için iki sayı toplanır ve ikiye bölünür. Average (ortalama) adında bir fonksiyon tanımlayın. Fonksiyon içine iki sayı alsın ve bu iki sayının ortalamasını hesaplasın.</li>
+<li> Bir şirket logosu, büyük, kırmızı harflerle çizilmiş ve bir takım sayı dereceleriyle yerleştirilmişti. Logo adında bir fonksiyon tanımlayın. Fonksiyon içine şirket adı ve yerleşim sayısı alsın ve şirket için bir logo üretsin.</li>
+</ul>
+<p>Her fonksiyon için iyi bir isim bulduğunuzdan emin olun ve Etkinlik Alanı ve Aralık sadece Number(sayı), İmaj(image), String(dizi) vb. değerler içerebilir.</p>
+</div>
+<p> Kontrat bir fonksiyon için, programcıya kullanması için sadece yeterli bilgiyi veren temel niteliklidir:
+Fonksiyonun adı, fonksiyonun içine aldığı ve çıktı olarak verdiği değerlerin veri tipi.</p>
+<div id = “nav”>
+<p>Şimdi, dört problem için de Kontratları tamamlamış bulunuyorsunuz. Her biri için ikişer tane Örnek üretmeye çalışın.</p>
+</div>
+<p>İki ya da daha fazla Örneğe sahip olduğunuzda, aralarında neyin değiştiğine karar verebilmek kolay olacaktır. Aslında, değişen şeylerin sayısı, fonksiyonun etkinlik alanının içinde olanların sayısıyla eşit olmalıdır. Eğer Etkinlik Alanı içinde bir Number(sayı), bir de String(dizi) varsa, bu iki değer sizin örnekleriniz içinde değişen değerler olmalıdır.</p>
+<div id = “nav”>
+Örnekler arasında değişim gösteren şeyleri tanımlayın ve bu bilgiyi kalan diğer fonksiyonları tanımlamak için kullanın.
+Çalışma kitaplarınızdan <a href=" http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/the-unit.html"> sayfa 13 </a> ü açın ve kelime problemini dikkatle okuyun.
+<ul>
+ <li> Fonksiyonun ismini daire içine alın ve içine aldığı değerle ürettiği değerin altını çizin. </li>
+ <li> Bu fonksiyon için Kontratı yazın, altını çizdiğini değerler size Etkinlik Alanı ve Aralık değerlerini bulmanız için yardımcı olacaktır.</li>
+ <li> Kontratın altında, Amaç Açıklamalarını, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</li>
+</ul>
+</div>
+<p>Kontrat ve Amaç Açıklamaları, programcı nasıl başlayacağından emin olmasa bile, Örnek yazmak için kullanılabilir hatırlayın.</p>
+<div id = “nav”>
+<p>Sadece Kontrat ve Amaç Açıklamalarını kullanarak aşağıdaki sorulara cevap verebiliyor musunuz görün:</p>
+<ul>
+ <li> Her Örnek fonksiyonun adıyla başlar. Fonksiyonun adını nerede bulabilirsiniz? </li>
+ <li> Her Örnek, örnek veri içermek zorundadır. Fonksiyonun kaç tane veri girdisine ihtiyaç duyduğunu nereden bulabilirsiniz?</li>
+ <li> Her Örnek, veri girdisi verildiği zaman, içinde ne yapıyor olmalı olduğunu gösteren bir ifade içermeli. Bu fonksiyonun ne yaptığını anlayabilmek için nereye bakmalısınız?</li>
+<li> Kağıdınıza iki Örnek yazın, ardından aralarında değişen değerlerin altını çizin ve etiketleyin.</li>
+</ul>
+</div>
+<p> Fonksiyon tanımı yazarken, yazdıklarınızın hepsinin üç bölümde olduğuna emin olun: Kontrat ve Amaç Açıklamaları, Örnekler ve Tanım. “Run” a basıldığında, bilgisayar tanımı okuyacak, Örneklerinizi doğru yazılıp yazılmadığını görmek için test edecek ve tanımınızı sizin dilinizde ekleyecektir. Bir kere eklendikten sonra fonksiyonu sanki bilgisayarda daha önceden çalıştırılmış gibi kullanabilirsiniz.</p>
+<a href=" http://www.wescheme.org/openEditor?definitionsText=;%20red-square%20:%20Number%20-%3E%20Image%0A;%20draw%20a%20solid,%20red%20square%20using%20the%20given%20size%0A(EXAMPLE%20(red-square%2042)%20(square%2042%20%22solid%22%20%22red%22))%0A(EXAMPLE%20(red-square%2073)%20(square%2073%20%22solid%22%20%22red%22))%0A(define%20(red-square%20size)%20(square%20size%20%22solid%22%20%22red%22))"> Bu fonksiyonu farklı veri girdileri kullanarak test edin.</a>
+<p>Bazı fonksiyonlar birden fazla değer alırlar. Red-square (kırmızı kare) fonksiyonu, sadece büyüklüğü değişken değer olarak alarak, her zaman kırmızı bir kare üretecektir. Düşünün, buna rağmen istiyoruz ki bu fonksiyon kırmızı ama istersek içi dolu istersek çizgisel bir kare üretsin. Bu demek oluyor ki hem boyut hem de stil değişebilir, böylece kullanıcı hem (red-square 50 “solid”) girebilir hem de (red-square 50 “outline”) girebilir.</p>
+<div id = “nav”>
+<ul>
+ <li> Bu durum fonksiyonun Etkinlik Alanında nasıl değişiklik gösterir? </li>
+ <li> Örnekler ne şekilde değişmek zorunda kalır?</li>
+ <li> Tanım ne şekilde değişir?</li>
+<li> Yazdığınız kodun, red-square fonksiyonuna içine hem “solid” (katı) hem de “outlined” (çizgisel) verilerini, ikinci değer olarak almasına izin vermesi için, her parçasını değiştirin.</li>
+</ul>
+</div>
+<p>Tasarım Reçetesi, fonksiyonun istenilen sayıda girdi alması için kullanılabilir. Basit bir örnek olarak aşağıdaki kelime problemini ele alalım.</p>
+<div id = “nav”>
+<p>Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa 14  </a> ü açın ve kelime problemini dikkatle okuyun. </p>
+<ul>
+ <li> Fonksiyonun ismini daire içine alın ve içine aldığı değerle üretilmesini istediklerinin altını çizin. </li>
+ <li> Fonksiyon girdi olarak kaç veri alıyor? Bunlar Number(Sayı) mı? String(dizi) mi? Image(imaj) mı?</li>
+ <li> Bu fonksiyon için Kontratı yazın, altını çizdiğini değerler size Etkinlik Alanı ve Aralık değerlerini bulmanız için yardımcı olacaktır.</li>
+<li> Kontratın altında, Amaç Açıklamalarını, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</li>
+<li> Bu fonksiyon için iki Örnek yazın ve içlerinde değişen değerleri daire içine alıp etiketleyin.</li>
+<li> Bu fonksiyon için bir Tanım yazın.</li>
+</ul>
+</div>
+<div id="header">
+<h1>Tasarım Reçetesi (Matematik) (40 dakika) </h1>
+</div>
+<p>Bir programcının esas gücü bir dili ne kadar iyi bildiği değildir. Esas güç, bildiklerinizi problem çözmek üzerinde ne kadar iyi kullandığınızdır! Buraya kadar, kelime problemlerini kağıt üzerinde yazıp arkasından bilgisayar üzerinde fonksiyona çevirebilmenize yardım edecek çok kuvvetli bir araç öğrendiniz: Tasarım Reçetesi! Görünen o ki Tasarım Reçetesi size kelime problemlerini matematiksel olarak da çözebilmeniz için yardımcı oluyor!</p>
+<div id = “nav”>
+Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa  39 </a>u açın, kelime problemini dikkatle okuyun ve “Dünya’dan Mars’ a saniyede 80 mil hızla bir roket uçuyor. Roketin uçtuğu uzaklığı D olarak tanımlayabilecek bir fonksiyon yazın, zaman fonksiyonu olarak.”
+</div>
+<p>Roketin yolculuk ettiği uzaklık mil cinsinden sayılarla ölçüldü ve zaman da saniye cinsinden sayılarla ölçüldü. Bu bize Kontratı verir:</p>
+<h2>Uzaklık : Number -> Number<h2>
+<p>Daha az önce, Kontrat bize çok güçlü ipuçları verdi Örnekleri nasıl yazacağımız hakkında. İşte Rocket kodu olarak yazılmış bir örnek: </p>
+<code>
+<p style="color:blue"> (EXAMPLE (distance5) (* 5 80)) </p>
+</code> Burada da aynı Örneğin matematiksel yazılışı:
+<h3>Distance(5) = 5 x 80</h3>
+<div id = “nav”>
+<p>Bu fonksiyon için iki tane daha ek Örnek yazın, matematiksel gösterimi kullanın.</p>
+</div>
+<p>Az önceki gibi, bir fonksiyonun değişkenleri iki Örnek yazarak ve aralarında neyin değişken olduğu gözlemlenerek tanımlanabilir.</p>
+<div id = “nav”>
+<p>Yazdığınız örnekleri kullanarak, Fonksiyon için değişkeni/değişkenleri tanıyın. Ardından fonksiyonu Matematiksel yazım kullanarak tanımlayın.</p>
+</div>
+<p> Tasarım Reçetesi yazılı bir tanımın, usule uygun bir fonksiyona dönüştürülmesine yardım eder.</p>
+<table style="width:100%">
+  <tr>
+    <td> Distance(4) = 4 x 80</td>
+  </tr>
+  <tr>
+    <td> Distance(7) = 7 x 80</td>
+  </tr>
+<tr>
+    <td> Distance(t) = t x 80</td>
+  </tr>
+</table>
+<div id = “nav”>
+<p>Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa  40 </a> ı açın, kelime problemini dikkatle okuyun ve fonksiyonun kontratını yazın: “ Dünya’dan Mars’ a saniyede 80 mille bir roket hareket ediyor. Roketin seyahat ettiği süreyi tanımlayan bir fonksiyon yazınız, uzaklık fonksiyonu olarak.”</p>
+</div>
+<p>Kontrat olduktan sonra, Örnekleri yazmak kolay : </p> 
+<h3> zaman : Number -> Number</h3>
+<div id = “nav”>
+<p>Kontratı kullanarak bu fonksiyon için iki tane Örnek yazın, ardından fonksiyon için gereken değişken/değişkenleri tanıyın.</p>
+<ul>
+ <li> Bu fonksiyonda kaç tane değişken var?</li>
+ <li> Değişkenlere isim verin.</li>
+ <li> Fonksiyonu matematiksel ifadeler kullanarak tanımlayın.</li>
+</ul>
+</div>
+<p>Fonksiyonunuz hazırlandığı anda, değerleri içine yerleştirip sonuçları almak çok basit. Bütün kelime problemleriyle beraber, en zor bölüm fonksiyonu ilk aşamada hazırlamaktı. Şanslıyız ki, Tasarım Reçetesi , fonksiyonu ayarlamayı çok daha kolay kılıyor. Tasarım Reçetesini sadece iki ayrı fonksiyonu ayarlamak için kullandık, bunlar bizde fonksiyon cevaplarını uzaklık ve zaman cinsinden cevap almak için de kullanılabilirdi. İnşa araçları gibi fonksiyonları tanımlayarak, basit problemleri çözebilir için ya da daha zor olanları çözmek için fonksiyonları bir araya getirebilirsiniz.</p>
+<div id = “nav”>
+Çalışma kitaplarınızdan sayfa 41 i açın, problemi dikkatlice okuyun: “Dünya’dan bir roket saniyede 80 mil hızla Mars’a doğru yola çıkmıştır. Aynı anda, Mars’tan hareketle Dünya’ya doğru bir gök taşı kopmuş ve saniyede 70 mil hızla yol almaya başlamıştır. Dünya ve Mars arasındaki mesafe 50.000.000 mil olduğuna göre, gök taşı ve roket ne kadar süre sonra buluşurlar?”
+<ul>
+ <li> Problemin size verdiği gerçekler nelerdir? </li>
+ <li> Problem sizden ne istiyor?</li>
+ <li> Cevaplarınızı bir sonraki cümleyi tamamlamak için kullanın : “Verilen …………., üretilenin ………… olduğu bir fonksiyon yazınız.”</li>
+<li> Eğer böyle bir fonksiyon var olsaydı, ismi en iyi ne olabilirdi?</li>
+</ul>
+</div>
+<p>Eğer çarpışma zamanını hesaplayabilen bir fonksiyonumuz olsaydı, bu soruyu cevaplamak sadece fonksiyona Dünya ve Mars arsındaki mesafeyi yerleştirmemiz sonucu kolayca bulunurdu. Onun yerine fonksiyonun kendisini yazabilmek için bir denklem düşünmeye ve Tasarım Reçetesinin adımlarını kullanmaya başlayabilirsiniz.</p>
+<div id = “nav”>
+<p>Bu fonksiyon için Kontratı yazın, ardından farklı uzaklıklar kullanarak iki Örnek yazın.<P>
+</div>
+<p>Şu ana kadar, bu fonksiyonun Kontratı ve Amaç  Açıklaması elinizde:</p>
+<table style="width:100%">
+  <tr>
+    <td> collide :  Number -> Number
+</td>
+  </tr>
+  <tr>
+    <td> collide(0) = ….</td>
+  </tr>
+</table>
+
+<p>Şimdi, eşittir işretinden sonra gelmesi gereken işlemi bulmalıyız. Şanslıyız ki, elimizde bir ipucu var: ne olacaksa olsun biliyoruz ki, sonuç sıfır olmalı. Bu bilgiyle diyebiliriz ki, çarpıştıkları zaman aralarındaki uzaklık sıfır olacaktır. </p>
+<div id = “nav”>
+Roket saniyede 80 mil hızla gidiyorsa ve gök taşı saniyede 70 mil hızla gidiyorsa birbirlerine ne kadar hızlı yaklaşıyorlar demektir?
+</div>
+<p>60 + 70 = 150, böylece biliyoruz ki birbirlerine git gide yaklaştıkları hız saniyede 150 mil hız oluyor. Bu bizim “zaman” fonksiyonumuzdan çok da farklı değil: elimizde bir hız bilgisi var ve verilen mesafeyi gitmenin ne kadar zaman alacağını bilmek istiyoruz. Bu durumda Örneğimiz için ne yazmalıyız?</p>
+<h3>collide(0) = 0/150</h3>
+<div id = “nav”>
+İki farklı mesafe kullanarak iki tane Örnek yazın ardından her farklı uzaklık için işe yarayacak bir fonksiyon tanımlayın.
+</div>
+<p>Şu ana kadar, büyük resmi çoktan görmüş olabilirsiniz: problem içinde verilen uzaklık, denkleme herhangi bir fonksiyon tanımlamaya gerek duyulmadan yerleştirilebiliyor. Bazen tasarım reçetesi sizi cevaba hemen ulaştırabiliyor ve hatta bitirmek zorunda olmayabiliyorsunuz bile! Diğer zamanlarda, buna rağmen büyük resmi göremeyebilirsiniz. Bu durumda problemi çözmeye çok daha küçük parçalardan başlamalı ve her küçük parça için kendi fonksiyonunuzu yazmalısınız.</p>
+<div id="header">
+<h1>Kapanış (5 dakika) </h1>
+</div>
+<p>Bu ünitede, fonksiyonların bir animasyon yazmada ne kadar kullanışlı olduğunu öğrenmeye başladınız: fonksiyonlar size bir oyunun sahnesini yaratabilmeniz için gereken bilginin üretilmesini sağlar(örneğin, roketin yüksekliği). Fonksiyon yazma konusunda fazladan örnekler yapıp  Tasarım Reçetesini kullanarak, artık kendi elementlerinizi hareket ettirebileceğiniz kendi oyunlarınızı yazmaya hazırsınız. </p>
+<div id="header">
+<h1>Ek Alıştırmalar </h1>
+</div>
+
+<a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/exercises/Practicing-the-Design-Recipe/examples-same-contracts1.html">Alıştırmaların Kontratları aynı mı? </a>
+<a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/exercises/Practicing-the-Design-Recipe/match-contracts-examples1.html">Kontrat ve Örnekleri eşleştirme</a>
 </body>
 </html>

@@ -22,7 +22,7 @@ makeweb: clean
 		for y in bootstrap1/uniteler/Unite$$x-Egzersizler/*;do \
 			mkdir /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`; \
 			cp -a bootstrap1/commonwebfiles/* /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`/; \
-			cp bootstrap1/uniteler/Unite$$x-Egzersizler/`basename $$y`/* /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`/; \
+			cp bootstrap1/uniteler/Unite$$x-Egzersizler/`basename $$y`/* /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`/ || echo "No exercise"; \
 		done; \
 	done
 
