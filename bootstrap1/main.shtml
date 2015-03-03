@@ -196,19 +196,22 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite3/the-unit.html">Unit 3</a></span>:
-                Students are introduced to the Definitions window,
+                "unite3/the-unit.html">Ünite 3</a></span>:
+                Öğrenciler Tanımlar penceresiyle tanışırlar, ve farklı tipte değerleri tanımlamak için gerekli sözdizimini öğrenirler.
+                Ayrıca fonksiyonları tanımlama ve örnekler yaratma için gerekli sözdizimini öğrenirler. 
+                <!-- Students are introduced to the Definitions window,
                 and learn the syntax for defining values of various
                 types. They are also introduced to the syntax of
-                defining functions and creating examples.</p>
+                defining functions and creating examples. --></p>
               </li>
 
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite4/the-unit.html">Unit 4</a></span>:
-                Students continue to practice the Design Recipe by
-                applying it to simple problems.</p>
+                "unite4/the-unit.html">Ünite 4</a></span>:
+                Öğrenciler Tasarım Reçete'sini basit problemlere uygulayarak öğrenmeye devam ederler.
+                <!-- Students continue to practice the Design Recipe by
+                applying it to simple problems. --></p>
               </li>
 
               <li>
@@ -224,60 +227,61 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite6/the-unit.html">Unit 6</a></span>:
-                Students discover Boolean types, and use them to
+                "unite6/the-unit.html">Ünite 6</a></span>:
+                Öğrenciler mantıksal değerleri öğrenir, onları değerleri kontrol edebilen programlar yazmak için kullanırlar, ve bu programları
+                kullanarak bazı senaryoları modellerler. 
+                <!-- Students discover Boolean types, and use them to
                 create programs that test values, and then model
-                scenarios using these programs.</p>
+                scenarios using these programs. --></p>
               </li>
 
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite7/the-unit.html">Unit 7</a></span>:
-                Students use geometry and conditional branching to
+                "unite7/the-unit.html">Ünite 7</a></span>:
+                Öğrenciler geometri ve koşullu dallanma kullanarak tuşlara basılınca oyun karakterlerini hareket ettirirler.
+                <!-- Students use geometry and conditional branching to
                 move their player characters in response to
-                key-presses.</p>
+                key-presses. --></p>
               </li>
 
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite8/the-unit.html">Unit 8</a></span>:
-                Students derive, discuss, and prove the Pythagorean
+                "unite8/the-unit.html">Ünite 8</a></span>:
+                Öğrenciler Pisagor teoremini üretirler, tartışırlar, ispat ederler, ve 
+                bu teoremi —<wbr>mantıksal değerlerle birlikte—<wbr> kullanarak
+                oyundaki nesnelerin yollarının kesişmesi durumunu tespit ederler. 
+                <!-- Students derive, discuss, and prove the Pythagorean
                 theorem, then use this theorem—<wbr>in conjunction
                 with Booleans—<wbr>to detect collisions in their
-                games.</p>
+                games. --></p>
               </li>
 
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "unite9/the-unit.html">Unit 9</a></span>:
-                Students will edit game details and prepare for
-                their Launch Party!</p>
+                "unite9/the-unit.html">Ünite 9</a></span>:
+                Öğrenciler oyun detaylarını girerler ve açılış partisine hazırlanırlar!
+                <!-- Students will edit game details and prepare for
+                their Launch Party! --></p>
               </li>
 
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/Supplemental/the-unit.html">Supplemental
-                Lessons</a></span>: For teachers looking for
-                additional exercises, we have compiled many
-                activities for students to go deeper into the
-                material. Have students use composition and
-                coordinates to create flags for their countries of
-                origin, or for a country they want to make up! Have
-                them use <span style=
-                "font-style: italic">randomness</span> and
-                <span style="font-style: italic">trigonometric
-                functions</span> for more sophisticated motion, or
-                introduce <span style="font-style: italic">data
-                structures</span> for more sophisticated games!</p>
+                "units/Supplemental/the-unit.html">Ek Dersler</a></span>:
+                İlave çalışmalar düşünen öğretmenler için öğrencilerin bazı konularda derinleşmesine yardım edecek malzemeler derlenmiştir.
+                Öğrencilerin birleştirme ve koordinatları kullanarak kendilerinin veya başka bir ülkenin bayrağını yapmalarını sağlayabilirsiniz.
+                Rastgelelik ve trigonometrik fonksiyonlar kullanarak oyun karakterlerine daha sofistike hareketler yaptırmalarını,
+                veya veri yapıları ile tanışarak daha karmaşık oyunlar yapmalarını sağlayabilirsiniz!
+                </p>
               </li>
             </ul>
           </div>
 
-          <div class="SIntrapara">
+          <!-- <div class="SIntrapara">
+          
             Of course, there’s more to a curriculum than software
             and lesson plans! We also provide a number of resources
             to educators, including standards alignment, an answer
@@ -320,7 +324,7 @@
                 the place to do it.</p>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           <p><a href=
           "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict.png"
