@@ -1,399 +1,1850 @@
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
 <html>
 <head>
-<title>Tasarım Reçetesi</title>
- <meta http-equiv="content-type" content=
-  "text/html; charset=utf-8">	
-<style>
-#header {
-    background-color:black;
-    color:white;
-    text-align:left;
-    padding:5px;
-}
-#nav {
-    line-height:30px;
-    background-color: #E6E6FA;
-text-align:left;   
-    padding:5px;	      
-}
-</style>
+  <meta name="generator" content=
+  "HTML Tidy for Linux (vers 25 March 2009), see www.w3.org">
+  <meta http-equiv="content-type" content=
+  "text/html; charset=utf-8">
+
+  <title>Tasarım Reçetesi</title>
+  <link rel="stylesheet" type="text/css" href="scribble.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href="pretty-printing.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="codemirror.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="bootstrap.css"
+  title="default">
+  <link rel="stylesheet" type="text/css" href="textbook.css" title=
+  "default">
+  <link rel="stylesheet" type="text/css" href=
+  "extra_curriculum.css" title="default">
+
+  <script type="text/javascript" src="scribble-common.js"></script>
+  <script type="text/javascript" src="codemirror.js"></script>
+  <script type="text/javascript" src="runmode.js"></script>
+  <script type="text/javascript" src="scheme2.js"></script>
+  <script type="text/javascript" src="bootstraplesson.js"></script>
+  <script type="text/javascript" src=
+  "http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML%2Chttp%3A%2F%2Fwww.cs.wpi.edu%2F%7Ekfisler%2Fmathjaxlocal.js"></script>
+<!--[if IE 6]><style type="text/css">.SIEHidden { overflow: hidden; }</style><![endif]-->
 </head>
-<body>
-<title>Tasarım Reçetesi</title>
-  <h1>Üniteye Genel Bakış</h1>
-  <p>Öğrenciler Tasarım Reçetesi çalışmalarına, basit problemlere uygulayarak devam edecektir.</p>
-<h3>Ajanda</h3>
-<ul>
- <li>25 dakika Tasarım Reçetesi</li>
- <li>40 dakika Tasarım Reçetesini Uygulamak</li>
- <li>40 dakika Tasarım Reçetesi (Matematik)</li>
- <li>5 dakika Kapanış</li>
-</ul>
-<h1>Ürün Çıktısı</h1>
- <li>Öğrenciler Tasarım Reçetesini, bir roketi uçurma fonksiyonunu tanımlamak için kullanacaklar.</li>
- <li>Öğrenciler Tasarım Reçetesini kullanarak basit problemleri çözmek için fonksiyonlar yazacaklar.</li>
- <h1>Teknik Terim  ve İfade Açıklamaları</h1>BS ile başlayan terimler Bootstrap (önyükleme)
 
-<h1>Sözlükçe: </h1>
+<body id="scribble-racket-lang-org">
+  <div class="tocset">
+    <div class="tocview">
+      <div class="tocviewlist tocviewlisttopspace">
+        <div class="tocviewtitle">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td style="width: 1em;">•</td>
 
-<h4>Kontrat:</h4><p>Etkinlik alanı (domain) adı ve fonksiyon çeşidi.</p>
-<h4>Tasarım Reçetesi :</h4><p> İnsanlara dökümantayon, test ve fonksiyon yazmak için yardımcı olacak adımlar dizisi.</p>
-<h4>Etkinlik alanı:</h4><p>Bir fonksiyonun beklediği veri çeşidi.</p>
-<h4>Örnek:</h4><p> Belirli girdilerle bir fonksiyonunun kullanımını ve bu girdilerle fonksiyonun ne şekilde çalışması gerektiğini gösterir. </p>
-<h4>İsim :</h4><p>Bir fonksiyonun ya da tanımlı bir değerin bir programlama dilinin içinde nasıl ifade edileceği. </p>
-<h4>Amaç Açıklamaları:</h4><p>Fonksiyonun ne yaptığıyla ilgili kısa bir açıklama.</p>
-<h4>Aralık:</h4><p>Fonksiyonun ürettiği veri aralığı.</p>
-<h4>Çeşit:</h4><p>Number , String , Image, Boolean gibi genel veri çeşitleri.</p>
-<h4>Değişken:</h4><p> Değişebilen veri tipi.</p>
-<h1> Materyaller: </h1>
-<ul>
- <li>Öğrencileri için kalemler, öğretmenler için tahta kalemleri</li>
- <li>Sınıf posterleri (Kurallar listesi, dil tabelası, Ders takvimi)</li>
- <li>Dil tabelası</li>
- <li>Öğrenci <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf">çalışma kitabı </a> dosyaları kapaklarda isimleriyle</li>
-</ul>
-<h1>Hazırlık: </h1>
-<ul>
- <li>İlerleme planlamasını yazınız</li>
- <li>Ders posterlerini görüntüleyin</li>
- <li>"Rocket" [Rocket.rkt from source-files.zip | WeScheme] Öğrenciler bilgisayarlarına önceden yüklenebilir</li>
- <li>Oturma ayarlamaları : ideal olarak yerleştirilmiş masalar </li>
-<li>İsteğe Bağlı : <a href="https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit">Isınma aktiviteleri </a> </li>
-</ul>
-<table style="width:100%">
-  <tr>
-    <td> Tipler </td>
-    <td> Fonksiyonlar </td>  
-  </tr>
-  <tr>
-    <td> Number (Sayı) </td>
-    <td>+  - * / sqr(Sayının karesi)  sqrt(Sayının Karekökü)  expt(sayının üssü) </td> 
-    
-  </tr>
-<tr>
-    <td> String (dizi)  </td>
-    <td> String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu) </td> 
-    
-  </tr>
-<tr>
-    <td> Image (imaj) </td>
-    <td> Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme </td> 
-    
-  </tr>
-</table>
-<a href="  ????  "> Öğretmen notlarını göster</a>
-<a href=" ?????   "> Tartışma grubu</a>
-<h2>Tasarım Reçetesi</h2>
+              <td></td>
 
-<ul>
- <li> Özet</li>
- <li> Öğrencilere önceden tasarım reçetesinin adımları anlatıldı .</li>
-</ul>
+              <td>
+                <a href="" class="tocviewselflink" data-pltdoc="x">
+                  <span class="mywbr">&nbsp;</span>
+                  Tasarım Reçetesi
+                </a>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
 
-<h2>Öğrenme Amaçları</h2>
-<ul>
-<li> Öğrenciler fonksiyon örnekleri yaratmayı ve üzerlerinde çalışmayı öğrenir</li>
- <li> Öğrenciler fonksiyonlar üzerinden çalışarak örnek fonksiyon yaratmayı öğrenir.</li>
-</ul>
-<h2>İfade Açıklamaları</h2>
-<ul>
-<li> Tanım verildiğinde, öğrenciler tanımlanan İsmi, Tipi ve Değeri açıklayabilecektir.
-</li>
- <li> Tek değişkenli fonksiyonda sözleşme ve amaç açıklandığında, öğrenciler iki Örnek verebiliyor olacaklar.</li>
-<li> Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler değişkeni ayırt edebiliyor olacaklar.</li>
- <li> Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler tanım yazabiliyor olacaklar.</li>
-</ul>
-<h2>Ürün Çıktıları</h2>
-<ul>
-<li> Öğrenciler fonksiyon tanımlamak için Tarif Reçetesini kullanacak ve bir roketi uçuracaklardır.</li>
-</ul>
+    <div class="tocsub">
+      <table class="tocsublist" cellspacing="0">
+        <tr>
+          <td>
+            <a href="#%28part._.Unit_4__.The_.Design_.Recipe%29" class="tocsubseclink" data-pltdoc="x">
+              <span class="mywbr">&nbsp;</span> 
+              Tasarım Reçetesi
+            </a>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 
-<h2>Materyaller:</h2>
-<ul>
-<li> Öğrencileri için kalemler, öğretmenler için tahta kalemleri,</li>
-<li> Sınıf posterleri (Kurallar listesi, dil tabelası, Ders takvimi)</li>
-<li> Dil tabelası</li>
-<li> Öğrenci çalışma kitabı dosyaları kapaklarda isimleriyle</li>
-</ul>
+  <div class="maincolumn">
+    <div class="main">
+      <a name="(part._.Unit_4__.The_.Design_.Recipe)"></a>
+      <p>
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js">
+        </script>
+        <script type="text/javascript" src="easyXDM.min.js"></script>
+        <script type="text/javascript" src="json2.min.js"></script>
+        <script type="text/javascript" src="bootstrap-helpers.js"></script>
+      </p>
 
-<h2>Hazırlık:</h2>
-<ul>
-<li> İlerleme planlamasını yazınız</li>
-<li> Ders posterlerini görüntüleyin</li>
-<li> "Rocket" [Rocket.rkt from source-files.zip | WeScheme] Öğrenciler bilgisayarlarına önceden yüklenebilir </li>
-<li> Oturma ayarlamaları : ideal olarak yerleştirilmiş masalar </li>
-<li> İsteğe Bağlı : Isınma aktiviteleri edinin</li>
-</ul>
-<table style="width:100%">
-  <tr>
-    <td> Tipler </td>
-    <td> Fonksiyonlar </td>  
-  </tr>
-  <tr>
-    <td> Number (Sayı) </td>
-    <td>+  - * / sqr(Sayının karesi)  sqrt(Sayının Karekökü)  expt(sayının üssü) </td> 
-    
-  </tr>
-<tr>
-    <td> String (dizi)  </td>
-    <td> String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu) </td> 
-    
-  </tr>
-<tr>
-    <td> Image (imaj) </td>
-    <td> Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme </td> 
-    
-  </tr>
-</table>
-<div id="header">
-<h1>Tasarım Reçetesi (25 dakika) </h1>
-</div>
-<p>Fonksiyonlar bilgisayar programlarındaki animasyonların anahtar bölümleridir. Bir fonksiyon bir kedinin statik(durağan) resmini çizebilir, örneğin, kedinin verilen girdiye göre yer değiştirmesini sağlayabilir. Girdi zamandan ya da kullanıcı etkileşiminden dolayı değişime uğradığında, kedi hareket etmeye başlayabilir. Bu durum gerçek çevirmeli defterlerde çizilen karakterlerin hareket etmesine benzer. Her sayfada durağan bir imaj küçük farklılıklarla çizilidir. Sayfalar hızlıca çevrildiği zaman imaj da değişiyor gibi görünür. </p>
-<img src=“http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/pict_2.png">
-<img src=“http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/flipbook.gif">
-<p>Bu imajları bir araya getirerek, roketin ekranda yukarıya doğru gittiği bir animasyona ulaşmış oluyoruz. Bu çeşit bir animasyonun bir örneğini görelim. Çalışma kitabınızdan 12. sayfayı açın ve problem kelimesini dikkatle okuyun</p>
-<h3>Roket saniyede 7 metre hızla kalkış yapar. Adı rocket-height olan, içine roketin kalkmak için ihtiyacı olan saniye değerini sayı olarak alan ve roketin o saniye sonunda havalanması olayını gerçekleştiren bir fonksiyon yazın . </h3>
-<div id = “nav”>
-<ul>
- <li> rocket-height fonksiyonunun içine ne veri alır? Ne tür veridir?</li>
- <li> Fonksiyon çıktı olarak ne veri üretiyor üretiyor? Üretilen verinin türü nedir?</li>
- <li> Sözleşmenin üç bölümü nelerdir?</li>
- <li> Tanımlamanız istenen fonksiyonun Adı nedir?</li>
-<li> Fonksiyonun  etkinlik alanı nedir?</li>
-<li> Fonksiyonun aralığı nedir?</li>
-</ul>
-</div>
-<p>Kontrat, fonksiyonu genel anlamda, nasıl çalışacağını düşünmeden, nasıl kullanılacağını bilmeden düşünebilme yoludur. Yukarıdakiler gibi basit sorulardan başlamak kalan adımları çok daha kolay atmanızı sağlar. Buna rağmen, Kontrat her zaman yeterli bilgi vermez! Yıldız için etkinlik alanı örneğin, fonksiyonun ihtiyacı olanın bir Number ve iki String olduğudur ama String in içinin dolu mu yoksa sadece sınırları olan bir String olup olmadığından söz etmez. Bu bilgiyi eklemek için yazılımcılar<p style="color:blue">Açıklamaları Amaç </p>  yazar, bunlar fonksiyonun ne yaptığını anlatan basit cümlelerdir. </p>
-<div id = “nav”>
-<p>Kontratın alt bölümüne rocket-height fonksiyonu için aşağıdaki basit Amaç Açıklamasını kopyalayın.</p>
-</div>
-<code>
-<p style="color:orange">;rocket-height : Number -> Number</p>
-<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
-</code>
-<p>Kontrat ve Amaç Açıklamaları ile donandıktan sonra, bir örnek yazmak çok daha kolay bir hal alıyor. Her örnek fonksiyonun adıyla ve örnek bir veri girdisiyle başlar. İkisi de hazırlanan Kontrat içinde yazıyor. Bu durumda, fonksiyonun adının <p style="color:blue">rocket-height </p> olduğunu biliyorsunuz ve bu fonksiyon içine yalnızca bir Number tipinde girdi bekliyor. Amaç Açıklaması biraz daha fazla gidiyor ve size girdimizin 7 ile çarpıldığını söylüyor. Böylelikle farklı saniye sayılarını girdi olarak kullanıp, iki örnek yazabiliriz.</p>
-<code>
-<p style="color:orange">;rocket-height : Number -> Number</p>
-<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
-<p style="color:blue"> (EXAMPLE (rocket-height 11)
-         <p style="color:blue">(* 11 7))</p></p>
-<p style="color:blue"> (EXAMPLE (rocket-height 72)
-         <p style="color:blue">(* 72 7))</p></p>
-</code>
-<p>Not:  Yukarıda gösterilen örnekler iki satıra bölünmüştür! Fonksiyonlar ve örnekler çok daha uzun ve karmaşık bir hal alacağı için hepsini tek satıra sıkıştırmak çok zor olacaktır. Çalışma kitaplarınızda, her örnek ve tanım bundan sonra satırlara bölünerek yazılacaktır.</p>
-<div id="nav">
-<p> Çalışma kitaplarınızda, iki tane farklı saniye değerleri kullanarak rocket-height fonksiyonu yazınız. İki örnek de çok fazla ortak özelliğe sahip olacak (İkisi de rocket-height ismini kullacak, ikisi de girdilerini 7 ile çarpacak, vs.) Bitirdiğiniz zaman, örneklerin sadece değişebilir olan bölümlerini daireye alarak işaterleyin.</p>
-</div>
+      <div class="headercontent">
+        <span class="BootstrapTitle"><img src="pict.png" alt=
+        "image" width="150" height="150"><span class=
+        "TitleUnitNum"></span>Tasarım Reçetesi</span>
+      </div>
 
-<p>İki farklı örneği kıyaslayarak neyin değişip neyin değişmediğini söyleyebilmek kolay. Amaç Açıklamaları hazırlığımızı göz önünde bulundurduğumuzda roketin uçtuğu saniye sayıları diyebiliriz.</p>
-<div id="nav">
-<p>Sayfa üzerinde, “saniyeler” ile daire içine aldığınız maddeleri etiketleyin.</p>
-</div>
-<p>Değişebilir olan şeyleri etiketlemek, programcılara fonksiyon içerisindeki değişkenlere isim verebilme hissi kazandırır. Değişkenler, farklı zamanlarda değişebilecek olan değerler için yer tutucu gibidir. Her ay içinde mesaj göndermek için ne kadar ödediğinizi hesaplayan bir fonksiyon olsun, örneğin bu fonksiyonun içerdiği, içinde bulunduğunuz aya ait olan kaç tane mesaj gönderdiğiniz bilgisini tutan bir değişkeni olabilir. Gönderdiğiniz mesaj sayısı aydan aya değişebilir ama yine de her mesajın fiyatı 20 kuruş tutarındadır. </p>
-<div id="nav">
-<p>Rocket-height fonksiyonunda kaç değişken vardır? Her değişkenin adı nedir? Örneklerinizden ve Anlaşma ve Amaç Özellikleri bölümündeki bilgilerden yararlanarak fonksiyonu tanımlayın.</p>
-</div>
-<code>
-<p style="color:orange">;rocket-height : Number -> Number</p>
-<p style="color:orange">;multiply the number of seconds by 7 to find the height </p>
-<p style="color:blue"> (EXAMPLE (rocket-height 11)
-         <p style="color:blue">(* 11 7))</p></p>
-<p style="color:blue"> (EXAMPLE (rocket-height 72)	
-         <p style="color:blue">(* 72 7))</p></p>
-<p style="color:blue"> (define (rocket-height seconds)	
-         <p style="color:blue">(* seconds 7))</p></p>
-</code>
+      <div class="SubFlow" id="overviewDescr">
+        <span class="BootstrapHeader">Üniteye Genel Bakış</span>
 
-<p>Tasarım Reçetesi programcıya bir adımda bir problem üzerine odaklanmasını ve önceki adımları kullanarak bir sonraki adımları tamamlamasını öğretir.</p>
-<div id = “nav”>
-<ul>
- <li> Kontrat programcıya fonksiyonla ilgili ne anlatır?</li>
- <li> Amaç Açıklamaları, programcıya fonksiyonla ilgili ne anlatır?</li>
- <li> Kontrat ve Amaç Açıklamaları, programcıya Örnekler yazması için nasıl yardımcı olur?</li>
- <li> Örnekler içerisinde değişebilen bölümleri etiketlemek ve daire içine almak neden yardımcıdır?</li>
-<li> Bütün bu adımlar programcıya bir fonksiyon tanımlama sırasında nasıl yardımcı olur?</li>
-</ul>
-</div>
+        <p>Öğrenciler Tasarım Reçetesi çalışmalarına, basit problemlere uygulayarak devam edecektir.</p>
+      </div>
 
-<p>Fark etmiş olabileceğiniz gibi Örnekler içinde bulunan rocket-height fonksiyonundaki çarpma işlemi direkt (77) sonucu olarak yazılmak yerine (* 11 7) şeklinde yazılmıştır. Neden çarpmanın hesaplanma yolunu göstermeye zahmet edilmiş olsun? Bunu yaparak, Örnekler hangi adımın gerçekleştirileceği konusunda ipuçları sunar.  Gösterilen Rocket kodunda (Rocket.rkt source-files.zip den alınan | ya da online file ), Örnekler yazarken uygulanan işlemlerin gösterilmesinin neden önemli olduğunu göreceksiniz.</p>
-<div id = “nav”>
-<p>“Run” a tıklayın, ve pencerenin en altında bir roket belirene kadar ve en yukarıda “zaman” ve “yükseklik” sayıları görüntülenene kadar bekleyin. Bu animasyon roketi, her boşluk tuşuna basıldığında yenilemek üzere ve zamanı geçiyor gibi göstermek üzere ayarlanmıştır. Boşluk tuşuna birkaç kere basın ve pencerenin üstünde beliren zamanın artışını gözlemleyin. Roket hareket etti mi? Zaman akıyor, ancak roketin yüksekliği değişmiyor! Roket penceresini kapatın, böylece kodu görebilirsiniz. </p>
-</div>
-<p>Bu fonksiyon için Kontrat doğru: Fonksiyonun Adı, Etkinlik Alanı, Aralığı burada doğru olarak yazılmıştır. Buna rağmen bir sonraki adım kesinlikle bazı problemlere sahip:</p>
-<ol type="1">
-  <li> Sadece bir Örnek var. Bu durum neyin değiştiğini anlamamız konusunda zorluk yaratabilir, böylece değişkenleri anlamaya çalışırken hatalara yol açabilir.</li>
-  <li> Örnek yüksekliğin nasıl hesaplandığını göstermez –onun yerine, programcı yapılan işi göstermek yerine sadece “cevabı” yazar.</li>
-</ol>
-<p>Örnek içindeki bu adımları atlayarak, Fonksiyonu tanımlarken hata yapmak kolaylaşabilir.</p>
-<div id = “nav”>
-<p>Programcının yaptığı hataları görebiliyor musunuz?</p>
-</div>
-<p>Birden fazla Örnek görmeden, bu programcı roketin yüksekliğinin her veri için ayrıca hesaplanacağını fark etmek konusunda sıkıntıya düşmüştür. Bunun yerine, her seferinde aynı sayıyı üretmişlerdir ( bu durumda sayı sıfır). Sonuç olarak, kaç saniye geçmiş olursa olsun, roket her zaman sıfır yüksekliğindedir. </p>
-<ul>
- <li> Bu programcının yazdığı Örnek teki hatayı düzeltin.</li>
- <li> İlkinin altına ikinci bir Örnek yazın.</li>
- <li> Fonksiyon tanımını tamir edin, böylece fonksiyon saniye sayısını7 ile çarpıyor hale gelsin.</li>
- <li> “Run” a tıklayıp arkasından boşluk tuşuna basın ve roket uçsun!</li>
-</ul>
-<div id="header">
-<h1>Tasarım Reçetesi  Uygulaması (40 dakika) </h1>
-</div>
-<p>Tasarım Reçetesi , programcıların yazdıkları kodların doğruluğundan emin olmak için kullandıkları , fonksiyonları tanımlamak için bir yol haritası niteliğindedir. Her adım son anda oluşturulur böylece karşılaşılabilecek hatalar erkenden önlemiş olur. Bu yol haritası bir seri adıma sahiptir:</p>
-<ul>
- <li> Bir kelime hatasından Kontrata hareket etmek</li>
- <li> Kontratı göz önünde bulundurarak örnekler yazmak</li>
- <li> Örneklerle uyuşan bir fonksiyon tanımlamak </li>
-</ul>
-<p>Bu adımları bir bir uygulayarak başlayın.</p>
-<div id = “nav”>
-<p>Aşağıdaki her kelime problemi için Kontratı yazınız:</p>
-<ul>
- <li> Purple-star (mor-yıldız) adında bir fonksiyon tanımlayın. Fonksiyon içine yıldızın boyutunu alsın ve verilen boyutta çizgisel bir yıldız üretsin. </li>
- <li> Spot (nokta) adında bir fonksiyon tanımlayın. Fonksiyon içine renk alsın ve yarıçapı 50 olan verilen renkte, katı bir daire üretsin.</li>
- <li> İki sayının ortalamasının hesaplanması için iki sayı toplanır ve ikiye bölünür. Average (ortalama) adında bir fonksiyon tanımlayın. Fonksiyon içine iki sayı alsın ve bu iki sayının ortalamasını hesaplasın.</li>
-<li> Bir şirket logosu, büyük, kırmızı harflerle çizilmiş ve bir takım sayı dereceleriyle yerleştirilmişti. Logo adında bir fonksiyon tanımlayın. Fonksiyon içine şirket adı ve yerleşim sayısı alsın ve şirket için bir logo üretsin.</li>
-</ul>
-<p>Her fonksiyon için iyi bir isim bulduğunuzdan emin olun ve Etkinlik Alanı ve Aralık sadece Number(sayı), İmaj(image), String(dizi) vb. değerler içerebilir.</p>
-</div>
-<p> Kontrat bir fonksiyon için, programcıya kullanması için sadece yeterli bilgiyi veren temel niteliklidir:
-Fonksiyonun adı, fonksiyonun içine aldığı ve çıktı olarak verdiği değerlerin veri tipi.</p>
-<div id = “nav”>
-<p>Şimdi, dört problem için de Kontratları tamamlamış bulunuyorsunuz. Her biri için ikişer tane Örnek üretmeye çalışın.</p>
-</div>
-<p>İki ya da daha fazla Örneğe sahip olduğunuzda, aralarında neyin değiştiğine karar verebilmek kolay olacaktır. Aslında, değişen şeylerin sayısı, fonksiyonun etkinlik alanının içinde olanların sayısıyla eşit olmalıdır. Eğer Etkinlik Alanı içinde bir Number(sayı), bir de String(dizi) varsa, bu iki değer sizin örnekleriniz içinde değişen değerler olmalıdır.</p>
-<div id = “nav”>
-Örnekler arasında değişim gösteren şeyleri tanımlayın ve bu bilgiyi kalan diğer fonksiyonları tanımlamak için kullanın.
-Çalışma kitaplarınızdan <a href=" http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/the-unit.html"> sayfa 13 </a> ü açın ve kelime problemini dikkatle okuyun.
-<ul>
- <li> Fonksiyonun ismini daire içine alın ve içine aldığı değerle ürettiği değerin altını çizin. </li>
- <li> Bu fonksiyon için Kontratı yazın, altını çizdiğini değerler size Etkinlik Alanı ve Aralık değerlerini bulmanız için yardımcı olacaktır.</li>
- <li> Kontratın altında, Amaç Açıklamalarını, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</li>
-</ul>
-</div>
-<p>Kontrat ve Amaç Açıklamaları, programcı nasıl başlayacağından emin olmasa bile, Örnek yazmak için kullanılabilir hatırlayın.</p>
-<div id = “nav”>
-<p>Sadece Kontrat ve Amaç Açıklamalarını kullanarak aşağıdaki sorulara cevap verebiliyor musunuz görün:</p>
-<ul>
- <li> Her Örnek fonksiyonun adıyla başlar. Fonksiyonun adını nerede bulabilirsiniz? </li>
- <li> Her Örnek, örnek veri içermek zorundadır. Fonksiyonun kaç tane veri girdisine ihtiyaç duyduğunu nereden bulabilirsiniz?</li>
- <li> Her Örnek, veri girdisi verildiği zaman, içinde ne yapıyor olmalı olduğunu gösteren bir ifade içermeli. Bu fonksiyonun ne yaptığını anlayabilmek için nereye bakmalısınız?</li>
-<li> Kağıdınıza iki Örnek yazın, ardından aralarında değişen değerlerin altını çizin ve etiketleyin.</li>
-</ul>
-</div>
-<p> Fonksiyon tanımı yazarken, yazdıklarınızın hepsinin üç bölümde olduğuna emin olun: Kontrat ve Amaç Açıklamaları, Örnekler ve Tanım. “Run” a basıldığında, bilgisayar tanımı okuyacak, Örneklerinizi doğru yazılıp yazılmadığını görmek için test edecek ve tanımınızı sizin dilinizde ekleyecektir. Bir kere eklendikten sonra fonksiyonu sanki bilgisayarda daha önceden çalıştırılmış gibi kullanabilirsiniz.</p>
-<a href=" http://www.wescheme.org/openEditor?definitionsText=;%20red-square%20:%20Number%20-%3E%20Image%0A;%20draw%20a%20solid,%20red%20square%20using%20the%20given%20size%0A(EXAMPLE%20(red-square%2042)%20(square%2042%20%22solid%22%20%22red%22))%0A(EXAMPLE%20(red-square%2073)%20(square%2073%20%22solid%22%20%22red%22))%0A(define%20(red-square%20size)%20(square%20size%20%22solid%22%20%22red%22))"> Bu fonksiyonu farklı veri girdileri kullanarak test edin.</a>
-<p>Bazı fonksiyonlar birden fazla değer alırlar. Red-square (kırmızı kare) fonksiyonu, sadece büyüklüğü değişken değer olarak alarak, her zaman kırmızı bir kare üretecektir. Düşünün, buna rağmen istiyoruz ki bu fonksiyon kırmızı ama istersek içi dolu istersek çizgisel bir kare üretsin. Bu demek oluyor ki hem boyut hem de stil değişebilir, böylece kullanıcı hem (red-square 50 “solid”) girebilir hem de (red-square 50 “outline”) girebilir.</p>
-<div id = “nav”>
-<ul>
- <li> Bu durum fonksiyonun Etkinlik Alanında nasıl değişiklik gösterir? </li>
- <li> Örnekler ne şekilde değişmek zorunda kalır?</li>
- <li> Tanım ne şekilde değişir?</li>
-<li> Yazdığınız kodun, red-square fonksiyonuna içine hem “solid” (katı) hem de “outlined” (çizgisel) verilerini, ikinci değer olarak almasına izin vermesi için, her parçasını değiştirin.</li>
-</ul>
-</div>
-<p>Tasarım Reçetesi, fonksiyonun istenilen sayıda girdi alması için kullanılabilir. Basit bir örnek olarak aşağıdaki kelime problemini ele alalım.</p>
-<div id = “nav”>
-<p>Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa 14  </a> ü açın ve kelime problemini dikkatle okuyun. </p>
-<ul>
- <li> Fonksiyonun ismini daire içine alın ve içine aldığı değerle üretilmesini istediklerinin altını çizin. </li>
- <li> Fonksiyon girdi olarak kaç veri alıyor? Bunlar Number(Sayı) mı? String(dizi) mi? Image(imaj) mı?</li>
- <li> Bu fonksiyon için Kontratı yazın, altını çizdiğini değerler size Etkinlik Alanı ve Aralık değerlerini bulmanız için yardımcı olacaktır.</li>
-<li> Kontratın altında, Amaç Açıklamalarını, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</li>
-<li> Bu fonksiyon için iki Örnek yazın ve içlerinde değişen değerleri daire içine alıp etiketleyin.</li>
-<li> Bu fonksiyon için bir Tanım yazın.</li>
-</ul>
-</div>
-<div id="header">
-<h1>Tasarım Reçetesi (Matematik) (40 dakika) </h1>
-</div>
-<p>Bir programcının esas gücü bir dili ne kadar iyi bildiği değildir. Esas güç, bildiklerinizi problem çözmek üzerinde ne kadar iyi kullandığınızdır! Buraya kadar, kelime problemlerini kağıt üzerinde yazıp arkasından bilgisayar üzerinde fonksiyona çevirebilmenize yardım edecek çok kuvvetli bir araç öğrendiniz: Tasarım Reçetesi! Görünen o ki Tasarım Reçetesi size kelime problemlerini matematiksel olarak da çözebilmeniz için yardımcı oluyor!</p>
-<div id = “nav”>
-Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa  39 </a>u açın, kelime problemini dikkatle okuyun ve “Dünya’dan Mars’ a saniyede 80 mil hızla bir roket uçuyor. Roketin uçtuğu uzaklığı D olarak tanımlayabilecek bir fonksiyon yazın, zaman fonksiyonu olarak.”
-</div>
-<p>Roketin yolculuk ettiği uzaklık mil cinsinden sayılarla ölçüldü ve zaman da saniye cinsinden sayılarla ölçüldü. Bu bize Kontratı verir:</p>
-<h2>Uzaklık : Number -> Number<h2>
-<p>Daha az önce, Kontrat bize çok güçlü ipuçları verdi Örnekleri nasıl yazacağımız hakkında. İşte Rocket kodu olarak yazılmış bir örnek: </p>
-<code>
-<p style="color:blue"> (EXAMPLE (distance5) (* 5 80)) </p>
-</code> Burada da aynı Örneğin matematiksel yazılışı:
-<h3>Distance(5) = 5 x 80</h3>
-<div id = “nav”>
-<p>Bu fonksiyon için iki tane daha ek Örnek yazın, matematiksel gösterimi kullanın.</p>
-</div>
-<p>Az önceki gibi, bir fonksiyonun değişkenleri iki Örnek yazarak ve aralarında neyin değişken olduğu gözlemlenerek tanımlanabilir.</p>
-<div id = “nav”>
-<p>Yazdığınız örnekleri kullanarak, Fonksiyon için değişkeni/değişkenleri tanıyın. Ardından fonksiyonu Matematiksel yazım kullanarak tanımlayın.</p>
-</div>
-<p> Tasarım Reçetesi yazılı bir tanımın, usule uygun bir fonksiyona dönüştürülmesine yardım eder.</p>
-<table style="width:100%">
-  <tr>
-    <td> Distance(4) = 4 x 80</td>
-  </tr>
-  <tr>
-    <td> Distance(7) = 7 x 80</td>
-  </tr>
-<tr>
-    <td> Distance(t) = t x 80</td>
-  </tr>
-</table>
-<div id = “nav”>
-<p>Çalışma kitaplarınızdan <a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/resources/workbook/StudentWorkbook.pdf "> sayfa  40 </a> ı açın, kelime problemini dikkatle okuyun ve fonksiyonun kontratını yazın: “ Dünya’dan Mars’ a saniyede 80 mille bir roket hareket ediyor. Roketin seyahat ettiği süreyi tanımlayan bir fonksiyon yazınız, uzaklık fonksiyonu olarak.”</p>
-</div>
-<p>Kontrat olduktan sonra, Örnekleri yazmak kolay : </p> 
-<h3> zaman : Number -> Number</h3>
-<div id = “nav”>
-<p>Kontratı kullanarak bu fonksiyon için iki tane Örnek yazın, ardından fonksiyon için gereken değişken/değişkenleri tanıyın.</p>
-<ul>
- <li> Bu fonksiyonda kaç tane değişken var?</li>
- <li> Değişkenlere isim verin.</li>
- <li> Fonksiyonu matematiksel ifadeler kullanarak tanımlayın.</li>
-</ul>
-</div>
-<p>Fonksiyonunuz hazırlandığı anda, değerleri içine yerleştirip sonuçları almak çok basit. Bütün kelime problemleriyle beraber, en zor bölüm fonksiyonu ilk aşamada hazırlamaktı. Şanslıyız ki, Tasarım Reçetesi , fonksiyonu ayarlamayı çok daha kolay kılıyor. Tasarım Reçetesini sadece iki ayrı fonksiyonu ayarlamak için kullandık, bunlar bizde fonksiyon cevaplarını uzaklık ve zaman cinsinden cevap almak için de kullanılabilirdi. İnşa araçları gibi fonksiyonları tanımlayarak, basit problemleri çözebilir için ya da daha zor olanları çözmek için fonksiyonları bir araya getirebilirsiniz.</p>
-<div id = “nav”>
-Çalışma kitaplarınızdan sayfa 41 i açın, problemi dikkatlice okuyun: “Dünya’dan bir roket saniyede 80 mil hızla Mars’a doğru yola çıkmıştır. Aynı anda, Mars’tan hareketle Dünya’ya doğru bir gök taşı kopmuş ve saniyede 70 mil hızla yol almaya başlamıştır. Dünya ve Mars arasındaki mesafe 50.000.000 mil olduğuna göre, gök taşı ve roket ne kadar süre sonra buluşurlar?”
-<ul>
- <li> Problemin size verdiği gerçekler nelerdir? </li>
- <li> Problem sizden ne istiyor?</li>
- <li> Cevaplarınızı bir sonraki cümleyi tamamlamak için kullanın : “Verilen …………., üretilenin ………… olduğu bir fonksiyon yazınız.”</li>
-<li> Eğer böyle bir fonksiyon var olsaydı, ismi en iyi ne olabilirdi?</li>
-</ul>
-</div>
-<p>Eğer çarpışma zamanını hesaplayabilen bir fonksiyonumuz olsaydı, bu soruyu cevaplamak sadece fonksiyona Dünya ve Mars arsındaki mesafeyi yerleştirmemiz sonucu kolayca bulunurdu. Onun yerine fonksiyonun kendisini yazabilmek için bir denklem düşünmeye ve Tasarım Reçetesinin adımlarını kullanmaya başlayabilirsiniz.</p>
-<div id = “nav”>
-<p>Bu fonksiyon için Kontratı yazın, ardından farklı uzaklıklar kullanarak iki Örnek yazın.<P>
-</div>
-<p>Şu ana kadar, bu fonksiyonun Kontratı ve Amaç  Açıklaması elinizde:</p>
-<table style="width:100%">
-  <tr>
-    <td> collide :  Number -> Number
-</td>
-  </tr>
-  <tr>
-    <td> collide(0) = ….</td>
-  </tr>
-</table>
+      <blockquote class="OverviewBoundary">
+        <iframe id="forum_embed" name="forum_embed"></iframe>
 
-<p>Şimdi, eşittir işretinden sonra gelmesi gereken işlemi bulmalıyız. Şanslıyız ki, elimizde bir ipucu var: ne olacaksa olsun biliyoruz ki, sonuç sıfır olmalı. Bu bilgiyle diyebiliriz ki, çarpıştıkları zaman aralarındaki uzaklık sıfır olacaktır. </p>
-<div id = “nav”>
-Roket saniyede 80 mil hızla gidiyorsa ve gök taşı saniyede 70 mil hızla gidiyorsa birbirlerine ne kadar hızlı yaklaşıyorlar demektir?
-</div>
-<p>60 + 70 = 150, böylece biliyoruz ki birbirlerine git gide yaklaştıkları hız saniyede 150 mil hız oluyor. Bu bizim “zaman” fonksiyonumuzdan çok da farklı değil: elimizde bir hız bilgisi var ve verilen mesafeyi gitmenin ne kadar zaman alacağını bilmek istiyoruz. Bu durumda Örneğimiz için ne yazmalıyız?</p>
-<h3>collide(0) = 0/150</h3>
-<div id = “nav”>
-İki farklı mesafe kullanarak iki tane Örnek yazın ardından her farklı uzaklık için işe yarayacak bir fonksiyon tanımlayın.
-</div>
-<p>Şu ana kadar, büyük resmi çoktan görmüş olabilirsiniz: problem içinde verilen uzaklık, denkleme herhangi bir fonksiyon tanımlamaya gerek duyulmadan yerleştirilebiliyor. Bazen tasarım reçetesi sizi cevaba hemen ulaştırabiliyor ve hatta bitirmek zorunda olmayabiliyorsunuz bile! Diğer zamanlarda, buna rağmen büyük resmi göremeyebilirsiniz. Bu durumda problemi çözmeye çok daha küçük parçalardan başlamalı ve her küçük parça için kendi fonksiyonunuzu yazmalısınız.</p>
-<div id="header">
-<h1>Kapanış (5 dakika) </h1>
-</div>
-<p>Bu ünitede, fonksiyonların bir animasyon yazmada ne kadar kullanışlı olduğunu öğrenmeye başladınız: fonksiyonlar size bir oyunun sahnesini yaratabilmeniz için gereken bilginin üretilmesini sağlar(örneğin, roketin yüksekliği). Fonksiyon yazma konusunda fazladan örnekler yapıp  Tasarım Reçetesini kullanarak, artık kendi elementlerinizi hareket ettirebileceğiniz kendi oyunlarınızı yazmaya hazırsınız. </p>
-<div id="header">
-<h1>Ek Alıştırmalar </h1>
-</div>
+        <div class="summary">
+          <div class="" id="BootstrapAgenda">
+            <p>Ajanda</p>
 
-<a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/exercises/Practicing-the-Design-Recipe/examples-same-contracts1.html">Alıştırmaların Kontratları aynı mı? </a>
-<a href="http://www.bootstrapworld.org/materials/Fall2014/courses/bs1/units/unit4/exercises/Practicing-the-Design-Recipe/match-contracts-examples1.html">Kontrat ve Örnekleri eşleştirme</a>
+            <ul class="BootstrapAgendaList">
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">
+                    25 dakika</span><a href="#lesson_TheDesignRecipe1918">
+                    <span class="BSLessonName">Tasarım Reçetesi</span></a>
+                </p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p>
+                  <span class="BSLessonDuration">40 dakika </span><a href=
+                    "#lesson_PracticingtheDesignRecipe1919"><span class="BSLessonName">Tasarım Reçetesini Uygulama</span></a>
+                </p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">40 dakika</span><a href=
+                "#lesson_TheDesignRecipe(Algebra)1920"><span class=
+                "BSLessonName">Tasarım Reçetesi (Matematik)</span></a></p>
+              </li>
+
+              <li class="BootstrapAgendaListItem">
+                <p><span class="BSLessonDuration">5 dakika</span><a href=
+                "#lesson_Closing1921"><span class="BSLessonName">Kapanış</span></a></p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="ProductOutcomes">
+            <span class="BootstrapHeader">Ürün Çıktısı</span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler Tasarım Reçetesini, bir roketi uçurma fonksiyonunu tanımlamak için kullanacaklar.</p>
+              </li>
+
+              <li>
+                <p>Öğrenciler Tasarım Reçetesini kullanarak basit problemleri çözmek için fonksiyonlar yazacaklar.</p>
+              </li>
+
+              <li>
+                <p>Teknik Terim ve İfade Açıklamaları</h1>BS ile başlayan terimler Bootstrap (önyükleme)</p>
+              </li>
+            </ul>
+          </div>
+
+          <!-- BURASI EKSİK???????
+          <div class="" id="LearningObjectives">
+            <span class="BootstrapHeader">Standards and Evidence
+            Statements:</span>
+
+            <p>Standards with prefix BS are specific to Bootstrap;
+            others are from the Common Core. Mouse over each
+            standard to see its corresponding evidence statements.
+            Our <a href=
+            "http://www.bootstrapworld.org/materials/Standards.shtml">
+            Standards Document</a> shows which units cover each
+            standard.</p>
+
+            <ul class="LearningObjectivesList">
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">8.F.1-3</span>: The student
+                  defines, evaluates, and compares functions</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>comparison of properties of two functions
+                      each represented in a different way
+                      (algebraically, graphically, numerically in
+                      tables, or by verbal descriptions)</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">A-SSE.1-2</span>: The student
+                  interprets the structure of expressions to solve
+                  problems in context</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpretation of expressions that
+                      represent a quantity in context</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpretation of terms, factors, and
+                      coefficients of an expression</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-BF.3-4</span>: The student
+                  builds new functions from existing functions.</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>inversion of a function</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.1-3</span>: The student
+                  uses function notation to describe, evaluate, and
+                  interpret functions in terms of domain and
+                  range</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>description of a function using terms
+                      domain and range</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>explanation that if f is a function and x
+                      is an element of its domain, then f(x)
+                      denotes the output of f corresponding to the
+                      input x</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>evaluation of functions using function
+                      notation for inputs in their domains</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpretation of statements that use
+                      function notation in terms of a context</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">F-IF.4-6</span>: The student
+                  interprets the behavior of functions that arise
+                  in applications in terms of the context</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>interpretation of a relationship between
+                      two quantities in a table or graph in terms
+                      of key features</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>relation of the domain of a function to
+                      its graph and, where applicable, to the
+                      quantitative relationship it describes</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.1</span>: The student
+                  is able to translate a word problem into a
+                  Contract and Purpose Statement</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>given a word problem, identify the domain
+                      and range of a function</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>given a word problem, write a Purpose
+                      Statement (i.e. - rewrite the problem in
+                      their own words)</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.2</span>: The student
+                  can derive test cases for a given contract and
+                  purpose statement</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>given a Contract and a Purpose Statement,
+                      write multiple examples or test cases</p>
+                    </li>
+
+                    <li class="EvidenceStatementsListItem">
+                      <p>given multiple examples, identify patterns
+                      in order to label and name the variables</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+
+              <li class="LearningObjectivesListItem">
+                <div class="LearningObjectivesListItemContents">
+                  <p><span style=
+                  "font-weight: bold">BS-DR.3</span>: Given mutiple
+                  test cases, the student can define a function</p>
+
+                  <ul class="EvidenceStatementsList">
+                    <li class="EvidenceStatementsListItem">
+                      <p>given examples and labeled variable(s),
+                      define the function</p>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </div><span class="BootstrapHeader">Length: 110
+          minutes</span>
+ -->
+          <div class="" id="Glossary">
+            <span class="BootstrapHeader">Sözlükçe: </span>
+
+            <ul>
+              <li>
+                <p><span class="vocab">Kontrat: </span>Etkinlik alanı (domain) adı ve fonksiyon çeşidi.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Tasarım Reçetesi: </span>İnsanlara dökümantayon, test ve fonksiyon yazmak için yardımcı olacak adımlar dizisi.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Etkinlik alanı: </span>Bir fonksiyonun beklediği veri çeşidi.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Örnek: </span>Belirli girdilerle bir fonksiyonunun kullanımını ve bu girdilerle fonksiyonun ne şekilde çalışması gerektiğini gösterir.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">İsim: </span>Bir fonksiyonun ya da tanımlı bir değerin bir programlama dilinin içinde nasıl ifade edileceği.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Amaç Açıklamaları: </span>Fonksiyonun ne yaptığıyla ilgili kısa bir açıklama.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Aralık: </span>Fonksiyonun ürettiği veri aralığı.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Çeşit: </span>Number, String, Image, Boolean gibi genel veri çeşitleri.</p>
+              </li>
+
+              <li>
+                <p><span class="vocab">Değişken: </span>Değişebilen veri tipi.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="Materials">
+            <span class="BootstrapHeader">Materyaller: </span>
+
+            <ul>
+              <li>
+                <p>Öğrenciler için kalemler, öğretmenler için tahta kalemleri</p>
+              </li>
+
+              <li>
+                <p>Sınıf posterleri (Kurallar listesi, dil tabelası, ders takvimi)</p>
+              </li>
+
+              <li>
+                <p>Dil tabelası</p>
+              </li>
+
+              <li>
+                <p>Öğrenci <a href=
+                "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı </a>dosyaları kapaklarda isimleriyle</p>
+              </li>
+              <!--
+              <li>
+                <p>Language Table</p>
+              </li>
+            -->
+            </ul>
+          </div>
+
+          <div class="" id="Preparation">
+            <span class="BootstrapHeader">Hazırlık: </span>
+
+            <ul>
+              <li>
+                <p>İlerleme planlamasını yazınız.</p>
+              </li>
+
+              <li>
+                <p>Ders posterlerini görüntüleyiniz.</p>
+              </li>
+
+              <li>
+                <p>"Rocket" [Rocket.rkt from <a href=
+                "../../resources/source-files.zip">source-files.zip</a>
+                | <a href=
+                "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6">
+                WeScheme</a>] Öğrencilerin bilgisayarlarına önceden yüklenebilir.</p>
+              </li>
+
+              <li>
+                <p>Oturma ayarlamaları: İdeal olarak yerleştirilmiş sıralar/masalar.</p>
+              </li>
+
+              <li>
+                <p>İsteğe bağlı: <a href=
+                "https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit?usp=sharing">
+                Isınma aktiviteleri.</a>.</p>
+              </li>
+            </ul>
+          </div>
+
+          <div class="" id="LanguageTable">
+            <table cellspacing="0" class="thetable">
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Tipler</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Number (Sayı)</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>+ - * / sqr(Sayının karesi) sqrt(Sayının karekökü) expt(Sayının üssü)</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>String (Dizi)</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu)</tt></p>
+                </td>
+              </tr>
+
+              <tr>
+                <td align="center" class="BootstrapTable">
+                  <p>Image (imaj)</p>
+                </td>
+
+                <td align="center" class="BootstrapTable">
+                  <p><tt>Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme</tt></p>
+                </td>
+              </tr>
+            </table>
+          </div>
+
+          <div class="fixed" id="lessonToolbar">
+            <input type="button" value="Show Teacher Notes"
+            onclick="toggleTeacherNotes(this);">Öğretmen Notlarını Göster</input><br>
+            <input type="button" value="Discussion Group" onclick=
+            "showGroup()">Tartışma Grubu</input>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Tasarım reçetesi</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Özet</span></p>
+
+            <p>Öğrencilere önceden tasarım reçetesinin adımları anlatıldı.</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Öğrenme Amaçları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler fonksiyon örnekleri yaratmayı ve üzerlerinde çalışmayı öğrenir</p>
+                </li>
+
+                <li>
+                  <p>Öğrenciler fonksiyonlar üzerinden çalışarak örnek fonksiyon yaratmayı öğrenir.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">İfade Açıklamaları</span></p>
+
+              <ul>
+                <li>
+                  <p>Tanım verildiğinde, öğrenciler tanımlanan İsmi, Tipi ve Değeri açıklayabilecektir.</p>
+                </li>
+
+                <li>
+                  <p>Tek değişkenli fonksiyonda sözleşme ve amaç açıklandığında, öğrenciler iki Örnek verebiliyor olacaklar.</p>
+                </li>
+
+                <li>
+                  <p>Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler değişkeni ayırt edebiliyor olacaklar.</p>
+                </li>
+
+                <li>
+                  <p>Basit bir fonksiyon için iki örnek verildiğinde, öğrenciler tanım yazabiliyor olacaklar.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Ürün Çıktıları</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrenciler fonksiyon tanımlamak için Tarif Reçetesini kullanacak ve bir roketi uçuracaklardır.</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materyaller:</span></p>
+
+              <ul>
+                <li>
+                  <p>Öğrencileri için kalemler, öğretmenler için tahta kalemleri,</p>
+                </li>
+
+                <li>
+                  <p>Sınıf posterleri (Kurallar listesi, dil tabelası, Ders takvimi)</p>
+                </li>
+
+                <li>
+                  <p>Dil tabelası</p>
+                </li>
+
+                <li>
+                  <p>Öğrenci <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">çalışma kitabı</a> dosyaları kapaklarda isimleriyle</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Hazırlık:</span></p>
+
+              <ul>
+                <li>
+                  <p>İlerleme planlamasını yazınız</p>
+                </li>
+
+                <li>
+                  <p>Ders posterlerini görüntüleyin</p><!--Dil tablosu, tasarım tarifi?????-->
+                </li>
+
+                <li>
+                  <p>"Rocket" [Rocket.rkt from <a href=
+                  "../../resources/source-files.zip">source-files.zip</a>
+                  | <a href=
+                  "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6">
+                  WeScheme</a>] Öğrenciler bilgisayarlarına önceden yüklenebilir</p>
+                </li>
+
+                <li>
+                  <p>Oturma ayarlamaları: ideal olarak yerleştirilmiş masalar</p>
+                </li>
+
+                <li>
+                  <p>İsteğe Bağlı: <a href=
+                  "https://docs.google.com/document/d/134VD2NShK_VxDog4VG4lMm4jTbpxm2H2cSXqZbHwwSg/edit?usp=sharing">
+                  Isınma aktiviteleri edinin</a>.</p>
+                </li>
+              </ul>
+            </div>
+            <!--NECESSARY?????-->
+            <div class="" id="LanguageTable">
+              <table cellspacing="0" class="thetable">
+                <tr>
+                  <td align="center" class="BootstrapTable">
+                    <p class="BootstrapTableHeader">Tipler</p>
+                  </td>
+
+                  <td align="center" class="BootstrapTable">
+                    <p class="BootstrapTableHeader">Fonksiyonlar</p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center" class="BootstrapTable">
+                    <p>Number (Sayı)</p>
+                  </td>
+
+                  <td align="center" class="BootstrapTable">
+                    <p><tt>+ - * / sqr(Sayının karesi) sqrt(Sayının karekökü) expt(Sayının üssü)</tt></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center" class="BootstrapTable">
+                    <p>String (Dizi)</p>
+                  </td>
+
+                  <td align="center" class="BootstrapTable">
+                    <p><tt>String (Dizi)– append string (diziye ekle) –length(dizi uzunluğu)</tt></p>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td align="center" class="BootstrapTable">
+                    <p>Image (imaj)</p>
+                  </td>
+
+                  <td align="center" class="BootstrapTable">
+                    <p><tt>Dikdörtgen, yuvarlak, üçgen, elips, yıldız, yazı boyutu, yer değiştirme, imaj yerleştirme</tt></p>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_TheDesignRecipe1918" id=
+            "lesson_TheDesignRecipe1918"></a></p><span class=
+            "BootstrapLessonTitle"><span class="BSLessonName">Tasarım Reçetesi<span class="time"> (25 Dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Fonksiyonlar bilgisayar programlarındaki animasyonların anahtar bölümleridir. Bir fonksiyon bir kedinin statik(durağan) resmini çizebilir, örneğin, kedinin verilen girdiye göre yer değiştirmesini sağlayabilir. Girdi zamandan ya da kullanıcı etkileşiminden dolayı değişime uğradığında, kedi hareket etmeye başlayabilir. Bu durum gerçek çevirmeli defterlerde çizilen karakterlerin hareket etmesine benzer. Her sayfada durağan bir imaj küçük farklılıklarla çizilidir. Sayfalar hızlıca çevrildiği zaman imaj da değişiyor gibi görünür.</p>
+
+                  <div class="banner"><img src="pict_2.png" alt=
+                  "image" width="500" height="154"></div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <img src="flipbook.gif" alt="">Bu imajları bir araya getirerek, roketin ekranda yukarıya doğru gittiği bir animasyona ulaşmış oluyoruz. Bu çeşit bir animasyonun bir örneğini görelim. Çalışma kitabınızdan <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">12. sayfayı</a> açın ve problem kelimesini dikkatle okuyun
+
+                    <div class="banner">
+                      Roket saniyede 7 metre hızla kalkış yapar. Adı <tt>rocket-height</tt> olan, içine roketin kalkmak için ihtiyacı olan saniye değerini sayı olarak alan ve roketin o saniye sonunda havalanması olayını gerçekleştiren bir fonksiyon yazın.
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p><tt>rocket-height</tt> fonksiyonunun içine ne veri alır? Ne tür veridir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyon çıktı olarak ne veri üretiyor üretiyor? Üretilen verinin türü nedir?</p>
+                        </li>
+
+                        <li>
+                          <p><span class="vocab">Sözleşmenin</span> üç bölümü nelerdir?</p>
+                        </li>
+
+                        <li>
+                          <p>Tanımlamanız istenen fonksiyonun <span class=
+                          "vocab">Adı</span> nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun <span class=
+                          "vocab">etkinlik alanı</span> nedir?</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonun <span class=
+                          "vocab">aralığı</span> nedir?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok! Gerek Yok mu?-->
+                  <p>Check student understanding carefully, to make
+                  sure students read the problem carefully. It may
+                  be helpful to draw a diagram or table showing the
+                  change of rocket position on the board, and to
+                  have students verbally walk through a few
+                  examples.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Kontrat, fonksiyonu genel anlamda, nasıl çalışacağını düşünmeden, nasıl kullanılacağını bilmeden düşünebilme yoludur. Yukarıdakiler gibi basit sorulardan başlamak kalan adımları çok daha kolay atmanızı sağlar. Buna rağmen, Kontrat her zaman yeterli bilgi vermez! <tt>Yıldız</tt> için etkinlik alanı örneğin, fonksiyonun ihtiyacı olanın bir Number ve iki String olduğudur ama String'in <tt>içinin dolu</tt> mu yoksa sadece <tt>sınırları olan</tt> bir String olup olmadığından söz etmez. Bu bilgiyi eklemek için yazılımcılar <span class="vocab">amaç açıklamaları</span> yazar, bunlar fonksiyonun ne yaptığını anlatan basit cümlelerdir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Kontratın alt bölümüne <tt>rocket-height</tt> fonksiyonu için aşağıdaki basit Amaç Açıklamasını kopyalayın.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    &nbsp;
+                    <textarea>
+                      ; rocket-height : Number -&gt; Number
+                      ; multiply the number of seconds by 7 to find the height
+                    </textarea>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri yok! Gereksiz mi?-->
+                  <p>This is an opportunity to talk about the
+                  importance of writing, clarity, and brevity. What
+                  information is essential for a purpose statement?
+                  What information is irrelevant? A good purpose
+                  statement describes what is computed and how its
+                  inputs are used; it should go beyond the
+                  information given in the contract and implicit in
+                  the name of the function.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Kontrat ve Amaç Açıklamaları ile donandıktan sonra, bir <tt>örnek</tt> yazmak çok daha kolay bir hal alıyor. Her örnek fonksiyonun adıyla ve örnek bir veri girdisiyle başlar. İkisi de hazırlanan Kontrat içinde yazıyor. Bu durumda, fonksiyonun adının <tt>rocket-height</tt> olduğunu biliyorsunuz ve bu fonksiyon içine yalnızca bir Number tipinde girdi bekliyor. Amaç Açıklaması biraz daha fazla gidiyor ve size girdimizin 7 ile çarpıldığını söylüyor. Böylelikle farklı saniye sayılarını girdi olarak kullanıp, iki örnek yazabiliriz. &nbsp;
+                    <textarea>
+                      ; rocket-height : Number -&gt; Number
+                      ; multiply the number of seconds by 7 to find the height
+                      (EXAMPLE (rocket-height 11)
+                               (* 11 7))
+                      (EXAMPLE (rocket-height 72)
+                               (* 72 7))
+                      </textarea> 
+                      <span style="font-weight: bold">Note:</span>
+                       Yukarıda gösterilen örnekler iki satıra bölünmüştür! Fonksiyonlar ve örnekler çok daha uzun ve karmaşık bir hal alacağı için hepsini tek satıra sıkıştırmak çok zor olacaktır. Çalışma kitaplarınızda, her örnek ve tanım bundan sonra satırlara bölünerek yazılacaktır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitaplarınızda, iki tane farklı saniye değerleri kullanarak <tt>rocket-height</tt> fonksiyonu yazınız. İki örnek de çok fazla ortak özelliğe sahip olacak (İkisi de <tt>rocket-height</tt> ismini kullacak, ikisi de girdilerini 7 ile çarpacak, vs.) Bitirdiğiniz zaman, örneklerin sadece <span style=
+                      "font-style: italic">değişebilir</span> olan bölümlerini daireye alarak işaterleyin.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok, Gereksiz mi?-->
+                  <p>The main idea for students in this activity is
+                  to realize that the Contract and Purpose
+                  Statement can be relied upon to write examples.
+                  Ask students to justify every part of each
+                  example, using only the Contract and Purpose
+                  Statement. Students are often tripped up by the
+                  switch from one-line examples to two-line ones.
+                  Be <span style="font-style: italic">very</span>
+                  careful to point this out to students, and to
+                  check their workbooks to see where they are
+                  writing their examples. At the end of the
+                  activity, make sure that students circle ONLY
+                  what has changed.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    İki farklı örneği kıyaslayarak neyin değişip neyin değişmediğini söyleyebilmek kolay. Amaç Açıklamaları hazırlığımızı göz önünde bulundurduğumuzda roketin uçtuğu saniye sayıları diyebiliriz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Sayfa üzerinde, “saniyeler” ile daire içine aldığınız maddeleri etiketleyin.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok, Gereksiz mi?-->
+                  <p>Have a discussion with students about why
+                  "seconds" is a better name than "time". Talk
+                  about specificity, relevance, and
+                  readability.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    <span style=
+                    "font-style: italic">Değişebilir</span> olan şeyleri etiketlemek, programcılara fonksiyon içerisindeki <span class="vocab">değişkenlere</span> isim verebilme hissi kazandırır. Değişkenler, farklı zamanlarda değişebilecek olan değerler için yer tutucu gibidir. Her ay içinde mesaj göndermek için ne kadar ödediğinizi hesaplayan bir fonksiyon olsun, örneğin bu fonksiyonun içerdiği, içinde bulunduğunuz aya ait olan kaç tane mesaj gönderdiğiniz bilgisini tutan bir değişkeni olabilir. Gönderdiğiniz mesaj sayısı aydan aya değişebilir ama yine de her mesajın fiyatı 20 kuruş tutarındadır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><tt>Rocket-height</tt> fonksiyonunda kaç değişken vardır? Her değişkenin adı nedir? Örneklerinizden ve Anlaşma ve Amaç Özellikleri bölümündeki bilgilerden yararlanarak fonksiyonu tanımlayın.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    &nbsp;
+                    <textarea>
+                      ; rocket-height : Number -&gt; Number
+                      ; multiply the number of seconds by 7 to find the height
+                      (EXAMPLE (rocket-height 11)
+                               (* 11 7))
+                      (EXAMPLE (rocket-height 72)
+                               (* 72 7))
+                      (define (rocket-height seconds)
+                               (* seconds 7))
+                    </textarea>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok???-->
+                  <p>As with the Examples, ask students to justify
+                  each part of the definition. In this case, the
+                  function name can be derived from the Contract,
+                  and the variable name and function body from the
+                  Examples.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tasarım Reçetesi programcıya bir adımda bir problem üzerine odaklanmasını ve önceki adımları kullanarak bir sonraki adımları tamamlamasını öğretir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p><span class=
+                          "vocab">Kontrat</span> programcıya fonksiyonla ilgili ne anlatır?</p>
+                        </li>
+
+                        <li>
+                          <p><span class="vocab">Amaç Açıklamaları</span>, programcıya fonksiyonla ilgili ne anlatır</p>
+                        </li>
+
+                        <li>
+                          <p>Kontrat ve Amaç Açıklamaları, programcıya <span class="vocab">Örnekler</span> yazması için nasıl yardımcı olur?</p>
+                        </li>
+
+                        <li>
+                          <p>Örnekler içerisinde değişebilen bölümleri etiketlemek ve daire içine almak neden yardımcıdır?</p>
+                        </li>
+
+                        <li>
+                          <p>Bütün bu adımlar programcıya bir fonksiyon tanımlama sırasında nasıl yardımcı olur?</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Fark etmiş olabileceğiniz gibi Örnekler içinde bulunan <tt>rocket-height</tt> fonksiyonundaki çarpma işlemi direkt <tt>(77)</tt> sonucu olarak yazılmak yerine <tt>(* 11 7)</tt> şeklinde yazılmıştır. Neden çarpmanın hesaplanma yolunu göstermeye zahmet edilmiş olsun? Bunu yaparak, örnekler hangi adımın gerçekleştirileceği konusunda ipuçları sunar. Gösterilen Rocket kodunda (Rocket.rkt from
+                    <a href=
+                    "../../resources/source-files.zip">source-files.zip</a>'ten alınan ya da <a href=
+                    "http://www.wescheme.org/openEditor?publicId=KY4s7msuh6&amp;"
+                    target="embedded">online file</a>), örnekler yazarken uygulanan işlemlerin gösterilmesinin neden önemli olduğunu göreceksiniz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>“Run” a tıklayın, ve pencerenin en altında bir roket belirene kadar ve en yukarıda “zaman” ve “yükseklik” sayıları görüntülenene kadar bekleyin. Bu animasyon roketi, her boşluk tuşuna basıldığında yenilemek üzere ve zamanı geçiyor gibi göstermek üzere ayarlanmıştır. Boşluk tuşuna birkaç kere basın ve pencerenin üstünde beliren zamanın artışını gözlemleyin. Roket hareket etti mi? Zaman akıyor, ancak roketin yüksekliği değişmiyor! Roket penceresini kapatın, böylece kodu görebilirsiniz.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bu fonksiyon için Kontrat doğru: Fonksiyonun Adı, Etkinlik Alanı, Aralığı burada doğru olarak yazılmıştır. Buna rağmen bir sonraki adım kesinlikle bazı problemlere sahip:</p>
+
+                  <ol>
+                    <li>
+                      <p>Sadece bir Örnek var. Bu durum neyin değiştiğini anlamamız konusunda zorluk yaratabilir, böylece değişkenleri anlamaya çalışırken hatalara yol açabilir.</p>
+                    </li>
+
+                    <li>
+                      <p>Örnek yüksekliğin nasıl hesaplandığını göstermez –onun yerine, programcı yapılan işi göstermek yerine sadece “cevabı” yazar.</p>
+                    </li>
+                  </ol>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Örnek içindeki bu adımları atlayarak, Fonksiyonu tanımlarken hata yapmak kolaylaşabilir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Programcının yaptığı hataları görebiliyor musunuz?</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Birden fazla Örnek görmeden, bu programcı roketin yüksekliğinin her veri için ayrıca hesaplanacağını fark etmek konusunda sıkıntıya düşmüştür. Bunun yerine, <span style="font-style: italic">her girdide</span> aynı sayıyı üretmişlerdir (bu durumda sayı sıfır). Sonuç olarak, kaç saniye geçmiş olursa olsun, roket her zaman sıfır yüksekliğindedir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Bu programcının yazdığı Örnekteki hatayı düzeltin.</p>
+                        </li>
+
+                        <li>
+                          <p>İlkinin altına ikinci bir Örnek yazın.</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyon tanımını tamir edin, böylece fonksiyon saniye sayısını 7 ile çarpar hale gelsin.</p>
+                        </li>
+
+                        <li>
+                          <p>“Run” a tıklayıp arkasından boşluk tuşuna basın ve roket uçsun!</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <!-- <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Practicing the Design
+        Recipe</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <p>Students use the Design Recipe to define simple
+            functions (of one and two variables), given various
+            word problems</p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+
+              <ul>
+                <li>
+                  <p>Given a contract and purpose statement for a
+                  simple function, students will be able to write
+                  two Examples.</p>
+                </li>
+
+                <li>
+                  <p>Given two examples for a simple function,
+                  students will be able to identify the
+                  variable</p>
+                </li>
+
+                <li>
+                  <p>Given two examples for a simple function,
+                  students will be able to write the definition</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+
+              <ul>
+                <li>
+                  <p>Students will write functions to solve simple
+                  problems by using the Design Recipe</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+
+              <ul>
+                <li>
+                  <p>Pens/pencils for the students, fresh
+                  whiteboard markers for teachers</p>
+                </li>
+
+                <li>
+                  <p>Class poster (List of rules, language table,
+                  course calendar)</p>
+                </li>
+
+                <li>
+                  <p>Language Table</p>
+                </li>
+
+                <li>
+                  <p>Student <a href=
+                  "../../resources/workbook/StudentWorkbook.pdf">workbook</a>
+                  folders with names on covers, and something to
+                  write with</p>
+                </li>
+              </ul>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+
+              <ul>
+                <li>
+                  <p>Write agenda on board</p>
+                </li>
+
+                <li>
+                  <p>Display Class posters, Language Table, Design
+                  Recipe</p>
+                </li>
+
+                <li>
+                  <p>Seating arrangements: ideally clusters of
+                  desks/tables</p>
+                </li>
+              </ul>
+            </div>
+          </div>
+ -->
+          <div class="segment">
+            <p><a name="lesson_PracticingtheDesignRecipe1919" id=
+            "lesson_PracticingtheDesignRecipe1919"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Tasarım Reçetesi Uygulaması <span class="time">(40 Dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Tasarım Reçetesi , programcıların yazdıkları kodların doğruluğundan emin olmak için kullandıkları , fonksiyonları tanımlamak için bir yol haritası niteliğindedir. Her adım son anda oluşturulur böylece karşılaşılabilecek hatalar erkenden önlemiş olur. Bu yol haritası bir seri adıma sahiptir:</p>
+
+                  <ul>
+                    <li>
+                      <p>Bir kelime hatasından Kontrata hareket etmek</p>
+                    </li>
+
+                    <li>
+                      <p>Kontratı göz önünde bulundurarak örnekler yazmak</p>
+                    </li>
+
+                    <li>
+                      <p>Örneklerle uyuşan bir fonksiyon tanımlamak</p>
+                    </li>
+                  </ul>
+
+                  <div class="SIntrapara">
+                    Bu adımları bir bir uygulayarak başlayın.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Aşağıdaki her kelime problemi için Kontratı yazınız:</p>
+
+                      <ul>
+                        <li>
+                          <p>Purple-star (mor-yıldız) adında bir fonksiyon tanımlayın. Fonksiyon içine yıldızın boyutunu alsın ve verilen boyutta çizgisel bir yıldız üretsin.</p>
+                        </li>
+
+                        <li>
+                          <p>Spot (nokta) adında bir fonksiyon tanımlayın. Fonksiyon içine renk alsın ve yarıçapı 50 olan verilen renkte, katı bir daire üretsin.</p>
+                        </li>
+
+                        <li>
+                          <p>İki sayının ortalamasının hesaplanması için iki sayı toplanır ve ikiye bölünür. Average (ortalama) adında bir fonksiyon tanımlayın. Fonksiyon içine iki sayı alsın ve bu iki sayının ortalamasını hesaplasın.</p>
+                        </li>
+
+                        <li>
+                          <p>Bir şirket logosu, büyük, kırmızı harflerle çizilmiş ve bir takım sayı dereceleriyle yerleştirilmişti. Logo adında bir fonksiyon tanımlayın. Fonksiyon içine şirket adı ve yerleşim sayısı alsın ve şirket için bir logo üretsin.</p>
+                        </li>
+                      </ul>
+
+                      <p>Her fonksiyon için iyi bir <span class=
+                      "vocab">İsim</span> bulduğunuzdan emin olun ve <span class=
+                      "vocab">Etkinlik Alanı</span> ve <span class=
+                      "vocab">Aralık</span> sadece Number(sayı), İmaj(image), String(dizi) vb. <span class="vocab">değerler</span> içerebilir.
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>If students come up with different Domains or
+                  Ranges for their functions, have them explain
+                  their thinking for each one. These conversations
+                  are an important part of this step!</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Kontrat bir fonksiyon için, programcıya kullanması için sadece yeterli bilgiyi veren temel niteliklidir: 
+                    Fonksiyonun adı, fonksiyonun içine aldığı ve çıktı olarak verdiği değerlerin veri tipi.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Şimdi, dört problem için de Kontratları tamamlamış bulunuyorsunuz. Her biri için ikişer tane Örnek üretmeye çalışın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Challenge students to defend their Examples
+                  (their function name, the number of inputs, their
+                  types and the type of the returned value). Make
+                  sure that the two Examples for each function have
+                  <span style="font-style: italic">different input
+                  values</span>! For each of these questions,
+                  students must be able to point to the specific
+                  part of their Contract as the justification for
+                  their Example.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    İki ya da daha fazla Örneğe sahip olduğunuzda, aralarında neyin değiştiğine karar verebilmek kolay olacaktır. Aslında, değişen şeylerin sayısı, fonksiyonun etkinlik alanının içinde olanların sayısıyla eşit olmalıdır. Eğer Etkinlik Alanı içinde bir Number(sayı), bir de String(dizi) varsa, bu iki değer sizin örnekleriniz içinde değişen değerler olmalıdır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Örnekler arasında değişim gösteren şeyleri tanımlayın ve bu bilgiyi kalan diğer fonksiyonları tanımlamak için kullanın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok-->
+                  <p>Make sure students have chosen good variable
+                  names for their function definitions, and ask
+                  students to justify every part of the function
+                  body. The only acceptable answers should be "I
+                  copied this because it’s the same in both
+                  Examples", or "I used a variable name because it
+                  differs between Examples."</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitaplarınızdan <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">Sayfa
+                    13</a>'ü açın, ve kelime problemini dikkatle okuyun.</p>
+
+                    <ul>
+                      <li>
+                        <p>Fonksiyonun <span class="vocab">ismini</span> daire içine alın ve içine aldığı değerle ürettiği değerin altını çizin.</p>
+                      </li>
+
+                      <li>
+                        <p>Bu fonksiyon için <span class="vocab">Kontratı</span> yazın, altını çizdiğini değerler size <span class="vocab">Etkinlik Alanı</span> ve <span class="vocab">Aralık</span> değerlerini bulmanız için yardımcı olacaktır.</p>
+                      </li>
+
+                      <li>
+                        <p>Kontratın altında, <span class="vocab">Amaç Açıklamalarını</span>, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri Yok-->
+                  <p>Challenge students to explain why this
+                  function does not need to know the color of the
+                  square, or whether or not it is solid. They main
+                  idea here is that the function already "knows"
+                  these things, so the only thing that is changing
+                  is the size of the square. Note that there are
+                  actually two easy solutions here: using the
+                  <tt>square</tt> function, or using
+                  <tt>rectangle</tt> with the same variable for
+                  width and height.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Kontrat ve Amaç Açıklamaları, programcı nasıl başlayacağından emin olmasa bile, Örnek yazmak için kullanılabilir hatırlayın.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Sadece Kontrat ve Amaç Açıklamalarını kullanarak aşağıdaki sorulara cevap verebiliyor musunuz görün:</p>
+
+                      <ul>
+                        <li>
+                          <p>Her Örnek fonksiyonun adıyla başlar. Fonksiyonun adını nerede bulabilirsiniz?</p>
+                        </li>
+
+                        <li>
+                          <p>Her Örnek, örnek veri içermek zorundadır. Fonksiyonun kaç tane veri girdisine ihtiyaç duyduğunu nereden bulabilirsiniz?</p>
+                        </li>
+
+                        <li>
+                          <p>Her Örnek, veri girdisi verildiği zaman, içinde ne <span style=
+                          "font-style: italic">yapıyor</span> olmalı olduğunu gösteren bir ifade içermeli. Bu fonksiyonun ne yaptığını anlayabilmek için nereye bakmalısınız?</p>
+                        </li>
+
+                        <li>
+                          <p>Kağıdınıza iki Örnek yazın, ardından aralarında değişen değerlerin altını çizin ve etiketleyin.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Make sure students realize that every answer
+                  can be found in the Contract or Purpose
+                  Statement. Suggestion: write these steps on the
+                  board, and draw arrows between them to highlight
+                  the process. The goal here is to get students
+                  into the habit of asking themselves these
+                  questions each time they write Examples, and then
+                  using their own work from the previous step to
+                  find the answers. NOTE: students can solve this
+                  using either <tt>square</tt> or
+                  <tt>rectangle</tt>. The latter requires them to
+                  use the same variable twice, which is a useful
+                  thought-exercise.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Once the two Examples are written and the
+                    variable (or variables) are labeled, it becomes
+                    easy to define the function.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Using the Contract, Purpose Statement and
+                      Examples, see if you can answer the following
+                      questions:</p>
+
+                      <ul>
+                        <li>
+                          <p>Every function definition begins with
+                          the name. Where did you write this
+                          already?</p>
+                        </li>
+
+                        <li>
+                          <p>Every definition has to include
+                          variable names for the inputs. Where did
+                          you write these down?</p>
+                        </li>
+
+                        <li>
+                          <p>Every definition should work exactly
+                          the way the Examples did. Where could you
+                          look to figure out what the function
+                          should <span style=
+                          "font-style: italic">do?</span></p>
+                        </li>
+
+                        <li>
+                          <p>Write the function definition on your
+                          paper.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Fonksiyon tanımı yazarken, yazdıklarınızın hepsinin üç bölümde olduğuna emin olun: Kontrat ve Amaç Açıklamaları, Örnekler ve Tanım. “Run” a basıldığında, bilgisayar tanımı okuyacak, Örneklerinizi doğru yazılıp yazılmadığını görmek için test edecek ve tanımınızı sizin dilinizde ekleyecektir. Bir kere eklendikten sonra fonksiyonu sanki bilgisayarda daha önceden çalıştırılmış gibi kullanabilirsiniz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p><a href=
+                      "http://www.wescheme.org/openEditor?definitionsText=;%20red-square%20:%20Number%20-%3E%20Image%0A;%20draw%20a%20solid,%20red%20square%20using%20the%20given%20size%0A(EXAMPLE%20(red-square%2042)%20(square%2042%20&quot;solid&quot;%20&quot;red&quot;))%0A(EXAMPLE%20(red-square%2073)%20(square%2073%20&quot;solid&quot;%20&quot;red&quot;))%0A(define%20(red-square%20size)%20(square%20size%20&quot;solid&quot;%20&quot;red&quot;))"
+                      target="embedded">Bu fonksiyonu farklı veri girdileri kullanarak test edin.</a></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bazı fonksiyonlar birden fazla değer alırlar. Red-square (kırmızı kare) fonksiyonu, sadece büyüklüğü değişken değer olarak alarak, her zaman kırmızı bir kare üretecektir. Düşünün, buna rağmen istiyoruz ki bu fonksiyon kırmızı ama istersek içi dolu istersek çizgisel bir kare üretsin. Bu demek oluyor ki hem boyut hem de stil değişebilir, böylece kullanıcı hem <tt>(red-square 50 “solid”)</tt> girebilir hem de <tt>(red-square 50 “outline”)</tt> girebilir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <ul>
+                        <li>
+                          <p>Bu durum fonksiyonun Etkinlik Alanında nasıl değişiklik gösterir?</p>
+                        </li>
+
+                        <li>
+                          <p>Örnekler ne şekilde değişmek zorunda kalır?</p>
+                        </li>
+
+                        <li>
+                          <p>Tanım ne şekilde değişir?</p>
+                        </li>
+                      </ul>
+
+                      <p>Yazdığınız kodun, <tt>red-square</tt> fonksiyonuna içine hem “solid” (katı) hem de “outlined” (çizgisel) verilerini, ikinci değer olarak almasına izin vermesi için, her parçasını değiştirin.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Tasarım Reçetesi, fonksiyonun istenilen sayıda girdi alması için kullanılabilir. Basit bir örnek olarak aşağıdaki kelime problemini ele alalım.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitaplarınızdan <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      sayfa 14</a>'ü açın, ve kelime problemini dikkatle okuyun.</p>
+
+                      <ul>
+                        <li>
+                          <p>Fonksiyonun <span class="vocab">ismini</span> daire içine alın ve içine aldığı değerle üretilmesini istediklerinin altını çizin.</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyon girdi olarak kaç veri alıyor? Bunlar Number(Sayı) mı? String(dizi) mi? Image(imaj) mı?</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyon için <span class="vocab">Kontratı</span> yazın, altını çizdiğini değerler size <span class="vocab">Etkinlik Alanı</span> ve <span class="vocab">Aralık</span> değerlerini bulmanız için yardımcı olacaktır.</p>
+                        </li>
+
+                        <li>
+                          <p>Kontratın altında, <span class="vocab">Amaç Açıklamalarını</span>, bu fonksiyonun ne yapıyor olduğunu özetleyerek bir cümleyle yazın.</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyon için iki Örnek yazın ve içlerinde değişen değerleri daire içine alıp etiketleyin.</p>
+                        </li>
+
+                        <li>
+                          <p>Bu fonksiyon için bir Tanım yazın.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>If time allows, pass out extra Design Recipe
+                  worksheets [<a href=
+                  "../../resources/DesignRecipeWorksheet.pdf">PDF</a>],
+                  and have students practice with other word
+                  problems. Practice variations on red-square,
+                  involving two inputs changing while other
+                  parameters stay fixed.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <!--ÇEVİRİ YOK!
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">The Design Recipe
+        (Algebra)</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+            </div>
+
+            <div class="LessonEvidenceStatements">
+              <p><span style="font-weight: bold">Evidence
+              Statements</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+            </div>
+          </div>
+
+        -->
+
+          <div class="segment">
+            <p><a name=
+            "lesson_TheDesignRecipe(Algebra)1920"></a></p><span class="BootstrapLessonTitle"><span class="BSLessonName">Tasarım Reçetesi (Matematik) <span class="time">(40 Dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Bir programcının esas gücü bir dili ne kadar iyi bildiği değildir. Esas güç, bildiklerinizi problem çözmek üzerinde ne kadar iyi kullandığınızdır! Buraya kadar, kelime problemlerini kağıt üzerinde yazıp arkasından bilgisayar üzerinde fonksiyona çevirebilmenize yardım edecek çok kuvvetli bir araç öğrendiniz: <span class="vocab">Tasarım Reçetesi!</span> Görünen o ki Tasarım Reçetesi size kelime problemlerini matematiksel olarak da çözebilmeniz için yardımcı oluyor!
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Çalışma kitaplarınızdan <a href=
+                      "../../resources/workbook/StudentWorkbook.pdf">
+                      sayfa 39</a>'u açın, kelime problemini dikkatlice okuyun, ve fonksiyon için bir <span class="vocab">Kontrat</span> yazın. <span style=
+                      "font-style: italic">"Dünya’dan Mars’a saniyede 80 mil hızla bir roket uçuyor. Roketin uçtuğu uzaklığı
+                      <script type="math/tex">D</script> olarak tanımlayabilecek bir fonksiyon yazın, zaman fonksiyonu olarak.</span>"</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Roketin yolculuk ettiği uzaklık mil cinsinden sayılarla ölçüldü ve zaman da saniye cinsinden sayılarla ölçüldü. Bu bize Kontratı verir:
+
+                    <div class="banner">
+                      <script type="math/tex">
+                        Uzaklık : Number \rightarrow Number
+                      </script>
+                    </div>Daha az önce, Kontrat bize çok güçlü ipuçları verdi Örnekleri nasıl yazacağımız hakkında. İşte Rocket kodu olarak yazılmış bir örnek:
+                    <tt>(EXAMPLE (distance 5) (* 5 80))</tt> Burada da aynı Örneğin matematiksel yazılışı:
+                    <script type="math/tex">
+                      Distance(5) = 5 \times 80
+                    </script>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Bu fonksiyon için iki tane daha ek Örnek yazın, matematiksel gösterimi kullanın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Point out that the Contract hasn’t changed
+                  <span style="font-style: italic">at all</span>
+                  between Racket and Algebra.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Az önceki gibi, bir fonksiyonun değişkenleri iki Örnek yazarak ve aralarında neyin değişken olduğu gözlemlenerek tanımlanabilir.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Yazdığınız örnekleri kullanarak, Fonksiyon için değişkeni/değişkenleri tanıyın. Ardından fonksiyonu <span style="font-style: italic">Matematiksel yazım</span> kullanarak tanımlayın.</p>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    Tasarım Reçetesi yazılı bir tanımın, usule uygun bir fonksiyona dönüştürülmesine yardım eder.
+
+                    <div class="banner">
+                      <script type="math/tex">
+                        distance(4) = 4 \times 80
+                      </script> <script type="math/tex">
+                        distance(7) = 7 \times 80
+                      </script> <script type="math/tex">
+                        distance(t) = t \times 80
+                      </script>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitaplarınızdan <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">sayfa
+                    40</a>'ı açın, ikelime problemini dikkatle okuyun ve fonksiyonun kontratını yazın: <span style="font-style: italic">“Dünya’dan Mars’a saniyede 80 mille bir roket hareket ediyor. Roketin seyahat ettiği süreyi tanımlayan bir fonksiyon yazınız, uzaklık fonksiyonu olarak.”</span></p>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Point out that this is the same relationship
+                  between distance and time as before, <span style=
+                  "font-weight: bold">only now we want be able to
+                  see the relationship from the opposite
+                  direction</span>: time in terms of distance,
+                  rather than distance in terms of time.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Kontrat olduktan sonra, Örnekleri yazmak kolay: 
+                    <script type="math/tex">
+                      Zaman : Number \rightarrow Number
+                    </script>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Kontratı kullanarak bu fonksiyon için iki tane Örnek yazın, ardından fonksiyon için gereken değişken/değişkenleri tanıyın.</p>
+
+                      <ul>
+                        <li>
+                          <p>Bu fonksiyonda kaç tane değişken var?</p>
+                        </li>
+
+                        <li>
+                          <p>Değişkenlere isim verin.</p>
+                        </li>
+
+                        <li>
+                          <p>Fonksiyonu matematiksel ifadeler kullanarak tanımlayın.</p>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Fonksiyonunuz hazırlandığı anda, değerleri içine yerleştirip sonuçları almak çok basit. <span style="font-style: italic">Bütün kelime problemleriyle beraber, en zor bölüm fonksiyonu ilk aşamada hazırlamaktı. Şanslıyız ki, Tasarım Reçetesi , fonksiyonu ayarlamayı çok daha kolay kılıyor. Tasarım Reçetesini sadece iki ayrı fonksiyonu ayarlamak için kullandık, bunlar bizde fonksiyon cevaplarını uzaklık ve zaman cinsinden cevap almak için de kullanılabilirdi. İnşa araçları gibi fonksiyonları tanımlayarak, basit problemleri çözebilir için ya da daha zor olanları çözmek için fonksiyonları bir araya getirebilirsiniz.</span>
+                  </div>
+
+                  <div class="SIntrapara"><!--Çeviri YOK!-->
+                    <div class="activity">
+                      <p>Suppose you wanted to know how far the
+                      rocket traveled in 6 seconds: which of the
+                      two functions here would you use? What if you
+                      wanted to know how long it takes for the
+                      rocket to go a thousand miles?</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Ask students to identify which function they
+                  would use to answer a variety of different
+                  questions.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="activity">
+                    <p>Çalışma kitaplarınızdan <a href=
+                    "../../resources/workbook/StudentWorkbook.pdf">sayfa 41</a>'i açın, problemi dikkatlice okuyun:<span style="font-style: italic">“Dünya’dan bir roket saniyede 80 mil hızla Mars’a doğru yola çıkmıştır. Aynı anda, Mars’tan hareketle Dünya’ya doğru bir gök taşı kopmuş ve saniyede 70 mil hızla yol almaya başlamıştır. Dünya ve Mars arasındaki mesafe 50.000.000 mil olduğuna göre, gök taşı ve roket ne kadar süre sonra buluşurlar?”</span></p>
+
+                    <ul>
+                      <li>
+                        <p>Problemin <span style="font-weight: bold">size verdiği</span> gerçekler nelerdir?</p>
+                      </li>
+
+                      <li>
+                        <p>Problem <span style=
+                        "font-weight: bold">sizden ne istiyor</span>?</p>
+                      </li>
+
+                      <li>
+                        <p>Cevaplarınızı bir sonraki cümleyi tamamlamak için kullanın: “Verilen …………., üretilenin ………… olduğu bir fonksiyon yazınız.”</p>
+                      </li>
+
+                      <li>
+                        <p>Eğer böyle bir fonksiyon var olsaydı, ismi en iyi ne olabilirdi?</p>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>Ultimately, the problem is asking students
+                  about a functional relationship between distance
+                  and collision-time.</p>
+                </div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Eğer çarpışma zamanını hesaplayabilen bir fonksiyonumuz olsaydı, bu soruyu cevaplamak sadece fonksiyona Dünya ve Mars arsındaki mesafeyi yerleştirmemiz sonucu kolayca bulunurdu. Onun yerine fonksiyonun kendisini yazabilmek için bir denklem düşünmeye ve Tasarım Reçetesinin adımlarını kullanmaya başlayabilirsiniz.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Bu fonksiyon için Kontratı yazın, ardından farklı uzaklıklar kullanarak iki Örnek yazın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Şu ana kadar, bu fonksiyonun Kontratı ve Amaç  Açıklaması elinizde:</p>
+
+                  <div class="banner">
+                    <script type="math/tex">
+                      collide : Number \rightarrow  Number
+                    </script> <script type="math/tex">
+                      collide(0) = ...
+                    </script>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    Şimdi, eşittir işretinden sonra gelmesi gereken işlemi bulmalıyız. Şanslıyız ki, elimizde bir ipucu var: ne olacaksa olsun biliyoruz ki, sonuç sıfır olmalı. Bu bilgiyle diyebiliriz ki, çarpıştıkları zaman aralarındaki uzaklık sıfır olacaktır.
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>Roket saniyede 80 mil hızla gidiyorsa ve gök taşı saniyede 70 mil hızla gidiyorsa <span style="font-style: italic">birbirlerine ne kadar hızlı yaklaşıyorlar demektir?</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <div class="SIntrapara">
+                    
+                    <script type="math/tex">
+                      80 + 70 = 150 
+                    </script>, böylece biliyoruz ki birbirlerine git gide yaklaştıkları hız saniyede 150 mil hız oluyor. Bu bizim <tt>“zaman”</tt> fonksiyonumuzdan çok da farklı değil: elimizde bir hız bilgisi var ve verilen mesafeyi gitmenin ne kadar zaman alacağını bilmek istiyoruz. Bu durumda Örneğimiz için ne yazmalıyız?
+
+                    <div class="banner">
+                      <script type="math/tex">
+                        collide(0) = 0/150
+                      </script>
+                    </div>
+                  </div>
+
+                  <div class="SIntrapara">
+                    <div class="activity">
+                      <p>İki farklı mesafe kullanarak iki tane Örnek yazın ardından her farklı uzaklık için işe yarayacak bir fonksiyon tanımlayın.</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Şu ana kadar, büyük resmi çoktan görmüş olabilirsiniz: problem içinde verilen uzaklık, denkleme herhangi bir fonksiyon tanımlamaya gerek duyulmadan yerleştirilebiliyor. Bazen tasarım reçetesi sizi cevaba hemen ulaştırabiliyor ve hatta bitirmek zorunda olmayabiliyorsunuz bile! Diğer zamanlarda, buna rağmen büyük resmi göremeyebilirsiniz. Bu durumda problemi çözmeye çok daha küçük parçalardan başlamalı ve her küçük parça için kendi fonksiyonunuzu yazmalısınız.</p>
+                </div>
+
+                <div class="teacher"><!--Çeviri YOK!-->
+                  <p>You can add as many Design Recipe pages as you
+                  like to the workbooks, using any algebra problem
+                  you like. We recommend using word problems from
+                  your students’ algebra textbook, or even from
+                  your state’s standardized test!</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <blockquote class="LessonBoundary">
+        <span class="BootstrapPageTitle">Kapanış</span>
+
+        <div class="content">
+          <div class="overview">
+            <p><span class="BootstrapLogo"><img src="logo.png" alt=
+            "bootstrap logo"></span></p>
+
+            <p><span class=
+            "BootstrapLessonTitle">Overview</span></p>
+
+            <div class="LessonLearningObjectives">
+              <p><span style="font-weight: bold">Learning
+              Objectives</span></p>
+            </div>
+
+            <div class="LessonProductOutcomes">
+              <p><span style="font-weight: bold">Product
+              Outcomes</span></p>
+            </div>
+
+            <div class="LessonMaterials">
+              <p><span style=
+              "font-weight: bold">Materials</span></p>
+            </div>
+
+            <div class="LessonPreparation">
+              <p><span style=
+              "font-weight: bold">Preparation</span></p>
+            </div>
+          </div>
+
+          <div class="segment">
+            <p><a name="lesson_Closing1921" id=
+            "lesson_Closing1921"></a></p><span class=
+            "BootstrapLessonTitle"><span class=
+            "BSLessonName">Kapanış <span class="time">(5 Dakika)</span></span></span>
+
+            <ul class="lesson">
+              <li class="lessonItem">
+                <div class="student">
+                  <p>Bu ünitede, fonksiyonların bir animasyon yazmada ne kadar kullanışlı olduğunu öğrenmeye başladınız: fonksiyonlar size bir oyunun sahnesini yaratabilmeniz için gereken bilginin üretilmesini sağlar(örneğin, roketin yüksekliği). Fonksiyon yazma konusunda fazladan örnekler yapıp Tasarım Reçetesini kullanarak, artık kendi elementlerinizi hareket ettirebileceğiniz kendi oyunlarınızı yazmaya hazırsınız.</p>
+                </div>
+
+                <div class="teacher"></div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </blockquote>
+
+      <div class="ExtraExercises">
+        <span class="BootstrapLessonTitle">Ek Alıştırmalar:</span>
+
+        <ul>
+          <li>
+            <p><a href=
+            "exercises/Practicing-the-Design-Recipe/examples-same-contracts1.html">
+            Alıştırmaların Kontratları aynı mı?</a></p>
+          </li>
+
+          <li>
+            <p><a href=
+            "exercises/Practicing-the-Design-Recipe/match-contracts-examples1.html">
+            Kontrat ve Örnekleri eşleştirme</a></p>
+          </li>
+        </ul>
+      </div>
+
+      <div id="copyright">
+        <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict_3.png"
+        alt="image" width="88" height="31"></a>Bootstrap by
+        <a href="mailto:schanzer@bootstrapworld.org">Emmanuel
+        Schanzer</a> is licensed under a <a href=
+        "http://creativecommons.org/licenses/by-nc-nd/3.0/">Creative
+        Commons 3.0 Unported License</a>. Based on a work at
+        <a href=
+        "http://www.bootstrapworld.org/">www.BootstrapWorld.org</a>.
+        Permissions beyond the scope of this license may be
+        available at <a href=
+        "mailto:schanzer@BootstrapWorld.org">schanzer@BootstrapWorld.org</a>.
+      </div>
+    </div>
+  </div>
+
+  <div id="contextindicator">
+    &nbsp;
+  </div>
 </body>
 </html>
