@@ -270,7 +270,7 @@
               <li>
                 <p class="BSUnitSummary"><span class=
                 "BSUnitTitle"><a href=
-                "units/Supplemental/the-unit.html">Ek Dersler</a></span>:
+                "uniteEk/the-unit.html">Ek Dersler</a></span>:
                 İlave çalışmalar düşünen öğretmenler için öğrencilerin bazı konularda derinleşmesine yardım edecek malzemeler derlenmiştir.
                 Öğrencilerin birleştirme ve koordinatları kullanarak kendilerinin veya başka bir ülkenin bayrağını yapmalarını sağlayabilirsiniz.
                 Rastgelelik ve trigonometrik fonksiyonlar kullanarak oyun karakterlerine daha sofistike hareketler yaptırmalarını,
@@ -280,7 +280,7 @@
             </ul>
           </div>
 
-          <div class="SIntrapara">
+          <!-- <div class="SIntrapara">
           
             Of course, there’s more to a curriculum than software
             and lesson plans! We also provide a number of resources
@@ -324,7 +324,7 @@
                 the place to do it.</p>
               </li>
             </ul>
-          </div>
+          </div> -->
 
           <p><a href=
           "http://creativecommons.org/licenses/by-nc-nd/3.0/"><img src="pict.png"

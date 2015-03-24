@@ -1,4 +1,4 @@
-uniteler=1 2 3 4 5 6 7 8 9
+uniteler=1 2 3 4 5 6 7 8 9 Ek
 default: makeweb
 	echo "DONE. VIEW THE NEW WEB AT /tmp/bootstraptrweb"
 
@@ -25,6 +25,8 @@ makeweb: clean
 			cp bootstrap1/uniteler/Unite$$x-Egzersizler/`basename $$y`/* /tmp/bootstraptrweb/unite$$x/exercises/`basename $$y`/ || echo "No exercise"; \
 		done; \
 	done
+	cp -a bootstrap1/resources /tmp/bootstraptrweb/
+	cp -a bootstrap1/isdefteri/IsDefteri.pdf /tmp/bootstraptrweb/resources/workbook/StudentWorkbook.pdf
 
 publish:
 	rsync -av  --delete --rsh=ssh /tmp/bootstraptrweb/ mgencer.com:/var/www/yakinokul.org/onyukleme1
